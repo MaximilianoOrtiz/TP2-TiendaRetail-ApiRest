@@ -1,0 +1,6 @@
+@TP2_TiendaRetail_ApiRest_HostAddress = http://localhost:5089
+
+GET {{TP2_TiendaRetail_ApiRest_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
