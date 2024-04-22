@@ -1,3 +1,4 @@
+using Microsoft.OpenApi.Models;
 
 namespace TP2_TiendaRetail_ApiRest
 {
@@ -10,9 +11,24 @@ namespace TP2_TiendaRetail_ApiRest
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            builder.Logging.AddLog4Net();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "TP2 - Tienda Retail - API",
+                    Description = "Proyecto Software",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Maximiliano Ortiz",
+                    }
+                });
+            });
 
             var app = builder.Build();
 
