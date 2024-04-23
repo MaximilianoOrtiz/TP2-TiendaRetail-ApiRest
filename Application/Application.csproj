@@ -11,8 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
-    <Folder Include="Interfaces\" />
+    <Folder Include="Dtos\Category\" />
+    <Folder Include="Dtos\Product\" />
+    <Folder Include="Dtos\Sale\TotalPrince\" />
     <Folder Include="UseCase\" />
   </ItemGroup>
 
