@@ -1,4 +1,7 @@
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
+using Infraestructure;
 
 namespace TP2_TiendaRetail_ApiRest
 {
@@ -29,6 +32,10 @@ namespace TP2_TiendaRetail_ApiRest
                     }
                 });
             });
+
+            //Custom
+            var connectionString = builder.Configuration["ConnectionString"];
+            builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(connectionString));
 
             var app = builder.Build();
 
