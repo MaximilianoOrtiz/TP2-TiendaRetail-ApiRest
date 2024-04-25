@@ -7,6 +7,6 @@ namespace Application.Interfaces
     {
         public Task<DTOTotalPrinceSaleResponse> calculatePrinceTotal(List<DTOProdutcRequest> ShoppingCart);
 
-       public Task<DTOSaleResponse> saveSale(DTOSaleRequest request);
+        public Task<DTOSaleResponse> saveSale(DTOSaleRequest request);
     }
 }

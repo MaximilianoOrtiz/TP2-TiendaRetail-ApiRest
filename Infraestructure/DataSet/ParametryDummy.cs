@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Domain.Entitys;
 using Microsoft.EntityFrameworkCore;
-using Domain.Entitys;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 
 namespace Infraestructure.DataSet

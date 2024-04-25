@@ -11,7 +11,7 @@ namespace Infraestructure.Commands
         public GenericRepositoryImpl(ApplicationDbContext dbContext, ILogger<GenericRepositoryImpl> logger)
         {
             _context = dbContext;
-            _logger = logger;   
+            _logger = logger;
         }
 
         public T save<T>(T entity) where T : class

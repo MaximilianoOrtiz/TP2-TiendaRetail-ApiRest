@@ -5,7 +5,7 @@
     {
         public int ParametriaId { get; set; }
         public string Codigo { get; set; }
-        public decimal Value { get; set; } 
+        public decimal Value { get; set; }
 
         public Parametry(int parametriaId, string codigo, decimal value)
         {

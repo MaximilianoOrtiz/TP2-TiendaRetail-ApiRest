@@ -4,6 +4,6 @@ namespace Application.Dtos.Sale
 {
     public class DTOTotalPrinceSaleRequest
     {
-        public List<DTOProdutcRequest> ShoppingCart {  get; set; }   
+        public List<DTOProdutcRequest> ShoppingCart { get; set; }
     }
 }

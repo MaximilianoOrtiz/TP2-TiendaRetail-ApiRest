@@ -1,7 +1,9 @@
-using Microsoft.OpenApi.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
+using Application.Interfaces;
+using Application.UseCase;
 using Infraestructure;
+using Infraestructure.Querys;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace TP2_TiendaRetail_ApiRest
 {
@@ -37,6 +39,10 @@ namespace TP2_TiendaRetail_ApiRest
             var connectionString = builder.Configuration["ConnectionString"];
             builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(connectionString));
 
+            builder.Services.AddTransient<ICategoryRepository, CategoryRepositoryImpl>();
+            builder.Services.AddTransient<ICategoryService, CategorySeriviceImpl>();
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -45,6 +51,8 @@ namespace TP2_TiendaRetail_ApiRest
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.MapGet("get/", () => "Hello World!");
 
             app.UseHttpsRedirection();
 

@@ -2,6 +2,6 @@
 {
     public class DTOSaleResponse
     {
-        public string menssage {  get; set; }
+        public string menssage { get; set; }
     }
 }

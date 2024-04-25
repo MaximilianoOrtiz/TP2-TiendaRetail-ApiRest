@@ -6,6 +6,6 @@ namespace Application.Interfaces
     public interface IProductService
     {
         public List<DTOProductResponse> findProductbyIdCategory(int idCategory);
-        public Task<Product> findProductById (Guid id);
+        public Task<Product> findProductById(Guid id);
     }
 }

@@ -21,9 +21,9 @@ namespace Infraestructure.Querys
         public List<Product> findProductbyIdCategory(int idCategory)
         {
             var products = (from product in _context.Products
-                            where product.Category.CategoryId == idCategory 
+                            where product.Category.CategoryId == idCategory
                             select product).ToList();
-            return products; 
+            return products;
         }
     }
 }

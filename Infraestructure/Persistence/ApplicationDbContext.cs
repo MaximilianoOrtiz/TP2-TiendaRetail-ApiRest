@@ -1,7 +1,6 @@
 ﻿using Domain.Entitys;
 using Infraestructure.DataSet;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace Infraestructure
 {
@@ -111,7 +110,7 @@ namespace Infraestructure
             modelBuilder.Entity<Parametry>()
                 .HasKey(parametry => parametry.ParametriaId);
             modelBuilder.Entity<Parametry>()
-                .Property (parametry => parametry.Codigo).IsRequired();
+                .Property(parametry => parametry.Codigo).IsRequired();
             modelBuilder.Entity<Parametry>()
               .Property(parametry => parametry.Value).IsRequired();
 
