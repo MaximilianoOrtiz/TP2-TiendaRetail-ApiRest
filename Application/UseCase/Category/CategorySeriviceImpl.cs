@@ -1,6 +1,6 @@
 ﻿using Application.Dtos.Category;
 using Application.Interfaces;
-using Application.Mappers;
+using AutoMapper;
 using Domain.Entitys;
 using Microsoft.Extensions.Logging;
 
@@ -10,11 +10,13 @@ namespace Application.UseCase
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly ILogger<CategorySeriviceImpl> _logger;
+        private readonly IMapper _mapper;
 
-        public CategorySeriviceImpl(ICategoryRepository categoryRepository, ILogger<CategorySeriviceImpl> logger)
+        public CategorySeriviceImpl(ICategoryRepository categoryRepository, ILogger<CategorySeriviceImpl> logger, IMapper mapper)
         {
             _categoryRepository = categoryRepository;
             _logger = logger;
+            _mapper = mapper;
         }
 
         public async Task<List<DTOCategoryResponse>> findAllCategory()
@@ -34,7 +36,7 @@ namespace Application.UseCase
 
                 foreach (Category category in categorys)
                 {
-                    dTOCategoryResponses.Add(CategoryMapper.mapperToDTOCategoryResponse(category));
+                    dTOCategoryResponses.Add(_mapper.Map<DTOCategoryResponse>(category));
                 }
             }
             _logger.LogInformation("Out - findAllCategory");

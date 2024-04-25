@@ -40,7 +40,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers.Category
                     return NotFound("No se encontraron categorías.");
                 }
 
-                return Ok( new { data = listCategoryResponse });
+                return Ok(new { data = listCategoryResponse });
             }
             catch (DbException ex)
             {
