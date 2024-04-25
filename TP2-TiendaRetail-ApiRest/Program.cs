@@ -3,7 +3,9 @@ using Application.UseCase;
 using Infraestructure;
 using Infraestructure.Querys;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace TP2_TiendaRetail_ApiRest
 {
@@ -33,7 +35,12 @@ namespace TP2_TiendaRetail_ApiRest
                         Name = "Maximiliano Ortiz",
                     }
                 });
+                
+                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
+
+           
 
             //Custom
             var connectionString = builder.Configuration["ConnectionString"];
