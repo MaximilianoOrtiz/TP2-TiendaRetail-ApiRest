@@ -29,12 +29,12 @@ namespace TP2_TiendaRetail_ApiRest.Controllers.Category
             {
                 var listCategoryResponse = await _categoryService.findAllCategory();
 
-                if (listCategoryResponse == null || listCategoryResponse.Count == 0)
+                if (listCategoryResponse.Count == 0)
                 {
                     return NotFound("No se encontraron categorías.");
                 }
 
-                return Ok(listCategoryResponse);
+                return Ok( new { data = listCategoryResponse });
             }
             catch (Exception ex)
             {
