@@ -15,8 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\Category\" />
-    <Folder Include="Dtos\Product\" />
     <Folder Include="Dtos\Sale\TotalPrince\" />
     <Folder Include="UseCase\" />
   </ItemGroup>
@@ -24,6 +22,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
   </ItemGroup>
 
 </Project>

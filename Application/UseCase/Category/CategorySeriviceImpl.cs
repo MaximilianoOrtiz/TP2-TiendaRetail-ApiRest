@@ -19,10 +19,10 @@ namespace Application.UseCase
             _mapper = mapper;
         }
 
-        public async Task<List<DTOCategoryResponse>> findAllCategory()
+        public async Task<List<CategoryDTO>> findAllCategory()
         {
             _logger.LogInformation("Init - findAllCategory");
-            List<DTOCategoryResponse> dTOCategoryResponses = new List<DTOCategoryResponse>();
+            List<CategoryDTO> dTOCategoryResponses = new List<CategoryDTO>();
             List<Category> categorys = new List<Category>();
 
             categorys = await _categoryRepository.findAllCategory();
@@ -36,7 +36,7 @@ namespace Application.UseCase
 
                 foreach (Category category in categorys)
                 {
-                    dTOCategoryResponses.Add(_mapper.Map<DTOCategoryResponse>(category));
+                    dTOCategoryResponses.Add(_mapper.Map<CategoryDTO>(category));
                 }
             }
             _logger.LogInformation("Out - findAllCategory");

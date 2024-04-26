@@ -1,6 +1,7 @@
 ﻿using Application.Dtos.Category;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Data.Common;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,18 +19,12 @@ namespace TP2_TiendaRetail_ApiRest.Controllers.Category
             _categoryService = categoryService;
         }
 
-        /// <summary>
-        /// Lista todas las categorias 
-        /// </summary>
-        /// <returns></returns>
-        /// <response code="200"> Retorna todas las categorias </response>
-        /// <response code="500"> Posible falla al consultar la base de datos</response>
-        // GET: api/<CategoryController>
         [HttpGet]
-        [Route("categorys")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<List<DTOCategoryResponse>>> getAllCategory()
+        [Route("[controller]")]
+        [SwaggerOperation(Summary = "Lista todas las categorias")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Se devolvio la lista exitosamente")]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ocurrio un afalla en el servidor")]
+        public async Task<ActionResult<List<CategoryDTO>>> getAllCategory([SwaggerParameter(Description = "Id de la categoria")] int id)
         {
             try
             {

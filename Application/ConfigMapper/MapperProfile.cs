@@ -9,7 +9,7 @@ namespace Application.ConfigMapper
 
         public MapperProfile()
         {
-            CreateMap<Category, DTOCategoryResponse>();
+            CreateMap<Category, CategoryDTO>();
         }
     }
 }

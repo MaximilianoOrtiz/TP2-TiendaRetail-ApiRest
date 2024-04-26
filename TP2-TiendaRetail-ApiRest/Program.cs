@@ -25,6 +25,7 @@ namespace TP2_TiendaRetail_ApiRest
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
+                options.EnableAnnotations();
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
@@ -36,8 +37,8 @@ namespace TP2_TiendaRetail_ApiRest
                     }
                 });
 
-                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+               // var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                //options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
 
 
@@ -63,6 +64,8 @@ namespace TP2_TiendaRetail_ApiRest
             }
 
             app.MapGet("get/", () => "Hello World!");
+
+           
 
             app.UseHttpsRedirection();
 
