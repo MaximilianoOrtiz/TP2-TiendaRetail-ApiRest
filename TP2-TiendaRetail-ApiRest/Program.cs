@@ -25,7 +25,7 @@ namespace TP2_TiendaRetail_ApiRest
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
-                options.EnableAnnotations();
+                //options.EnableAnnotations();
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
@@ -37,8 +37,8 @@ namespace TP2_TiendaRetail_ApiRest
                     }
                 });
 
-               // var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                //options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
 
 
@@ -48,8 +48,14 @@ namespace TP2_TiendaRetail_ApiRest
             builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(connectionString));
 
             //Custom Inyection Dependency
-            builder.Services.AddTransient<ICategoryRepository, CategoryRepositoryImpl>();
+            builder.Services.AddTransient<IProductService, ProductServiceImpl>();
+            builder.Services.AddTransient<IProductRepository, ProductRepositoryImpl>();
+
             builder.Services.AddTransient<ICategoryService, CategorySeriviceImpl>();
+            builder.Services.AddTransient<ICategoryRepository, CategoryRepositoryImpl>();
+
+
+
 
             //Config Automapper
             builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
@@ -65,7 +71,7 @@ namespace TP2_TiendaRetail_ApiRest
 
             app.MapGet("get/", () => "Hello World!");
 
-           
+
 
             app.UseHttpsRedirection();
 

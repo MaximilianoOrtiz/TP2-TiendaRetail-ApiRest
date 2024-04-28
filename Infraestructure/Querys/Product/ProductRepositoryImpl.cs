@@ -1,6 +1,5 @@
 ﻿using Application.Interfaces;
 using Domain.Entitys;
-using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Querys
 {
@@ -12,18 +11,38 @@ namespace Infraestructure.Querys
         {
             this._context = applicationDbContex;
         }
-
+        /*
         public async Task<Product> findProductById(Guid id)
         {
             return await _context.Products.FirstOrDefaultAsync(product => product.ProductoId == id);
         }
-
+        */
+        /*
         public List<Product> findProductbyIdCategory(int idCategory)
         {
             var products = (from product in _context.Products
-                            where product.Category.CategoryId == idCategory
+                            where product.categoryId == idCategory
+                            select product).ToList();
+            return products;
+        }
+        */
+        public async Task<List<Product>> findProductByCategoryIdAndName(int categoryId, string name)
+        {
+            var products = (from product in _context.Products
+                            where product.categoryId == categoryId
+                            && product.Name.Contains(name)
+                            select product).ToList();
+
+            return products;
+        }
+
+        public async Task<List<Product>> findProductByName(string name)
+        {
+            var products = (from product in _context.Products
+                            where product.Name.Contains(name)
                             select product).ToList();
             return products;
         }
     }
+
 }

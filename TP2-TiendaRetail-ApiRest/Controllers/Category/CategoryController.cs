@@ -18,13 +18,16 @@ namespace TP2_TiendaRetail_ApiRest.Controllers.Category
         {
             _categoryService = categoryService;
         }
-
+        /// <summary>
+        /// Lista todas las categorias
+        /// </summary>
+        /// <param name="id">Id de la categoria</param>
+        /// <response code="200">Éxito al recuperar las categorias</response>
+        /// <response code="500">Ocurrio una falla en el servidor</response>
+        /// <returns></returns>
         [HttpGet]
         [Route("[controller]")]
-        [SwaggerOperation(Summary = "Lista todas las categorias")]
-        [SwaggerResponse(StatusCodes.Status200OK, "Se devolvio la lista exitosamente")]
-        [SwaggerResponse(StatusCodes.Status500InternalServerError, "Ocurrio un afalla en el servidor")]
-        public async Task<ActionResult<List<CategoryDTO>>> getAllCategory([SwaggerParameter(Description = "Id de la categoria")] int id)
+        public async Task<ActionResult<List<CategoryDTO>>> getAllCategory( int id)
         {
             try
             {
@@ -39,7 +42,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers.Category
             }
             catch (DbException ex)
             {
-                return StatusCode(500, new { mensaje = "Ocurrió un error al consultar la base de datos", error = ex.Message });
+                return StatusCode(500, new { mensaje = "Ocurrió un error al consultar la base de datos" });
             }
         }
     }
