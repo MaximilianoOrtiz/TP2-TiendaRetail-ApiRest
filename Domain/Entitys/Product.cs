@@ -14,6 +14,7 @@
 
         public IList<SaleProduct> SaleProducts { get; set; }
 
+        public Product() { }    
         public Product(Guid productoId, string name, string description, decimal price, int? discount, string urlImage, int categoryId)
         {
             ProductoId = productoId;

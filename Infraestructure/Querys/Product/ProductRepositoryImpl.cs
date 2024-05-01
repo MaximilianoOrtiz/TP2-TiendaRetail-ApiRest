@@ -11,12 +11,14 @@ namespace Infraestructure.Querys
         {
             this._context = applicationDbContex;
         }
-        /*
-        public async Task<Product> findProductById(Guid id)
+        
+        public async Task<Product> findProductByEqualName(string name)
         {
-            return await _context.Products.FirstOrDefaultAsync(product => product.ProductoId == id);
+             return  (from product in _context.Products
+                               where product.Name == name
+                               select product).FirstOrDefault();
         }
-        */
+        
         /*
         public List<Product> findProductbyIdCategory(int idCategory)
         {

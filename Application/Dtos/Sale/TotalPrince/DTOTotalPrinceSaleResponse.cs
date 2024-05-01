@@ -1,4 +1,4 @@
-﻿namespace Application.Dtos.Sale
+﻿namespace Aplication.Dtos.Sale.TotalPrince
 {
     public class DTOTotalPrinceSaleResponse
     {

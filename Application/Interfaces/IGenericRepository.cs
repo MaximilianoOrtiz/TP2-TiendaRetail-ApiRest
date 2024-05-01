@@ -2,6 +2,6 @@
 {
     public interface IGenericRepository
     {
-        T save<T>(T entity) where T : class;
+        Task<T> save<T>(T entity) where T : class;
     }
 }

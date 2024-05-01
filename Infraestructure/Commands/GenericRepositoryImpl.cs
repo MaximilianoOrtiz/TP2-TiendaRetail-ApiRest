@@ -14,13 +14,12 @@ namespace Infraestructure.Commands
             _logger = logger;
         }
 
-        public T save<T>(T entity) where T : class
+        public async Task<T> save<T>(T entity) where T : class
         {
             _logger.LogInformation("Init - save");
             _context.Add(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             _logger.LogInformation("out - se realizo el save exitosamente");
-            _logger.LogInformation($"{entity.ToString()}");
             return entity;
         }
     }

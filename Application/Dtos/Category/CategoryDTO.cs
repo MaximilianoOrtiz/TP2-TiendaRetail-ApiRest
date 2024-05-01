@@ -1,6 +1,6 @@
 ﻿using Swashbuckle.AspNetCore.Annotations;
 
-namespace Application.Dtos.Category
+namespace Application.Dtos
 {
     public class CategoryDTO
     {

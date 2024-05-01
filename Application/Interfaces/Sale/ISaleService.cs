@@ -1,5 +1,6 @@
-﻿using Application.Dtos.Product;
-using Application.Dtos.Sale;
+﻿using Aplication.Dtos.Sale.TotalPrince;
+using Domain.Dtos.Product;
+using Domain.Dtos.Sale;
 
 namespace Application.Interfaces
 {

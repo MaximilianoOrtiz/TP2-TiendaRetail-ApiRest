@@ -1,5 +1,5 @@
 ﻿
-using Application.Dtos.Category;
+using Application.Dtos;
 
 namespace Application.Interfaces
 {

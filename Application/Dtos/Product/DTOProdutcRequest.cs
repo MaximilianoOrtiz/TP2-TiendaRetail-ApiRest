@@ -1,4 +1,4 @@
-﻿namespace Application.Dtos.Product
+﻿namespace Domain.Dtos.Product
 {
     public class DTOProdutcRequest
     {
@@ -11,4 +11,6 @@
             Quantity = quantity;
         }
     }
+
+
 }

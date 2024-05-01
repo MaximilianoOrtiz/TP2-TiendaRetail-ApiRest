@@ -1,6 +1,6 @@
-﻿using Application.Dtos.Product;
+﻿using Domain.Dtos.Product;
 
-namespace Application.Dtos.Sale
+namespace Aplication.Dtos.Sale.TotalPrince
 {
     public class DTOTotalPrinceSaleRequest
     {

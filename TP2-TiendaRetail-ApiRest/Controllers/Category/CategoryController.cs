@@ -1,8 +1,10 @@
-﻿using Application.Dtos.Category;
+﻿using Aplication.Dtos;
+using Application.Dtos;
+using Application.Dtos.ApiError;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
 using System.Data.Common;
+using System.Net;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,23 +29,24 @@ namespace TP2_TiendaRetail_ApiRest.Controllers.Category
         /// <returns></returns>
         [HttpGet]
         [Route("[controller]")]
-        public async Task<ActionResult<List<CategoryDTO>>> getAllCategory( int id)
+        public async Task<ActionResult> getAllCategory(int id)
         {
             try
             {
-                var listCategoryResponse = await _categoryService.findAllCategory();
+                List<CategoryDTO> listCategoryResponse = await _categoryService.findAllCategory();
 
                 if (listCategoryResponse.Count == 0)
                 {
-                    return NotFound("No se encontraron categorías.");
+                    return NotFound(new ApiError("No se encontraron categorías."));
                 }
 
-                return Ok(new { data = listCategoryResponse });
+                return Ok(new Result(listCategoryResponse, HttpStatusCode.OK));
             }
             catch (DbException ex)
             {
-                return StatusCode(500, new { mensaje = "Ocurrió un error al consultar la base de datos" });
+                return StatusCode(500, new ApiError("Ocurrió un error al consultar la base de datos."));
             }
+
         }
     }
 }

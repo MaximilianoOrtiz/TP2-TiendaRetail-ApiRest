@@ -1,4 +1,4 @@
-﻿using Application.Dtos.Category;
+﻿using Application.Dtos;
 using Application.Dtos.Product;
 using AutoMapper;
 using Domain.Entitys;
@@ -10,9 +10,13 @@ namespace Application.ConfigMapper
         public MapperProfile()
         {
             CreateMap<Category, CategoryDTO>();
+
             CreateMap<Product, ProductoGetResponse>()
                 .ForMember(destination => destination.categoriaId,
                 memberOptions => memberOptions.MapFrom(source => source.categoryId));
+
+            CreateMap<Product, ProductResponse>();
+            CreateMap<ProductRequest, Product>();
         }
     }
 }

@@ -2,6 +2,7 @@ using Application.ConfigMapper;
 using Application.Interfaces;
 using Application.UseCase;
 using Infraestructure;
+using Infraestructure.Commands;
 using Infraestructure.Querys;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -53,6 +54,8 @@ namespace TP2_TiendaRetail_ApiRest
 
             builder.Services.AddTransient<ICategoryService, CategorySeriviceImpl>();
             builder.Services.AddTransient<ICategoryRepository, CategoryRepositoryImpl>();
+
+            builder.Services.AddTransient<IGenericRepository, GenericRepositoryImpl>();
 
 
 

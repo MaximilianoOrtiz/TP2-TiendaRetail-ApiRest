@@ -1,4 +1,4 @@
-﻿namespace Application.Dtos.Sale
+﻿namespace Domain.Dtos.Sale
 {
     public class DTOSaleResponse
     {
