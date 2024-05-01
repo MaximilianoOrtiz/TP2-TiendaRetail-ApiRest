@@ -23,4 +23,9 @@
     <ProjectReference Include="..\Infraestructure\Infraestructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Category\" />
+    <Folder Include="Controllers\Product\" />
+  </ItemGroup>
+
 </Project>

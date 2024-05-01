@@ -20,9 +20,9 @@ namespace Infraestructure.Querys
         public async Task<Category> findCateegoryById(int categoryId)
         {
             var item = (from category in _context.Categories
-                            where category.CategoryId == categoryId
-                            select category).FirstOrDefault();
-            return item;                
+                        where category.CategoryId == categoryId
+                        select category).FirstOrDefault();
+            return item;
         }
     }
 }

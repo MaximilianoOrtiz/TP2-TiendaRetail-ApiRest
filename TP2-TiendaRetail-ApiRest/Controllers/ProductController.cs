@@ -3,14 +3,12 @@ using Application.Dtos;
 using Application.Dtos.ApiError;
 using Application.Dtos.Product;
 using Application.Interfaces;
-using Azure;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.Data.Common;
 using System.Net;
 
-namespace TP2_TiendaRetail_ApiRest.Controllers.Product
+namespace TP2_TiendaRetail_ApiRest.Controllers
 {
 
     [Route("api/")]
@@ -48,7 +46,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers.Product
                 {
                     return NotFound(new ApiError("No se encontraron productos"));
                 }
-                return Ok(new Result (listProduct , HttpStatusCode.OK));
+                return Ok(new Result(listProduct, HttpStatusCode.OK));
             }
             catch (DbException ex)
             {
@@ -67,10 +65,12 @@ namespace TP2_TiendaRetail_ApiRest.Controllers.Product
         //   - 400: Solicitud incorrecta. Devuelve un mensaje de error detallado.
         //   - 409: Conflicto, el producto ya existe. Devuelve un mensaje de error detallado.
 
+
+
         /// <summary>
         /// Crea un nuevo producto.
         /// </summary>
-        ///  /// <remarks>
+        /// <remarks>
         ///Permite la creación de un nuevo producto en el sistema.
         /// </remarks>
         /// <param name="productRequest"></param>
@@ -85,23 +85,53 @@ namespace TP2_TiendaRetail_ApiRest.Controllers.Product
         {
             try
             {
-                if(await _productService.existProductByEqualName(productRequest.Name))
+                if (await _productService.existProductByEqualName(productRequest.Name))
                 {
                     //Ahi que revisar esto chee
-                    return Conflict( new ApiError("No puede existir dos productos con el mismo nombre en la base"));
+                    return Conflict(new ApiError("No puede existir dos productos con el mismo nombre en la base"));
                     //return new JsonResult(new ApiError("No puede existir dos productos con el mismo nombre en la base")) { StatusCode = 409 };
                     //return StatusCode(409, new ApiError("Hola"));
                 }
                 ProductResponse response = await _productService.saveProduct(productRequest);
 
-                return new JsonResult(new Result (response, HttpStatusCode.Created)) { StatusCode = 201 };
+                return new JsonResult(new Result(response, HttpStatusCode.Created)) { StatusCode = 201 };
             }
             catch (DbException ex)
             {
 
                 return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
 
-               // return StatusCode(500, new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message));
+                // return StatusCode(500, new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message));
+            }
+        }
+
+
+        /// <summary>
+        /// Obtiene detalles de un producto específico.
+        /// </summary>
+        /// <remarks>
+        /// Recupera los detalles de un producto por su ID único.
+        /// </remarks>
+        /// <param name="id">ID único del producto.</param>
+        /// <returns>Detalles del producto.</returns>
+        /// <response code="200">Éxito al recuperar los detalles del producto.</response>
+        /// <response code="404">Producto no encontrado.</response>
+        [HttpGet]
+        [Route("[controller]/{id}")]
+        public async Task<ActionResult<ProductResponse>> getProductById(Guid id)
+        {
+            try
+            {
+                ProductResponse productResponse = await _productService.findProductbyId(id);
+                if (productResponse == null)
+                {
+                    return NotFound(new ApiError($"No se encontro el producto con ID: {id}"));
+                }
+                return Ok(new Result(productResponse, HttpStatusCode.OK));
+            }
+            catch (DbException ex)
+            {
+                return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
             }
         }
     }

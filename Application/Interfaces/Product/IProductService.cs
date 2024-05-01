@@ -1,6 +1,5 @@
 ﻿using Application.Dtos;
 using Application.Dtos.Product;
-using Domain.Entitys;
 
 namespace Application.Interfaces
 {
@@ -12,5 +11,8 @@ namespace Application.Interfaces
         public Task<List<ProductoGetResponse>> findProductbyCategoryIdAndName(int[] categorys, string name, int limit, int offSet);
 
         public Task<ProductResponse> saveProduct(ProductRequest product);
+
+        public Task<ProductResponse> findProductbyId(Guid productoId);
+
     }
 }

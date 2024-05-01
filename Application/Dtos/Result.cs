@@ -13,6 +13,6 @@ namespace Aplication.Dtos
             HttpStatusCode = httpStatusCode;
         }
 
-       
+
     }
 }

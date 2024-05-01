@@ -1,5 +1,4 @@
-﻿
-using Application.Dtos;
+﻿using Application.Dtos;
 
 namespace Application.Interfaces
 {

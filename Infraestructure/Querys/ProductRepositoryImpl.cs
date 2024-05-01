@@ -11,14 +11,14 @@ namespace Infraestructure.Querys
         {
             this._context = applicationDbContex;
         }
-        
+
         public async Task<Product> findProductByEqualName(string name)
         {
-             return  (from product in _context.Products
-                               where product.Name == name
-                               select product).FirstOrDefault();
+            return (from product in _context.Products
+                    where product.Name == name
+                    select product).FirstOrDefault();
         }
-        
+
         /*
         public List<Product> findProductbyIdCategory(int idCategory)
         {
@@ -45,6 +45,14 @@ namespace Infraestructure.Querys
                             select product).ToList();
             return products;
         }
-    }
 
+        public async Task<Product> findProductbyId(Guid productoId)
+        {
+            var products = (from product in _context.Products
+                            where product.ProductoId == productoId
+                            select product).FirstOrDefault();
+            return products;
+
+        }
+    }
 }

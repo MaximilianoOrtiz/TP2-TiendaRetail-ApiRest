@@ -81,22 +81,28 @@ namespace Application.UseCase
         {
             _logger.LogInformation("Init - saveProduct");
             Category category = await _categoryRepository.findCateegoryById(productRequest.CategoryId);
-            Product product = new Product(); 
+            Product product = new Product();
 
             product = _mapper.Map<Product>(productRequest);
             product.Category = category;
-           
+
             _logger.LogInformation("Out - saveProduct");
-            return _mapper.Map<ProductResponse>( await _genericRepository.save(product));
+            return _mapper.Map<ProductResponse>(await _genericRepository.save(product));
         }
 
         public async Task<bool> existProductByEqualName(string name)
         {
-           Product product = await _productRepository.findProductByEqualName(name);
-           if (product == null) { 
+            Product product = await _productRepository.findProductByEqualName(name);
+            if (product == null)
+            {
                 return false;
-           }
-           return true;
+            }
+            return true;
+        }
+
+        public async Task<ProductResponse> findProductbyId(Guid productoId)
+        {
+            return _mapper.Map<ProductResponse>(await _productRepository.findProductbyId(productoId));
         }
     }
 
