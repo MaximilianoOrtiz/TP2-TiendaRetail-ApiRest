@@ -31,5 +31,14 @@ namespace Infraestructure.Commands
             _logger.LogInformation("Out - se realizó la actualización exitosamente");
             return entity;
         }
+        public async Task<T> delete<T>(T entity) where T : class
+        {
+            _logger.LogInformation("Init - delete");
+            _context.Remove(entity);
+            await _context.SaveChangesAsync();
+            _logger.LogInformation("Out - se elimino exitosamente");
+            return entity;
+        }
+
     }
 }

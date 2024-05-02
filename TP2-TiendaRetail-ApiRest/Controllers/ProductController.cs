@@ -38,7 +38,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         /// <returns>Una lista de productos.</returns>
         [HttpGet]
         [Route("[controller]")]
-        public async Task<ActionResult> findProductbyFilters([FromQuery] int[] categorys, string name, [DefaultValue(0)] int limit, [DefaultValue(0)] int offset)
+        public async Task<ActionResult<ProductoGetResponse>> findProductbyFilters([FromQuery] int[] categorys, string name, [DefaultValue(0)] int limit, [DefaultValue(0)] int offset)
         {
             try
             {
@@ -122,6 +122,20 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Actualiza un producto existente.
+        /// </summary>
+        ///  <remarks>
+        /// Permite la actualización de los detalles de un producto específico.
+        /// </remarks>
+        /// <param name="id">El ID del producto que se va a actualizar.</param>
+        /// <param name="productRequest">Los detalles actualizados del producto en el cuerpo de la solicitud.</param>
+        /// <returns>Una respuesta que indica el resultado de la actualización del producto.</returns>
+        /// <response code="200">Producto actualizado con éxito.</response>
+        /// <response code="400">Solicitud incorrecta.</response>
+        /// <response code="404">Producto no encontrado.</response>
+        /// <response code="409">Conflicto al actualizar el producto..</response>
         [HttpPut]
         [Route("[controller]/{productId}")]
         public async Task<ActionResult<ProductResponse>> updateProduct([FromBody] ProductRequest productRequest, Guid productId)
@@ -144,6 +158,43 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             {
                 return Conflict(new ApiError(ex.Message));
             }
+        }
+
+
+
+        /// <summary>
+        /// Elimina un producto específico.
+        /// </summary>
+        ///  <remarks>
+        /// Permite la eliminación de un producto del sistema usando su ID.
+        /// </remarks>
+        /// <param name="id">El ID del producto que se va a eliminar.</param>
+        /// <returns>Una respuesta que indica el resultado de la eliminación del producto.</returns>
+        /// <response code="200">Producto eliminado con éxito.</response>
+        /// <response code="404">Producto no encontrado.</response>
+        [HttpDelete]
+        [Route("[controller]/{productId}")]
+        public async Task<ActionResult<ProductResponse>> deleteProduct(Guid productId)
+        {
+            try
+            {
+                ProductResponse productResponse = await _productService.deleteProduct(productId);
+
+                if (productResponse == null)
+                {
+                    return NotFound(new ApiError($"No se encontro el producto con ID: {productId}"));
+                }
+                return Ok(new Result(productResponse, HttpStatusCode.OK));
+            }
+            catch (DbException ex)
+            {
+                return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
+            }
+            catch (CustomException ex)
+            {
+                return Conflict(new ApiError(ex.Message));
+            }
+
         }
     }
 }

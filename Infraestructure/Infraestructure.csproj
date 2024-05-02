@@ -28,9 +28,6 @@
     <Folder Include="Commands\" />
     <Folder Include="DataSet\" />
     <Folder Include="Persistence\" />
-    <Folder Include="Querys\Category\" />
-    <Folder Include="Querys\Product\" />
-    <Folder Include="Querys\Parametry\" />
   </ItemGroup>
 
 </Project>

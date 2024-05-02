@@ -1,7 +1,7 @@
 ﻿using Aplication.Dtos;
 using Application.Dtos;
 using Application.Dtos.ApiError;
-using Application.Interfaces;
+using Application.Interfaces.ICategory;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Common;
 using System.Net;

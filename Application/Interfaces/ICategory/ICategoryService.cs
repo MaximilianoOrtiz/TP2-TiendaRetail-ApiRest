@@ -1,6 +1,6 @@
 ﻿using Application.Dtos;
 
-namespace Application.Interfaces
+namespace Application.Interfaces.ICategory
 {
     public interface ICategoryService
     {

@@ -16,8 +16,6 @@
 
   <ItemGroup>
     <Folder Include="Dtos\Sale\TotalPrince\" />
-    <Folder Include="UseCase\Category\" />
-    <Folder Include="UseCase\Product\" />
   </ItemGroup>
 
   <ItemGroup>

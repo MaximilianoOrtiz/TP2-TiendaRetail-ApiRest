@@ -1,18 +1,18 @@
 ﻿using Application.Dtos;
-using Application.Interfaces;
+using Application.Interfaces.ICategory;
 using AutoMapper;
 using Domain.Entitys;
 using Microsoft.Extensions.Logging;
 
 namespace Application.UseCase
 {
-    public class CategorySeriviceImpl : ICategoryService
+    public class CategoryServiceImpl : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
-        private readonly ILogger<CategorySeriviceImpl> _logger;
+        private readonly ILogger<CategoryServiceImpl> _logger;
         private readonly IMapper _mapper;
 
-        public CategorySeriviceImpl(ICategoryRepository categoryRepository, ILogger<CategorySeriviceImpl> logger, IMapper mapper)
+        public CategoryServiceImpl(ICategoryRepository categoryRepository, ILogger<CategoryServiceImpl> logger, IMapper mapper)
         {
             _categoryRepository = categoryRepository;
             _logger = logger;

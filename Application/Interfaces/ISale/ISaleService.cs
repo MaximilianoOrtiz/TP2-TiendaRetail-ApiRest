@@ -2,7 +2,7 @@
 using Domain.Dtos.Product;
 using Domain.Dtos.Sale;
 
-namespace Application.Interfaces
+namespace Application.Interfaces.ISale
 {
     public interface ISaleService
     {

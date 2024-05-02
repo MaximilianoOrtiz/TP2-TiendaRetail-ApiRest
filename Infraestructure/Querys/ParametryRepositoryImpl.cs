@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+﻿using Application.Interfaces.IParametry;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Querys

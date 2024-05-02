@@ -16,5 +16,6 @@ namespace Application.Interfaces
 
         public Task<ProductResponse> updateProduct(ProductRequest productRequest, Guid productId);
 
+        public Task<ProductResponse> deleteProduct(Guid productId);
     }
 }

@@ -1,5 +1,8 @@
 using Application.ConfigMapper;
 using Application.Interfaces;
+using Application.Interfaces.ICategory;
+using Application.Interfaces.IProduct;
+using Application.Interfaces.ISalesProducts;
 using Application.UseCase;
 using Infraestructure;
 using Infraestructure.Commands;
@@ -52,10 +55,14 @@ namespace TP2_TiendaRetail_ApiRest
             builder.Services.AddTransient<IProductService, ProductServiceImpl>();
             builder.Services.AddTransient<IProductRepository, ProductRepositoryImpl>();
 
-            builder.Services.AddTransient<ICategoryService, CategorySeriviceImpl>();
+            builder.Services.AddTransient<ICategoryService, CategoryServiceImpl>();
             builder.Services.AddTransient<ICategoryRepository, CategoryRepositoryImpl>();
 
             builder.Services.AddTransient<IGenericRepository, GenericRepositoryImpl>();
+
+            builder.Services.AddTransient<ISaleProductRepository, SaleProductRepositoryImpl>();
+
+
 
 
 

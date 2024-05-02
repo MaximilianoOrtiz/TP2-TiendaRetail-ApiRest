@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+﻿using Application.Interfaces.ICategory;
 using Domain.Entitys;
 
 namespace Infraestructure.Querys
