@@ -12,7 +12,5 @@ namespace Aplication.Dtos
             Data = data;
             HttpStatusCode = httpStatusCode;
         }
-
-
     }
 }

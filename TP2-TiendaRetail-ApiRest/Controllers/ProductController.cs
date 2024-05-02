@@ -2,6 +2,7 @@
 using Application.Dtos;
 using Application.Dtos.ApiError;
 using Application.Dtos.Product;
+using Application.Exceptions;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
@@ -54,19 +55,6 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             }
         }
 
-
-        // POST /product
-        // Crea un nuevo producto.
-        // Permite la creación de un nuevo producto en el sistema.
-        // Parámetros:
-        //   - productRequest: Los datos del producto a crear.
-        // Respuestas:
-        //   - 201: Producto creado con éxito. Devuelve los detalles del producto creado.
-        //   - 400: Solicitud incorrecta. Devuelve un mensaje de error detallado.
-        //   - 409: Conflicto, el producto ya existe. Devuelve un mensaje de error detallado.
-
-
-
         /// <summary>
         /// Crea un nuevo producto.
         /// </summary>
@@ -105,7 +93,6 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             }
         }
 
-
         /// <summary>
         /// Obtiene detalles de un producto específico.
         /// </summary>
@@ -132,6 +119,30 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             catch (DbException ex)
             {
                 return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
+            }
+        }
+
+        [HttpPut]
+        [Route("[controller]/{productId}")]
+        public async Task<ActionResult<ProductResponse>> updateProduct([FromBody] ProductRequest productRequest, Guid productId)
+        {
+            try
+            {
+                ProductResponse productResponse = await _productService.updateProduct(productRequest, productId);
+
+                if (productResponse == null)
+                {
+                    return NotFound(new ApiError($"No se encontro el producto con ID: {productId}"));
+                }
+                return Ok(new Result(productResponse, HttpStatusCode.OK));
+            }
+            catch (DbException ex)
+            {
+                return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
+            }
+            catch (CustomException ex)
+            {
+                return Conflict(new ApiError(ex.Message));
             }
         }
     }

@@ -14,5 +14,7 @@ namespace Application.Interfaces
 
         public Task<ProductResponse> findProductbyId(Guid productoId);
 
+        public Task<ProductResponse> updateProduct(ProductRequest productRequest, Guid productId);
+
     }
 }

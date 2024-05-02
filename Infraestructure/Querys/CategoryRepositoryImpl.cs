@@ -17,7 +17,7 @@ namespace Infraestructure.Querys
             return _context.Categories.ToList();
         }
 
-        public async Task<Category> findCateegoryById(int categoryId)
+        public async Task<Category> findCategoryById(int categoryId)
         {
             var item = (from category in _context.Categories
                         where category.CategoryId == categoryId

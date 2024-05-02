@@ -22,5 +22,14 @@ namespace Infraestructure.Commands
             _logger.LogInformation("out - se realizo el save exitosamente");
             return entity;
         }
+
+        public async Task<T> update<T>(T entity) where T : class
+        {
+            _logger.LogInformation("Init - update");
+            _context.Update(entity);
+            await _context.SaveChangesAsync();
+            _logger.LogInformation("Out - se realizó la actualización exitosamente");
+            return entity;
+        }
     }
 }

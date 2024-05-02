@@ -1,5 +1,6 @@
 ﻿using Application.Dtos;
 using Application.Dtos.Product;
+using Application.Exceptions;
 using Application.Interfaces;
 using AutoMapper;
 using Domain.Entitys;
@@ -80,7 +81,7 @@ namespace Application.UseCase
         public async Task<ProductResponse> saveProduct(ProductRequest productRequest)
         {
             _logger.LogInformation("Init - saveProduct");
-            Category category = await _categoryRepository.findCateegoryById(productRequest.CategoryId);
+            Category category = await _categoryRepository.findCategoryById(productRequest.CategoryId);
             Product product = new Product();
 
             product = _mapper.Map<Product>(productRequest);
@@ -104,6 +105,44 @@ namespace Application.UseCase
         {
             return _mapper.Map<ProductResponse>(await _productRepository.findProductbyId(productoId));
         }
-    }
 
+        public async Task<ProductResponse> updateProduct(ProductRequest productRequest, Guid productId)
+        {
+            _logger.LogInformation("Init - updateProduct");
+
+            ProductResponse productResponse = new ProductResponse();
+            Product productUpdate = new Product();
+
+            Product product = await _productRepository.findProductbyId(productId);
+            if (product == null)
+            {
+                return null;
+            }
+            else
+            {
+                if (product.Name != productRequest.Name)
+                {
+                    Product productConflit = await _productRepository.findProductByEqualName(productRequest.Name);
+                    if (productConflit != null)
+                    {
+                        throw new CustomException("Ya existe un producto con ese nombre");
+                    }
+                }
+                product.Name = productRequest.Name;
+                product.Description = productRequest.Description;
+                product.categoryId = productRequest.CategoryId;
+                product.Price = productRequest.Price;
+                product.Discount = productRequest.Discount;
+                product.UrlImage = productRequest.UrlImage;
+
+                productUpdate = await _genericRepository.update(product);
+                productUpdate.Category = await _categoryRepository.findCategoryById(productRequest.CategoryId);
+
+                productResponse = _mapper.Map<ProductResponse>(productUpdate);
+            }
+
+            _logger.LogInformation("Out - updateProduct");
+            return productResponse;
+        }
+    }
 }
