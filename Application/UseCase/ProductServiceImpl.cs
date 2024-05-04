@@ -110,7 +110,7 @@ namespace Application.UseCase
 
         public async Task<ProductResponse> findProductbyId(Guid productoId)
         {
-            Product product = await _productRepository.findProductbyId(productoId);
+            Product product = await _productRepository.findProductById(productoId);
             if (product == null) { return null; }
             product.Category = await _categoryRepository.findCategoryById(product.categoryId);
 
@@ -124,7 +124,7 @@ namespace Application.UseCase
             ProductResponse productResponse = new ProductResponse();
             Product productUpdate = new Product();
 
-            Product product = await _productRepository.findProductbyId(productId);
+            Product product = await _productRepository.findProductById(productId);
             if (product == null)
             {
                 return null;
@@ -161,7 +161,7 @@ namespace Application.UseCase
         {
             _logger.LogInformation("Init - deleteProduct");
             ProductResponse productResponse = new ProductResponse();
-            Product product = await _productRepository.findProductbyId(productId);
+            Product product = await _productRepository.findProductById(productId);
 
             if (product == null)
             {

@@ -1,13 +1,12 @@
-﻿using Aplication.Dtos.Sale.TotalPrince;
-using Domain.Dtos.Product;
-using Domain.Dtos.Sale;
+﻿using Application.Dtos.Sale.Request;
+using Application.Dtos.Sale.Response;
 
 namespace Application.Interfaces.ISale
 {
     public interface ISaleService
     {
-        public Task<DTOTotalPrinceSaleResponse> calculatePrinceTotal(List<DTOProdutcRequest> ShoppingCart);
+        //       public Task<DTOTotalPrinceSaleResponse> calculatePrinceTotal(List<DTOProdutcRequest> ShoppingCart);
 
-        public Task<DTOSaleResponse> saveSale(DTOSaleRequest request);
+        public Task<SaleResponse> saveSale(SaleRequest saleRequest);
     }
 }

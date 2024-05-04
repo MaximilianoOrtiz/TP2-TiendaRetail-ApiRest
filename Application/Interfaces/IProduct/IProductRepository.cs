@@ -12,7 +12,7 @@ namespace Application.Interfaces.IProduct
 
         public Task<Product> findProductByEqualName(string name);
 
-        public Task<Product> findProductbyId(Guid productoId);
+        public Task<Product> findProductById(Guid productoId);
 
     }
 }

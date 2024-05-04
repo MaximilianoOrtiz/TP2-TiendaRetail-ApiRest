@@ -46,7 +46,7 @@ namespace Infraestructure.Querys
             return products;
         }
 
-        public async Task<Product> findProductbyId(Guid productoId)
+        public async Task<Product> findProductById(Guid productoId)
         {
             var products = (from product in _context.Products
                             where product.ProductoId == productoId
