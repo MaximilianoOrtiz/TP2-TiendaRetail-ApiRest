@@ -1,4 +1,4 @@
-﻿using Application.Interfaces.ISalesProducts;
+﻿using Application.Interfaces.Repository;
 using Microsoft.Extensions.Logging;
 
 namespace Infraestructure.Querys
@@ -16,9 +16,9 @@ namespace Infraestructure.Querys
             _logger = logger;
         }
 
-        public async Task<bool> hasProductAssociated(Guid productId)
+        public async Task<bool> HasProductAssociatedAsync(Guid productId)
         {
-            _logger.LogInformation("Init - hasProductAssociated");
+            _logger.LogInformation("Init - HasProductAssociatedAsync");
 
             bool hasProductAssociated = false;
 
@@ -30,8 +30,8 @@ namespace Infraestructure.Querys
             {
                 hasProductAssociated = true;
             }
-            _logger.LogInformation("hasProductAssociated: " + hasProductAssociated);
-            _logger.LogInformation("Out - hasProductAssociated");
+            _logger.LogInformation("HasProductAssociatedAsync: " + hasProductAssociated);
+            _logger.LogInformation("Out - HasProductAssociatedAsync");
             return hasProductAssociated;
         }
     }

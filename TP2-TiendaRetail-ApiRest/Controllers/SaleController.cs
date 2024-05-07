@@ -3,7 +3,7 @@ using Application.Dtos.ApiError;
 using Application.Dtos.Sale.Request;
 using Application.Dtos.Sale.Response;
 using Application.Exceptions;
-using Application.Interfaces.ISale;
+using Application.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Common;
 using System.Net;

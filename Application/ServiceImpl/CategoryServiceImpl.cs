@@ -1,5 +1,6 @@
 ﻿using Application.Dtos;
-using Application.Interfaces.ICategory;
+using Application.Interfaces.Repository;
+using Application.Interfaces.Service;
 using AutoMapper;
 using Domain.Entitys;
 using Microsoft.Extensions.Logging;
@@ -19,27 +20,23 @@ namespace Application.UseCase
             _mapper = mapper;
         }
 
-        public async Task<List<CategoryDTO>> findAllCategory()
+        public async Task<List<CategoryDTO>> FindAllCategoryAsync()
         {
-            _logger.LogInformation("Init - findAllCategory");
+            _logger.LogInformation("Init - FindAllCategoryAsync");
             List<CategoryDTO> dTOCategoryResponses = new List<CategoryDTO>();
             List<Category> categorys = new List<Category>();
 
-            categorys = await _categoryRepository.findAllCategory();
+            categorys = await _categoryRepository.FindAllCategoryAsync();
             _logger.LogInformation("categorys.Count: " + categorys.Count);
 
             if (categorys.Count != 0)
             {
-                _logger.LogInformation("List Category: ");
-                foreach (var item in categorys)
-                    _logger.LogInformation(item.Name);
-
                 foreach (Category category in categorys)
                 {
                     dTOCategoryResponses.Add(_mapper.Map<CategoryDTO>(category));
                 }
             }
-            _logger.LogInformation("Out - findAllCategory");
+            _logger.LogInformation("Out - FindAllCategoryAsync");
             return dTOCategoryResponses;
         }
     }

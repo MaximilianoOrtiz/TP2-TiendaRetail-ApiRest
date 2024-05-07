@@ -1,4 +1,4 @@
-﻿using Application.Interfaces.ICategory;
+﻿using Application.Interfaces.Repository;
 using Domain.Entitys;
 
 namespace Infraestructure.Querys
@@ -12,12 +12,12 @@ namespace Infraestructure.Querys
             this._context = context;
         }
 
-        public async Task<List<Category>> findAllCategory()
+        public async Task<List<Category>> FindAllCategoryAsync()
         {
             return _context.Categories.ToList();
         }
 
-        public async Task<Category> findCategoryById(int categoryId)
+        public async Task<Category> FindCategoryByIdAsync(int categoryId)
         {
             var item = (from category in _context.Categories
                         where category.CategoryId == categoryId

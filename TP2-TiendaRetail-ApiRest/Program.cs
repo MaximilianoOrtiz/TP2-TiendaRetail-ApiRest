@@ -1,11 +1,6 @@
 using Application.ConfigMapper;
-using Application.Interfaces;
-using Application.Interfaces.ICategory;
-using Application.Interfaces.IParametry;
-using Application.Interfaces.IProduct;
-using Application.Interfaces.ISale;
-using Application.Interfaces.ISalesProducts;
-using Application.Interfaces.IUtil;
+using Application.Interfaces.Repository;
+using Application.Interfaces.Service;
 using Application.UseCase;
 using Infraestructure;
 using Infraestructure.Commands;

@@ -598,7 +598,7 @@ namespace Infraestructure.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("ProductId")
+                    b.Property<Guid>("ProductoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
@@ -609,7 +609,7 @@ namespace Infraestructure.Migrations
 
                     b.HasKey("ShoppingCartId");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("ProductoId");
 
                     b.HasIndex("SaleId");
 
@@ -631,7 +631,7 @@ namespace Infraestructure.Migrations
                 {
                     b.HasOne("Domain.Entitys.Product", "Products")
                         .WithMany("SaleProducts")
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("ProductoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

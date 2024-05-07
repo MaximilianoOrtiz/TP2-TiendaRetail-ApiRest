@@ -1,9 +1,8 @@
 ﻿using Application.Dtos.Sale.Request;
 using Application.Dtos.Sale.Response;
 using Application.Exceptions;
-using Application.Interfaces.IParametry;
-using Application.Interfaces.IProduct;
-using Application.Interfaces.IUtil;
+using Application.Interfaces.Repository;
+using Application.Interfaces.Service;
 using Domain.Entitys;
 using Microsoft.Extensions.Logging;
 
@@ -15,23 +14,25 @@ namespace Application.UseCase
         private readonly IProductRepository _productRepository;
         private readonly ILogger<CalculatorServiceImpl> _logger;
 
-        public CalculatorServiceImpl(IParametryRepository parametryRepository, ILogger<CalculatorServiceImpl> logger, IProductRepository productRepository)
+        public CalculatorServiceImpl(IParametryRepository parametryRepository,
+                                     ILogger<CalculatorServiceImpl> logger,
+                                     IProductRepository productRepository)
         {
             _parametryRepository = parametryRepository;
             _logger = logger;
             _productRepository = productRepository;
         }
 
-        public async Task<SaleResponse> calculatePrince(List<SaleProductRequest> products)
+        public async Task<SaleResponse> CalculatePrinceAsync(List<SaleProductRequest> products)
         {
-            _logger.LogInformation("Init - calculatePrince");
-            decimal taxes = await _parametryRepository.findValueByCodigo("taxe_iva");
+            _logger.LogInformation("Init - CalculatePrinceAsync");
+            decimal taxes = await _parametryRepository.FindValueByCodigoAsync("taxe_iva");
             SaleResponse saleResponse = new SaleResponse();
 
             _logger.LogInformation("Inicio el recorrido de los productos y calculo el Subtotal y TotalDicount");
             foreach (SaleProductRequest item in products)
             {
-                Product product = await _productRepository.findProductById(item.ProductId);
+                Product product = await _productRepository.FindProductByIdAsync(item.ProductId);
                 if (product != null)
                 {
                     decimal princeTotalProduct = product.Price * item.Quantity;
@@ -54,9 +55,8 @@ namespace Application.UseCase
                 saleResponse.TotalPay = Math.Round(aux, 2);
 
             }
-            _logger.LogInformation("");
 
-            _logger.LogInformation("Init - calculatePrince");
+            _logger.LogInformation("Init - CalculatePrinceAsync");
             return saleResponse;
         }
     }

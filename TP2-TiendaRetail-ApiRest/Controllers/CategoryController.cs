@@ -1,7 +1,7 @@
 ﻿using Aplication.Dtos;
 using Application.Dtos;
 using Application.Dtos.ApiError;
-using Application.Interfaces.ICategory;
+using Application.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Common;
 using System.Net;
@@ -23,7 +23,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         /// <summary>
         /// Lista todas las categorias
         /// </summary>
-        /// <param name="id">Id de la categoria</param>
+        /// <param Name="id">Id de la categoria</param>
         /// <response code="200">Éxito al recuperar las categorias</response>
         /// <response code="500">Ocurrio una falla en el servidor</response>
         /// <returns></returns>
@@ -33,7 +33,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         {
             try
             {
-                List<CategoryDTO> listCategoryResponse = await _categoryService.findAllCategory();
+                List<CategoryDTO> listCategoryResponse = await _categoryService.FindAllCategoryAsync();
 
                 if (listCategoryResponse.Count == 0)
                 {

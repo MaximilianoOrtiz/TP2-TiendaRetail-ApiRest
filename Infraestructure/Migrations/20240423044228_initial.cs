@@ -185,7 +185,7 @@ namespace Infraestructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_SaleProducts_ProductId",
                 table: "SaleProducts",
-                column: "ProductId");
+                column: "ProductoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SaleProducts_SaleId",

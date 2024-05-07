@@ -1,10 +1,10 @@
 ﻿using Application.Dtos.Sale.Request;
 using Application.Dtos.Sale.Response;
 
-namespace Application.Interfaces.IUtil
+namespace Application.Interfaces.Service
 {
     public interface ICalculatorService
     {
-        public Task<SaleResponse> calculatePrince(List<SaleProductRequest> products);
+        public Task<SaleResponse> CalculatePrinceAsync(List<SaleProductRequest> products);
     }
 }

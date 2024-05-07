@@ -1,5 +1,6 @@
-﻿using Application.Interfaces.IProduct;
+﻿using Application.Interfaces.Repository;
 using Domain.Entitys;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Querys
 {
@@ -12,7 +13,7 @@ namespace Infraestructure.Querys
             this._context = applicationDbContex;
         }
 
-        public async Task<Product> findProductByEqualName(string name)
+        public async Task<Product> FindProductByEqualNameAsync(string name)
         {
             return (from product in _context.Products
                     where product.Name == name
@@ -28,7 +29,7 @@ namespace Infraestructure.Querys
             return products;
         }
         */
-        public async Task<List<Product>> findProductByCategoryIdAndName(int categoryId, string name)
+        public async Task<List<Product>> FindProductByCategoryIdAndNameAsync(int categoryId, string name)
         {
             var products = (from product in _context.Products
                             where product.categoryId == categoryId
@@ -38,7 +39,7 @@ namespace Infraestructure.Querys
             return products;
         }
 
-        public async Task<List<Product>> findProductByName(string name)
+        public async Task<List<Product>> FindProductByNameAsync(string name)
         {
             var products = (from product in _context.Products
                             where product.Name.Contains(name)
@@ -46,7 +47,7 @@ namespace Infraestructure.Querys
             return products;
         }
 
-        public async Task<Product> findProductById(Guid productoId)
+        public async Task<Product> FindProductByIdAsync(Guid productoId)
         {
             var products = (from product in _context.Products
                             where product.ProductoId == productoId
