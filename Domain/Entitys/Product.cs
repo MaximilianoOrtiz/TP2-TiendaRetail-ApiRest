@@ -7,9 +7,9 @@
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int? Discount { get; set; }
-        public string UrlImage { get; set; }
+        public string ImageUrl { get; set; }
 
-        public int categoryId { get; set; }
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
 
         public IList<SaleProduct> SaleProducts { get; set; }
@@ -22,8 +22,8 @@
             Description = description;
             Price = price;
             Discount = discount;
-            UrlImage = urlImage;
-            this.categoryId = categoryId;
+            ImageUrl = urlImage;
+            this.CategoryId = categoryId;
         }
     }
 }

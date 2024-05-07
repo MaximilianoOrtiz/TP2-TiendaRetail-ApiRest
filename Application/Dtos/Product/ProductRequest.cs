@@ -19,7 +19,7 @@ namespace Application.Dtos
         [Range(0, 100, ErrorMessage = "El descuento del producto debe estar entre 0 y 100.")]
         public int? Discount { get; set; }
 
-        public string UrlImage { get; set; }
+        public string ImageUrl { get; set; }
 
         [Required(ErrorMessage = "El ID de la categoría es obligatorio.")]
         [Range(1, int.MaxValue, ErrorMessage = "El ID de la categoría debe ser mayor que cero.")]

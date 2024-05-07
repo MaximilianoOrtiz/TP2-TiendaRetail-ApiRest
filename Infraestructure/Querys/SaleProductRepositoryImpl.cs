@@ -22,7 +22,7 @@ namespace Infraestructure.Querys
 
             bool hasProductAssociated = false;
 
-            var products = (from saleProduct in _context.SaleProducts
+            var products = (from saleProduct in _context.SaleProduct
                             where saleProduct.ProductId == productId
                             select saleProduct).FirstOrDefault();
 
