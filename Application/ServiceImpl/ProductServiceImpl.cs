@@ -35,7 +35,7 @@ namespace Application.UseCase
 
         public async Task<List<ProductoGetResponse>> FindProductByCategoryIdAndNameAsync(int[] categorys, string name, int limit, int offSet)
         {
-            _logger.LogInformation("Init - find Product by categoryId and Name");
+            _logger.LogInformation("Init - find Product by CategoryId and Name");
             _logger.LogInformation("Datos de entrada --> Category.Length: " + categorys.Length
                 + " Name: " + name
                 + " limit: " + limit
@@ -48,7 +48,7 @@ namespace Application.UseCase
             {
                 //Traigo todos los productos a partir de las categorias seleccionadas
                 foreach (int category in categorys)
-                {   
+                {
                     listProducts = listProducts.Concat(
                         await _productRepository.FindProductByCategoryIdAndNameAsync(category, name)).ToList();
                 }
@@ -75,7 +75,7 @@ namespace Application.UseCase
             {
                 response.Add(_mapper.Map<ProductoGetResponse>(product));
             }
-            _logger.LogInformation("Out - find Product by categoryId and Name");
+            _logger.LogInformation("Out - find Product by CategoryId and Name");
             return response;
         }
 
@@ -106,7 +106,7 @@ namespace Application.UseCase
         {
             Product product = await _productRepository.FindProductByIdAsync(productoId);
             if (product == null) { return null; }
-            product.Category = await _categoryRepository.FindCategoryByIdAsync(product.categoryId);
+            product.Category = await _categoryRepository.FindCategoryByIdAsync(product.CategoryId);
 
             return _mapper.Map<ProductResponse>(product);
         }
@@ -137,11 +137,11 @@ namespace Application.UseCase
 
                 product.Name = productRequest.Name;
                 product.Description = productRequest.Description;
-                product.categoryId = productRequest.CategoryId;
+                product.CategoryId = productRequest.CategoryId;
                 product.Price = productRequest.Price;
                 product.Discount = productRequest.Discount;
-                product.UrlImage = productRequest.UrlImage;
-                
+                product.ImageUrl = productRequest.ImageUrl;
+
                 productUpdate = await _genericRepository.UpdateAsync(product);
                 productUpdate.Category = await _categoryRepository.FindCategoryByIdAsync(productRequest.CategoryId);
 
@@ -169,7 +169,7 @@ namespace Application.UseCase
             else
             {
                 Product productDelete = await _genericRepository.DeleteAsync(product);
-                productDelete.Category = await _categoryRepository.FindCategoryByIdAsync(productDelete.categoryId);
+                productDelete.Category = await _categoryRepository.FindCategoryByIdAsync(productDelete.CategoryId);
 
                 productResponse = _mapper.Map<ProductResponse>(productDelete);
             }

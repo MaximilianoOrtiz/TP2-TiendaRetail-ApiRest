@@ -14,7 +14,7 @@ namespace Infraestructure.Querys
 
         public async Task<decimal> FindValueByCodigoAsync(string codigo)
         {
-            return await (from parametry in _context.Parametries
+            return await (from parametry in _context.Parametry
                           where parametry.Codigo.Equals(codigo)
                           select parametry.Value)
                                   .FirstOrDefaultAsync();

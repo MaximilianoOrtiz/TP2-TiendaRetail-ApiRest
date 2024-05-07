@@ -14,12 +14,12 @@ namespace Infraestructure.Querys
 
         public async Task<List<Category>> FindAllCategoryAsync()
         {
-            return _context.Categories.ToList();
+            return _context.Category.ToList();
         }
 
         public async Task<Category> FindCategoryByIdAsync(int categoryId)
         {
-            var item = (from category in _context.Categories
+            var item = (from category in _context.Category
                         where category.CategoryId == categoryId
                         select category).FirstOrDefault();
             return item;

@@ -1,6 +1,5 @@
 ﻿using Application.Interfaces.Repository;
 using Domain.Entitys;
-using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Querys
 {
@@ -15,7 +14,7 @@ namespace Infraestructure.Querys
 
         public async Task<Product> FindProductByEqualNameAsync(string name)
         {
-            return (from product in _context.Products
+            return (from product in _context.Product
                     where product.Name == name
                     select product).FirstOrDefault();
         }
@@ -23,16 +22,16 @@ namespace Infraestructure.Querys
         /*
         public List<Product> findProductbyIdCategory(int idCategory)
         {
-            var products = (from product in _context.Products
-                            where product.categoryId == idCategory
+            var products = (from product in _context.Product
+                            where product.CategoryId == idCategory
                             select product).ToList();
             return products;
         }
         */
         public async Task<List<Product>> FindProductByCategoryIdAndNameAsync(int categoryId, string name)
         {
-            var products = (from product in _context.Products
-                            where product.categoryId == categoryId
+            var products = (from product in _context.Product
+                            where product.CategoryId == categoryId
                             && product.Name.Contains(name)
                             select product).ToList();
 
@@ -41,7 +40,7 @@ namespace Infraestructure.Querys
 
         public async Task<List<Product>> FindProductByNameAsync(string name)
         {
-            var products = (from product in _context.Products
+            var products = (from product in _context.Product
                             where product.Name.Contains(name)
                             select product).ToList();
             return products;
@@ -49,7 +48,7 @@ namespace Infraestructure.Querys
 
         public async Task<Product> FindProductByIdAsync(Guid productoId)
         {
-            var products = (from product in _context.Products
+            var products = (from product in _context.Product
                             where product.ProductoId == productoId
                             select product).FirstOrDefault();
             return products;

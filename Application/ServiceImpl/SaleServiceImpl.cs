@@ -47,18 +47,22 @@ namespace Application.UseCase
 
             _logger.LogInformation("Inicio la carga de los productos a partir del Request");
             List<SaleProduct> listSaleProducts = new List<SaleProduct>();
-            
+
             foreach (SaleProductRequest saleProductRequest in saleRequest.Products)
             {
                 Product product = await _productRepository.FindProductByIdAsync(saleProductRequest.ProductId);
-                SaleProduct saleProduct = _mapper.Map<SaleProduct>(saleProductRequest);
-                saleProduct.Products = product;
+                //Obtengo el precio y descuento desde el producto
+                SaleProduct saleProduct = _mapper.Map<SaleProduct>(product);
+                saleProduct.Quantity = saleProductRequest.Quantity;
+                saleProduct.Product = product;
                 listSaleProducts.Add(saleProduct);
             }
 
+            //Armo la Venta para persistirla en base
+            //Obtengo  el TotalPay, SubTotal y TotalDiscount del saleResponse
             Sale sale = _mapper.Map<Sale>(saleResponse);
             sale.Taxes = await _parametryRepository.FindValueByCodigoAsync("taxe_iva");
-            sale.DateTime = DateTime.Now;
+            sale.Date = DateTime.Now;
             sale.SaleProducts = listSaleProducts;
 
             saleResponse = _mapper.Map<SaleResponse>(await _genericRepository.SaveAsync(sale));

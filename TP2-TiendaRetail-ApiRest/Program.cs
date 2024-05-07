@@ -73,6 +73,7 @@ namespace TP2_TiendaRetail_ApiRest
 
             //Config Automapper
             builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
+            // builder.Services.AddAutoMapper()
 
             var app = builder.Build();
 

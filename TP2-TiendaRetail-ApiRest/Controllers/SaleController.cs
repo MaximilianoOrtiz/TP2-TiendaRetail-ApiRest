@@ -1,12 +1,10 @@
-﻿using Aplication.Dtos;
-using Application.Dtos.ApiError;
+﻿using Application.Dtos.ApiError;
 using Application.Dtos.Sale.Request;
 using Application.Dtos.Sale.Response;
 using Application.Exceptions;
 using Application.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Common;
-using System.Net;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,7 +28,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             try
             {
                 SaleResponse saleResponse = await _saleService.saveSale(saleRequest);
-                return new JsonResult(new Result(saleResponse, HttpStatusCode.Created)) { StatusCode = 201 };
+                return new JsonResult(saleResponse) { StatusCode = 201 };
             }
             catch (DbException ex)
             {

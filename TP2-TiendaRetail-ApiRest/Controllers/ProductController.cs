@@ -1,5 +1,4 @@
-﻿using Aplication.Dtos;
-using Application.Dtos;
+﻿using Application.Dtos;
 using Application.Dtos.ApiError;
 using Application.Dtos.Product;
 using Application.Exceptions;
@@ -7,7 +6,6 @@ using Application.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.Data.Common;
-using System.Net;
 
 namespace TP2_TiendaRetail_ApiRest.Controllers
 {
@@ -39,7 +37,10 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         /// <returns>Una lista de productos.</returns>
         [HttpGet]
         [Route("[controller]")]
-        public async Task<ActionResult<ProductoGetResponse>> findProductbyFilters([FromQuery] int[] categorys, string name, [DefaultValue(0)] int limit, [DefaultValue(0)] int offset)
+        public async Task<ActionResult<ProductoGetResponse>> findProductbyFilters([FromQuery] int[] categorys,
+                                                                                  [FromQuery] string name,
+                                                                                  [FromQuery][DefaultValue(0)] int limit,
+                                                                                  [FromQuery][DefaultValue(0)] int offset)
         {
             try
             {
@@ -48,7 +49,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
                 {
                     return NotFound(new ApiError("No se encontraron productos"));
                 }
-                return Ok(new Result(listProduct, HttpStatusCode.OK));
+                return Ok(listProduct);
             }
             catch (DbException ex)
             {
@@ -76,21 +77,15 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             {
                 if (await _productService.ExistProductByEqualNameAsync(productRequest.Name))
                 {
-                    //Ahi que revisar esto chee
                     return Conflict(new ApiError("No puede existir dos productos con el mismo nombre en la base"));
-                    //return new JsonResult(new ApiError("No puede existir dos productos con el mismo nombre en la base")) { StatusCode = 409 };
-                    //return StatusCode(409, new ApiError("Hola"));
                 }
-                ProductResponse response = await _productService.SaveProductAsync(productRequest);
+                ProductResponse productResponse = await _productService.SaveProductAsync(productRequest);
 
-                return new JsonResult(new Result(response, HttpStatusCode.Created)) { StatusCode = 201 };
+                return new JsonResult(productResponse) { StatusCode = 201 };
             }
             catch (DbException ex)
             {
-
                 return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
-
-                // return StatusCode(500, new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message));
             }
         }
 
@@ -115,14 +110,13 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
                 {
                     return NotFound(new ApiError($"No se encontro el producto con ID: {id}"));
                 }
-                return Ok(new Result(productResponse, HttpStatusCode.OK));
+                return Ok(productResponse);
             }
             catch (DbException ex)
             {
                 return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
             }
         }
-
 
         /// <summary>
         /// Actualiza un producto existente.
@@ -149,7 +143,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
                 {
                     return NotFound(new ApiError($"No se encontro el producto con ID: {productId}"));
                 }
-                return Ok(new Result(productResponse, HttpStatusCode.OK));
+                return Ok(productResponse);
             }
             catch (DbException ex)
             {
@@ -160,8 +154,6 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
                 return Conflict(new ApiError(ex.Message));
             }
         }
-
-
 
         /// <summary>
         /// Elimina un producto específico.
@@ -185,7 +177,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
                 {
                     return NotFound(new ApiError($"No se encontro el producto con ID: {productId}"));
                 }
-                return Ok(new Result(productResponse, HttpStatusCode.OK));
+                return Ok(productResponse);
             }
             catch (DbException ex)
             {
@@ -195,7 +187,6 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             {
                 return Conflict(new ApiError(ex.Message));
             }
-
         }
     }
 }
