@@ -5,8 +5,9 @@ namespace Application.Interfaces.Service
 {
     public interface ISaleService
     {
-        //       public Task<DTOTotalPrinceSaleResponse> calculatePrinceTotal(List<DTOProdutcRequest> ShoppingCart);
+        public Task<SaleResponse> SaveSale(SaleRequest saleRequest);
 
-        public Task<SaleResponse> saveSale(SaleRequest saleRequest);
+        public Task<SaleResponse> FindSaveById(int saveId);
+
     }
 }

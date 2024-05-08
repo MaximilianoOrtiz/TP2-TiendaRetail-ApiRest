@@ -10,7 +10,7 @@ using System.Data.Common;
 
 namespace TP2_TiendaRetail_ApiRest.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/")]
     [ApiController]
     public class SaleController : ControllerBase
     {
@@ -27,7 +27,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         {
             try
             {
-                SaleResponse saleResponse = await _saleService.saveSale(saleRequest);
+                SaleResponse saleResponse = await _saleService.SaveSale(saleRequest);
                 return new JsonResult(saleResponse) { StatusCode = 201 };
             }
             catch (DbException ex)
@@ -37,6 +37,27 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             catch (CustomException ex)
             {
                 return Conflict(new ApiError(ex.Message));
+            }
+        }
+
+
+        [HttpGet]
+        [Route("[controller]/{id}")]
+        public async Task<ActionResult<SaleResponse>> FindSaleById(int id)
+        {
+            try
+            {
+                SaleResponse saleResponse = await _saleService.FindSaveById(id);
+                if (saleResponse == null)
+                {
+                    return NotFound(new ApiError("No existe una venta asociada al Id: " + id));
+                }
+
+                return Ok(saleResponse);
+            }
+            catch (DbException ex)
+            {
+                return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
             }
         }
     }

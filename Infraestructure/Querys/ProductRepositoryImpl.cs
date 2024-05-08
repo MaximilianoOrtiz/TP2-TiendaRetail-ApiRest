@@ -32,7 +32,7 @@ namespace Infraestructure.Querys
         public async Task<List<Product>> FindProductByCategoryIdAndNameAsync(int categoryId, string name)
         {
             var products = _context.Product
-                .Include(product => product.Category)// Incluyendo la relación de navegación con Category
+                .Include(product => product.Category)
                 .Where(product => product.CategoryId == categoryId && product.Name.Contains(name))
                 .ToList();
 
@@ -42,7 +42,7 @@ namespace Infraestructure.Querys
         public async Task<List<Product>> FindProductByNameAsync(string name)
         {
             var products = _context.Product
-                .Include(product => product.Category)// Incluyendo la relación de navegación con Category
+                .Include(product => product.Category)
                 .Where(product => product.Name.Contains(name))
                 .ToList();
 
