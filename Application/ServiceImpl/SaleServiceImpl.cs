@@ -15,6 +15,7 @@ namespace Application.UseCase
         private readonly ICalculatorService _calculatorService;
         private readonly IProductRepository _productRepository;
         private readonly IParametryRepository _parametryRepository;
+        private readonly ISaleRepository _saleRepository;
         private readonly ILogger<SaleServiceImpl> _logger;
         private readonly IMapper _mapper;
 
@@ -23,7 +24,8 @@ namespace Application.UseCase
                                IMapper mapper,
                                ICalculatorService calculatorService,
                                IProductRepository productRepository,
-                               IParametryRepository parametryRepository)
+                               IParametryRepository parametryRepository,
+                               ISaleRepository saleRepository)
         {
             _genericRepository = genericRepository;
             _logger = logger;
@@ -31,11 +33,12 @@ namespace Application.UseCase
             _calculatorService = calculatorService;
             _productRepository = productRepository;
             _parametryRepository = parametryRepository;
+            _saleRepository = saleRepository;
         }
 
-        public async Task<SaleResponse> saveSale(SaleRequest saleRequest)
+        public async Task<SaleResponse> SaveSale(SaleRequest saleRequest)
         {
-            _logger.LogInformation("Init - saveSale");
+            _logger.LogInformation("Init - SaveSale");
 
             SaleResponse saleResponse = await _calculatorService.CalculatePrinceAsync(saleRequest.Products);
 
@@ -70,7 +73,26 @@ namespace Application.UseCase
             saleResponse = _mapper.Map<SaleResponse>(await _genericRepository.SaveAsync(sale));
             saleResponse.TotalQuantity = totalQuantity;
 
-            _logger.LogInformation("Out - saveSale");
+            _logger.LogInformation("Out - SaveSale");
+            return saleResponse;
+        }
+
+        public async Task<SaleResponse> FindSaveById(int saveId)
+        {
+            _logger.LogInformation("Init - FindSaveById");
+            Sale sale = await _saleRepository.FindSaleByIdAsync(saveId);
+            if (sale == null) { return null; }
+
+            SaleResponse saleResponse = _mapper.Map<SaleResponse>(sale);
+
+            int totalQuantity = 0;
+            //Calculo el TotalQuantity y se lo incorporo a la respuesta
+            foreach (SaleProduct product in sale.SaleProducts)
+            {
+                totalQuantity += product.Quantity;
+            }
+            saleResponse.TotalQuantity = totalQuantity;
+            _logger.LogInformation("Out - FindSaveById");
             return saleResponse;
         }
     }

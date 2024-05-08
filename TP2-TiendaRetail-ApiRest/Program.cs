@@ -67,6 +67,8 @@ namespace TP2_TiendaRetail_ApiRest
 
             builder.Services.AddTransient<IParametryRepository, ParametryRepositoryImpl>();
 
+            builder.Services.AddTransient<ISaleRepository, SaleRepositoryImpl>();
+
 
 
 
