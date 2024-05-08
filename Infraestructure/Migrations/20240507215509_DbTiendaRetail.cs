@@ -75,7 +75,7 @@ namespace Infraestructure.Migrations
                         name: "FK_Product_Category_Category",
                         column: x => x.Category,
                         principalTable: "Category",
-                        principalColumn: "CategoryId",
+                        principalColumn: "Category",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -104,13 +104,13 @@ namespace Infraestructure.Migrations
                         name: "FK_SaleProduct_Sale_Sale",
                         column: x => x.Sale,
                         principalTable: "Sale",
-                        principalColumn: "SaleId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Category",
-                columns: new[] { "CategoryId", "Name" },
+                columns: new[] { "Category", "Name" },
                 values: new object[,]
                 {
                     { 1, "Electrodomésticos" },

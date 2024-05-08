@@ -1,6 +1,6 @@
-using Application.ConfigMapper;
 using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
+using Application.ServiceImpl;
 using Application.UseCase;
 using Infraestructure;
 using Infraestructure.Commands;
@@ -59,6 +59,7 @@ namespace TP2_TiendaRetail_ApiRest
             builder.Services.AddTransient<IGenericRepository, GenericRepositoryImpl>();
 
             builder.Services.AddTransient<ISaleProductRepository, SaleProductRepositoryImpl>();
+            builder.Services.AddTransient<ISaleProductService, SaleProductServiceImpl>();
 
             builder.Services.AddTransient<ISaleService, SaleServiceImpl>();
 
@@ -71,8 +72,10 @@ namespace TP2_TiendaRetail_ApiRest
 
 
 
+
+            // Assembly.GetExecutingAssembly()
             //Config Automapper
-            builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             // builder.Services.AddAutoMapper()
 
             var app = builder.Build();
@@ -83,9 +86,6 @@ namespace TP2_TiendaRetail_ApiRest
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
-            app.MapGet("get/", () => "Hello World!");
-
 
 
             app.UseHttpsRedirection();

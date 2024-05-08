@@ -23,7 +23,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
 
         [HttpPost]
         [Route("[controller]")]
-        public async Task<ActionResult<SaleResponse>> saveSale([FromBody] SaleRequest saleRequest)
+        public async Task<ActionResult<SaleResponse>> SaveSale([FromBody] SaleRequest saleRequest)
         {
             try
             {

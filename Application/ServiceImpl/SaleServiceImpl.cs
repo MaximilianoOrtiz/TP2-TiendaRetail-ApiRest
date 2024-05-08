@@ -45,8 +45,9 @@ namespace Application.UseCase
                 throw new CustomException("El total ingresado no coincide con el calculo realizado por el sistema.");
             }
 
-            _logger.LogInformation("Inicio la carga de los productos a partir del Request");
+            _logger.LogInformation("Inicio la carga y conteo de los productos a partir del Request");
             List<SaleProduct> listSaleProducts = new List<SaleProduct>();
+            int totalQuantity = 0;
 
             foreach (SaleProductRequest saleProductRequest in saleRequest.Products)
             {
@@ -55,6 +56,7 @@ namespace Application.UseCase
                 SaleProduct saleProduct = _mapper.Map<SaleProduct>(product);
                 saleProduct.Quantity = saleProductRequest.Quantity;
                 saleProduct.Product = product;
+                totalQuantity += saleProductRequest.Quantity;
                 listSaleProducts.Add(saleProduct);
             }
 
@@ -66,6 +68,7 @@ namespace Application.UseCase
             sale.SaleProducts = listSaleProducts;
 
             saleResponse = _mapper.Map<SaleResponse>(await _genericRepository.SaveAsync(sale));
+            saleResponse.TotalQuantity = totalQuantity;
 
             _logger.LogInformation("Out - saveSale");
             return saleResponse;

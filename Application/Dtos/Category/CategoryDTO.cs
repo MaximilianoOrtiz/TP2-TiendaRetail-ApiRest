@@ -5,7 +5,7 @@ namespace Application.Dtos
     public class CategoryDTO
     {
         [SwaggerSchema(Description = "ID de la categoria")]
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
 
         [SwaggerSchema(Description = "Nombre de la categoria")]
         public string Name { get; set; }

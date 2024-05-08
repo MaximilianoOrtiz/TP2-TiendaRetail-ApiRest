@@ -23,6 +23,6 @@ namespace Application.Dtos
 
         [Required(ErrorMessage = "El ID de la categoría es obligatorio.")]
         [Range(1, int.MaxValue, ErrorMessage = "El ID de la categoría debe ser mayor que cero.")]
-        public int CategoryId { get; set; }
+        public int Category { get; set; }
     }
 }

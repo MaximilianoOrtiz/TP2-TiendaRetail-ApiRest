@@ -15,10 +15,12 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
+        private readonly ISaleProductService _saleProductService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, ISaleProductService saleProductService)
         {
             _productService = productService;
+            _saleProductService = saleProductService;
         }
 
         /// <summary>
@@ -37,7 +39,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         /// <returns>Una lista de productos.</returns>
         [HttpGet]
         [Route("[controller]")]
-        public async Task<ActionResult<ProductoGetResponse>> findProductbyFilters([FromQuery] int[] categorys,
+        public async Task<ActionResult<ProductoGetResponse>> FindProductbyFilters([FromQuery] int[] categorys,
                                                                                   [FromQuery] string name,
                                                                                   [FromQuery][DefaultValue(0)] int limit,
                                                                                   [FromQuery][DefaultValue(0)] int offset)
@@ -71,7 +73,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("[controller]")]
-        public async Task<ActionResult<ProductResponse>> createProduct([FromBody] ProductRequest productRequest)
+        public async Task<ActionResult<ProductResponse>> CreateProduct([FromBody] ProductRequest productRequest)
         {
             try
             {
@@ -101,7 +103,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         /// <response code="404">Producto no encontrado.</response>
         [HttpGet]
         [Route("[controller]/{id}")]
-        public async Task<ActionResult<ProductResponse>> getProductById(Guid id)
+        public async Task<ActionResult<ProductResponse>> GetProductById(Guid id)
         {
             try
             {
@@ -133,7 +135,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         /// <response code="409">Conflicto al actualizar el producto..</response>
         [HttpPut]
         [Route("[controller]/{productId}")]
-        public async Task<ActionResult<ProductResponse>> updateProduct([FromBody] ProductRequest productRequest, Guid productId)
+        public async Task<ActionResult<ProductResponse>> UpdateProduct([FromBody] ProductRequest productRequest, Guid productId)
         {
             try
             {
@@ -167,10 +169,15 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         /// <response code="404">Producto no encontrado.</response>
         [HttpDelete]
         [Route("[controller]/{productId}")]
-        public async Task<ActionResult<ProductResponse>> deleteProduct(Guid productId)
+        public async Task<ActionResult<ProductResponse>> DeleteProduct(Guid productId)
         {
             try
             {
+                if (await _saleProductService.HasProductAssociatedAsync(productId))
+                {
+                    return Conflict(new ApiError("No se puede eliminar un producto que este asociado a una venta.  ProductoId: " + productId));
+                }
+
                 ProductResponse productResponse = await _productService.DeleteProductAsync(productId);
 
                 if (productResponse == null)
@@ -182,10 +189,6 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             catch (DbException ex)
             {
                 return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
-            }
-            catch (CustomException ex)
-            {
-                return Conflict(new ApiError(ex.Message));
             }
         }
     }

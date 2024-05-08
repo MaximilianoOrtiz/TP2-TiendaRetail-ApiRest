@@ -27,17 +27,17 @@ namespace Infraestructure.Migrations
 
             modelBuilder.Entity("Domain.Entitys.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Category")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Category"));
 
                     b.Property<string>("Name")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Category");
 
                     b.ToTable("Category");
 
@@ -128,7 +128,7 @@ namespace Infraestructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Category")
                         .HasColumnType("int")
                         .HasColumnName("Category");
 
@@ -152,7 +152,7 @@ namespace Infraestructure.Migrations
 
                     b.HasKey("ProductoId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("Category");
 
                     b.ToTable("Product", (string)null);
 
@@ -561,11 +561,11 @@ namespace Infraestructure.Migrations
 
             modelBuilder.Entity("Domain.Entitys.Sale", b =>
                 {
-                    b.Property<int>("SaleId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SaleId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -582,7 +582,7 @@ namespace Infraestructure.Migrations
                     b.Property<decimal>("TotalPay")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("SaleId");
+                    b.HasKey("Id");
 
                     b.ToTable("Sale", (string)null);
                 });
@@ -608,7 +608,7 @@ namespace Infraestructure.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("SaleId")
+                    b.Property<int>("Id")
                         .HasColumnType("int")
                         .HasColumnName("Sale");
 
@@ -616,7 +616,7 @@ namespace Infraestructure.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("SaleId");
+                    b.HasIndex("Id");
 
                     b.ToTable("SaleProduct", (string)null);
                 });
@@ -625,7 +625,7 @@ namespace Infraestructure.Migrations
                 {
                     b.HasOne("Domain.Entitys.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("Category")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -642,7 +642,7 @@ namespace Infraestructure.Migrations
 
                     b.HasOne("Domain.Entitys.Sale", "Sales")
                         .WithMany("SaleProducts")
-                        .HasForeignKey("SaleId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

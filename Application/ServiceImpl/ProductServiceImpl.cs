@@ -14,7 +14,6 @@ namespace Application.UseCase
         private readonly IProductRepository _productRepository;
         private readonly IGenericRepository _genericRepository;
         private readonly ICategoryRepository _categoryRepository;
-        private readonly ISaleProductRepository _saleProductRepository;
         private readonly ILogger<ProductServiceImpl> _logger;
         private readonly IMapper _mapper;
 
@@ -22,20 +21,18 @@ namespace Application.UseCase
                                   ILogger<ProductServiceImpl> logger,
                                   IMapper mapper,
                                   IGenericRepository genericRepository,
-                                  ICategoryRepository categoryRepository,
-                                  ISaleProductRepository saleProductRepository)
+                                  ICategoryRepository categoryRepository)
         {
             _productRepository = repository;
             _logger = logger;
             _mapper = mapper;
             _genericRepository = genericRepository;
             _categoryRepository = categoryRepository;
-            _saleProductRepository = saleProductRepository;
         }
 
         public async Task<List<ProductoGetResponse>> FindProductByCategoryIdAndNameAsync(int[] categorys, string name, int limit, int offSet)
         {
-            _logger.LogInformation("Init - find Product by CategoryId and Name");
+            _logger.LogInformation("Init - find Product by Category and Name");
             _logger.LogInformation("Datos de entrada --> Category.Length: " + categorys.Length
                 + " Name: " + name
                 + " limit: " + limit
@@ -75,14 +72,14 @@ namespace Application.UseCase
             {
                 response.Add(_mapper.Map<ProductoGetResponse>(product));
             }
-            _logger.LogInformation("Out - find Product by CategoryId and Name");
+            _logger.LogInformation("Out - find Product by Category and Name");
             return response;
         }
 
         public async Task<ProductResponse> SaveProductAsync(ProductRequest productRequest)
         {
             _logger.LogInformation("Init - SaveProductAsync");
-            Category category = await _categoryRepository.FindCategoryByIdAsync(productRequest.CategoryId);
+            Category category = await _categoryRepository.FindCategoryByIdAsync(productRequest.Category);
             Product product = new Product();
 
             product = _mapper.Map<Product>(productRequest);
@@ -137,13 +134,13 @@ namespace Application.UseCase
 
                 product.Name = productRequest.Name;
                 product.Description = productRequest.Description;
-                product.CategoryId = productRequest.CategoryId;
+                product.CategoryId = productRequest.Category;
                 product.Price = productRequest.Price;
                 product.Discount = productRequest.Discount;
                 product.ImageUrl = productRequest.ImageUrl;
 
                 productUpdate = await _genericRepository.UpdateAsync(product);
-                productUpdate.Category = await _categoryRepository.FindCategoryByIdAsync(productRequest.CategoryId);
+                productUpdate.Category = await _categoryRepository.FindCategoryByIdAsync(productRequest.Category);
 
                 productResponse = _mapper.Map<ProductResponse>(productUpdate);
             }
@@ -162,17 +159,19 @@ namespace Application.UseCase
             {
                 return null;
             }
-            if (await _saleProductRepository.HasProductAssociatedAsync(productId))
-            {
-                throw new CustomException("No se puede eliminar un producto que este asiciado a un aventa actualmente.");
-            }
+            /* if (await _saleProductRepository.HasProductAssociatedAsync(productId))
+             {
+                 throw new CustomException("No se puede eliminar un producto que este asiciado a un aventa actualmente.");
+             }*/
             else
             {
-                Product productDelete = await _genericRepository.DeleteAsync(product);
-                productDelete.Category = await _categoryRepository.FindCategoryByIdAsync(productDelete.CategoryId);
 
-                productResponse = _mapper.Map<ProductResponse>(productDelete);
             }
+            Product productDelete = await _genericRepository.DeleteAsync(product);
+            productDelete.Category = await _categoryRepository.FindCategoryByIdAsync(productDelete.CategoryId);
+
+            productResponse = _mapper.Map<ProductResponse>(productDelete);
+
             _logger.LogInformation("Out - DeleteProductAsync");
             return productResponse;
         }

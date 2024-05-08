@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces.Repository;
 using Domain.Entitys;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Querys
 {
@@ -23,26 +24,28 @@ namespace Infraestructure.Querys
         public List<Product> findProductbyIdCategory(int idCategory)
         {
             var products = (from product in _context.Product
-                            where product.CategoryId == idCategory
+                            where product.Category == idCategory
                             select product).ToList();
             return products;
         }
         */
         public async Task<List<Product>> FindProductByCategoryIdAndNameAsync(int categoryId, string name)
         {
-            var products = (from product in _context.Product
-                            where product.CategoryId == categoryId
-                            && product.Name.Contains(name)
-                            select product).ToList();
+            var products = _context.Product
+                .Include(product => product.Category)// Incluyendo la relación de navegación con Category
+                .Where(product => product.CategoryId == categoryId && product.Name.Contains(name))
+                .ToList();
 
             return products;
         }
 
         public async Task<List<Product>> FindProductByNameAsync(string name)
         {
-            var products = (from product in _context.Product
-                            where product.Name.Contains(name)
-                            select product).ToList();
+            var products = _context.Product
+                .Include(product => product.Category)// Incluyendo la relación de navegación con Category
+                .Where(product => product.Name.Contains(name))
+                .ToList();
+
             return products;
         }
 

@@ -47,14 +47,13 @@ namespace Application.UseCase
                 else
                 {
                     throw new CustomException("No existe el producto con Id: " + item.ProductId
-                                              + " en la bases de datos al momento de realizar la verificación precio total");
+                                              + " en la bases de datos al momento de realizar la verificación del precio total");
                 }
-                //Calculo el TotalPay
-                decimal totalPayTem = saleResponse.SubTotal - saleResponse.TotalDiscount;
-                decimal aux = totalPayTem + (totalPayTem * (taxes / 100));
-                saleResponse.TotalPay = Math.Round(aux, 2);
-
             }
+            //Calculo el TotalPay
+            decimal totalPayTem = saleResponse.SubTotal - saleResponse.TotalDiscount;
+            decimal aux = totalPayTem + (totalPayTem * (taxes / 100));
+            saleResponse.TotalPay = Math.Round(aux, 2);
 
             _logger.LogInformation("Init - CalculatePrinceAsync");
             return saleResponse;
