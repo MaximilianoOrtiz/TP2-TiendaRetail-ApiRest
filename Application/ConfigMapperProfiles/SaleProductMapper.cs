@@ -13,11 +13,11 @@ namespace Application.ConfigMapperProfiles
                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price));
 
             CreateMap<SaleProduct, SaleProductResponse>()
-               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.SaleId))
+               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ShoppingCartId))
                .ForMember(dest => dest.ProductoId, opt => opt.MapFrom(src => src.ProductId))
                .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity))
                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
-               .ForMember(dest => dest.Discount, opt => opt.MapFrom(src => src.Product.Discount))
+               .ForMember(dest => dest.Discount, opt => opt.MapFrom(src => src.Discount))
                .ReverseMap();
 
             CreateMap<Product, SaleProduct>()

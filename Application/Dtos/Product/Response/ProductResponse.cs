@@ -1,13 +1,14 @@
-﻿namespace Application.Dtos.Product
+﻿namespace Application.Dtos.Product.Response
 {
-    public class ProductoGetResponse
+    public class ProductResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public decimal Price { get; set; }
         public int? Discount { get; set; }
         public string ImageUrl { get; set; }
 
-        public string CategoriaName { get; set; }
+        public CategoryDTO Category { get; set; }
     }
 }

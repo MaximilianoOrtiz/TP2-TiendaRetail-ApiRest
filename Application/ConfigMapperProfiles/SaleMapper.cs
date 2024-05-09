@@ -14,6 +14,12 @@ namespace Application.ConfigMapperProfiles
                 .ReverseMap();
 
             CreateMap<SaleResponse, Sale>();
+
+            CreateMap<Sale, SaleGetResponse>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.SaleId))
+                .ForMember(dest => dest.TotalPay, opt => opt.MapFrom(src => src.TotalPay))
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date))
+                .ForMember(dest => dest.TotalQuantity, opt => opt.Ignore());
         }
     }
 }

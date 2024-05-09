@@ -9,5 +9,8 @@ namespace Application.Interfaces.Service
 
         public Task<SaleResponse> FindSaveById(int saveId);
 
+        public Task<List<SaleGetResponse>> GetFilterByDateTime(DateTime from, DateTime to);
+
+
     }
 }
