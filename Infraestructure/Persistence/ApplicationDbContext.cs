@@ -43,14 +43,14 @@ namespace Infraestructure
             //Configuracion de la entidad Producto
             modelBuilder.Entity<Product>().ToTable("Product");
             modelBuilder.Entity<Product>()
-                .HasKey(product => product.ProductoId);
+                .HasKey(product => product.ProductId);
             modelBuilder.Entity<Product>()
                .Property(product => product.CategoryId)
                .IsRequired()
                .HasColumnName("Category");
 
             modelBuilder.Entity<Product>()
-                .Property(product => product.ProductoId)
+                .Property(product => product.ProductId)
                 .IsRequired();
             modelBuilder.Entity<Product>()
                .Property(product => product.Name)

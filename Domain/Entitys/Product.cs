@@ -2,7 +2,7 @@
 {
     public class Product
     {
-        public Guid ProductoId { get; set; }
+        public Guid ProductId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
@@ -17,7 +17,7 @@
         public Product() { }
         public Product(Guid productoId, string name, string description, decimal price, int? discount, string urlImage, int categoryId)
         {
-            ProductoId = productoId;
+            ProductId = productoId;
             Name = name;
             Description = description;
             Price = price;

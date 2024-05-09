@@ -50,7 +50,7 @@ namespace Application.UseCase
 
             _logger.LogInformation("Inicio la carga y conteo de los productos a partir del Request");
             List<SaleProduct> listSaleProducts = new List<SaleProduct>();
-            int totalQuantity = 0;
+            //int totalQuantity = 0;
 
             foreach (SaleProductRequest saleProductRequest in saleRequest.Products)
             {
@@ -59,7 +59,7 @@ namespace Application.UseCase
                 SaleProduct saleProduct = _mapper.Map<SaleProduct>(product);
                 saleProduct.Quantity = saleProductRequest.Quantity;
                 saleProduct.Product = product;
-                totalQuantity += saleProductRequest.Quantity;
+                //totalQuantity += saleProductRequest.Quantity;
                 listSaleProducts.Add(saleProduct);
             }
 
@@ -71,7 +71,7 @@ namespace Application.UseCase
             sale.SaleProducts = listSaleProducts;
 
             saleResponse = _mapper.Map<SaleResponse>(await _genericRepository.SaveAsync(sale));
-            saleResponse.TotalQuantity = totalQuantity;
+            saleResponse.TotalQuantity = _calculatorService.CalculateTotalQuantity(saleRequest.Products);
 
             _logger.LogInformation("Out - SaveSaleAsync");
             return saleResponse;
@@ -84,7 +84,8 @@ namespace Application.UseCase
             if (sale == null) { return null; }
 
             SaleResponse saleResponse = _mapper.Map<SaleResponse>(sale);
-            saleResponse.TotalQuantity = sale.SaleProducts.Count;
+            //saleResponse.TotalQuantity = sale.SaleProducts.Count;
+            saleResponse.TotalQuantity = _calculatorService.CalculateTotalQuantityFromSaleProduct(sale.SaleProducts);
 
             _logger.LogInformation("Out - FindSaveByIdAsync");
             return saleResponse;
@@ -100,9 +101,10 @@ namespace Application.UseCase
             foreach (Sale sale in listSale)
             {
                 var saleAux = _mapper.Map<SaleGetResponse>(sale);
-                saleAux.TotalQuantity = sale.SaleProducts.Count;
+               saleAux.TotalQuantity = _calculatorService.CalculateTotalQuantityFromSaleProduct(sale.SaleProducts);
                 response.Add(saleAux);
             }
+
             _logger.LogInformation("Out - FindSaleByDateFilter");
             return response;
         }

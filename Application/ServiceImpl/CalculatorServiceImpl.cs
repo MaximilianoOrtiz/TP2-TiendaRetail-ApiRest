@@ -58,5 +58,28 @@ namespace Application.UseCase
             _logger.LogInformation("Init - CalculatePriceAsync");
             return saleResponse;
         }
+
+        public int CalculateTotalQuantity(List<SaleProductRequest> products)
+        {
+            int totalQuantity = 0;
+            foreach (SaleProductRequest item in products)
+            {
+                totalQuantity += item.Quantity;
+            }
+
+            return totalQuantity;
+        }
+
+        public int CalculateTotalQuantityFromSaleProduct(IList<SaleProduct> products)
+        {
+            int totalQuantity = 0;
+
+            foreach(SaleProduct item in products)
+            {
+                totalQuantity += item.Quantity;
+            }
+
+            return totalQuantity;
+        }
     }
 }
