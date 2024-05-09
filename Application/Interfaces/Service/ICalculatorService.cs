@@ -5,6 +5,6 @@ namespace Application.Interfaces.Service
 {
     public interface ICalculatorService
     {
-        public Task<SaleResponse> CalculatePrinceAsync(List<SaleProductRequest> products);
+        public Task<SaleResponse> CalculatePriceAsync(List<SaleProductRequest> products);
     }
 }

@@ -21,11 +21,10 @@ namespace Infraestructure.Querys
                .FirstOrDefault();
         }
 
-        public async Task<List<Sale>> GetFilterByDateTime(DateTime from, DateTime to)
+        public async Task<List<Sale>> FindSaleByDateFilter(DateTime from, DateTime to)
         {
             return await _context.Sale
                .Include(sale => sale.SaleProducts)
-               //.ThenInclude(saleProduct => saleProduct.Product)
                .Where(sale => sale.Date.Date >= from.Date && sale.Date.Date <= to)
                .ToListAsync();
         }

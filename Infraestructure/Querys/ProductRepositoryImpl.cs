@@ -20,15 +20,6 @@ namespace Infraestructure.Querys
                     select product).FirstOrDefault();
         }
 
-        /*
-        public List<Product> findProductbyIdCategory(int idCategory)
-        {
-            var products = (from product in _context.Product
-                            where product.Category == idCategory
-                            select product).ToList();
-            return products;
-        }
-        */
         public async Task<List<Product>> FindProductByCategoryIdAndNameAsync(int categoryId, string name)
         {
             var products = _context.Product

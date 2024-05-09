@@ -63,7 +63,14 @@ namespace Application.UseCase
 
             _logger.LogInformation("Inicio paginación");
             List<Product> productsTemp = new List<Product>();
-            productsTemp = listProducts.Skip(offSet).Take(limit).ToList();
+            if (limit > 0)
+            {
+                productsTemp = listProducts.Skip(offSet).Take(limit).ToList();
+            }
+            else
+            {
+                productsTemp = listProducts;
+            }
 
             _logger.LogInformation($"Total de productos paginados: {productsTemp.Count}");
 
@@ -159,14 +166,7 @@ namespace Application.UseCase
             {
                 return null;
             }
-            /* if (await _saleProductRepository.HasProductAssociatedAsync(productId))
-             {
-                 throw new CustomException("No se puede eliminar un producto que este asiciado a un aventa actualmente.");
-             }*/
-            else
-            {
 
-            }
             Product productDelete = await _genericRepository.DeleteAsync(product);
             productDelete.Category = await _categoryRepository.FindCategoryByIdAsync(productDelete.CategoryId);
 

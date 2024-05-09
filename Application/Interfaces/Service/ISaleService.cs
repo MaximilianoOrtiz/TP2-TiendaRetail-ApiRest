@@ -5,12 +5,8 @@ namespace Application.Interfaces.Service
 {
     public interface ISaleService
     {
-        public Task<SaleResponse> SaveSale(SaleRequest saleRequest);
-
-        public Task<SaleResponse> FindSaveById(int saveId);
-
+        public Task<SaleResponse> SaveSaleAsync(SaleRequest saleRequest);
+        public Task<SaleResponse> FindSaveByIdAsync(int saveId);
         public Task<List<SaleGetResponse>> GetFilterByDateTime(DateTime from, DateTime to);
-
-
     }
 }

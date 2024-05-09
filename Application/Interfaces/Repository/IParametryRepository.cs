@@ -2,6 +2,6 @@
 {
     public interface IParametryRepository
     {
-        public Task<decimal> FindValueByCodigoAsync(string codigo);
+        public Task<decimal> FindValueByCodeAsync(string codigo);
     }
 }

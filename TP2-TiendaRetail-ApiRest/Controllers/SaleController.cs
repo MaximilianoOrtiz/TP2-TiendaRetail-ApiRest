@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Data.Common;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace TP2_TiendaRetail_ApiRest.Controllers
 {
     [Route("")]
@@ -22,13 +20,22 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             _saleService = saleService;
         }
 
+        /// <summary>
+        /// Permite ingresar una nueva venta al sistema.
+        /// </summary>
+        /// <remarks>
+        /// Se debe proporcionar la información de la venta a través del cuerpo de la solicitud en formato JSON.
+        /// </remarks>
+        /// <param name="saleRequest">Datos de la venta a ser registrada.</param>
+        /// <response code="201">Venta registrada con éxito.</response>
+        /// <response code="400">Solicitud incorrecta.</response>
         [HttpPost]
         [Route("[controller]")]
-        public async Task<ActionResult<SaleResponse>> SaveSale([FromBody] SaleRequest saleRequest)
+        public async Task<ActionResult<SaleResponse>> PostSale([FromBody] SaleRequest saleRequest)
         {
             try
             {
-                SaleResponse saleResponse = await _saleService.SaveSale(saleRequest);
+                SaleResponse saleResponse = await _saleService.SaveSaleAsync(saleRequest);
                 return new JsonResult(saleResponse) { StatusCode = 201 };
             }
             catch (DbException ex)
@@ -41,14 +48,24 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Obtiene una venta por su ID.
+        /// </summary>
+        /// <remarks>
+        /// Devuelve los detalles de una venta específica identificada por su ID.
+        /// </remarks>
+        /// <param name="id">ID de la venta a recuperar.</param>
+        /// <response code="200">Éxito al recuperar la venta.</response>
+        /// <response code="404">Venta no encontrada.</response>
+        /// <response code="400">Solicitud incorrecta.</response>
+        /// <returns>Detalles de la venta especificada.</returns>
         [HttpGet]
         [Route("[controller]/{id}")]
-        public async Task<ActionResult<SaleResponse>> FindSaleById(int id)
+        public async Task<ActionResult<SaleResponse>> GetSaleById(int id)
         {
             try
             {
-                SaleResponse saleResponse = await _saleService.FindSaveById(id);
+                SaleResponse saleResponse = await _saleService.FindSaveByIdAsync(id);
                 if (saleResponse == null)
                 {
                     return NotFound(new ApiError("No existe una venta asociada al Id: " + id));
@@ -61,6 +78,16 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtiene un listado de ventas.
+        /// </summary>
+        /// <remarks>
+        /// Recupera un resumen de las ventas realizadas, con opción de filtrado por fecha
+        /// </remarks>
+        /// <param name="from">Fecha de inicio del rango de búsqueda en formato de aaaa/mm/dd.</param>
+        /// <param name="to">Fecha de fin del rango de búsqueda en formato de aaaa/mm/dd.</param>
+        /// <response code="200">Éxito al recuperar las ventas.</response>
+        /// <response code="400">Solicitud incorrecta.</response>
         [HttpGet]
         [Route("[controller]")]
         public async Task<ActionResult<List<SaleGetResponse>>> GetFilterByDateTime([FromQuery] DateTime from, [FromQuery] DateTime to)

@@ -21,13 +21,12 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         /// <summary>
         /// Lista todas las categorias
         /// </summary>
-        /// <param Name="id">Id de la categoria</param>
         /// <response code="200">Éxito al recuperar las categorias</response>
         /// <response code="500">Ocurrio una falla en el servidor</response>
         /// <returns></returns>
         [HttpGet]
         [Route("[controller]")]
-        public async Task<ActionResult> getAllCategory(int id)
+        public async Task<ActionResult> GetAllCategory()
         {
             try
             {
@@ -42,7 +41,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             }
             catch (DbException ex)
             {
-                return StatusCode(500, new ApiError("Ocurrió un error al consultar la base de datos."));
+                return StatusCode(500, new ApiError("Ocurrió un error al consultar la base de datos.  Error --> " + ex.Message));
             }
 
         }

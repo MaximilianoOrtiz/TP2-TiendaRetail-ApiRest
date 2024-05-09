@@ -12,7 +12,7 @@ namespace Infraestructure.Querys
             this._context = context;
         }
 
-        public async Task<decimal> FindValueByCodigoAsync(string codigo)
+        public async Task<decimal> FindValueByCodeAsync(string codigo)
         {
             return await (from parametry in _context.Parametry
                           where parametry.Codigo.Equals(codigo)

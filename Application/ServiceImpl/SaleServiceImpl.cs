@@ -36,11 +36,11 @@ namespace Application.UseCase
             _saleRepository = saleRepository;
         }
 
-        public async Task<SaleResponse> SaveSale(SaleRequest saleRequest)
+        public async Task<SaleResponse> SaveSaleAsync(SaleRequest saleRequest)
         {
-            _logger.LogInformation("Init - SaveSale");
+            _logger.LogInformation("Init - SaveSaleAsync");
 
-            SaleResponse saleResponse = await _calculatorService.CalculatePrinceAsync(saleRequest.Products);
+            SaleResponse saleResponse = await _calculatorService.CalculatePriceAsync(saleRequest.Products);
 
             _logger.LogInformation("Valido que el total ingresado sea igual al calulado por el sistema");
             if (saleResponse.TotalPay != saleRequest.TotalPayed)
@@ -66,36 +66,36 @@ namespace Application.UseCase
             //Armo la Venta para persistirla en base
             //Obtengo  el TotalPay, SubTotal y TotalDiscount del saleResponse
             Sale sale = _mapper.Map<Sale>(saleResponse);
-            sale.Taxes = await _parametryRepository.FindValueByCodigoAsync("taxe_iva");
+            sale.Taxes = await _parametryRepository.FindValueByCodeAsync("taxe_iva");
             sale.Date = DateTime.Now;
             sale.SaleProducts = listSaleProducts;
 
             saleResponse = _mapper.Map<SaleResponse>(await _genericRepository.SaveAsync(sale));
             saleResponse.TotalQuantity = totalQuantity;
 
-            _logger.LogInformation("Out - SaveSale");
+            _logger.LogInformation("Out - SaveSaleAsync");
             return saleResponse;
         }
 
-        public async Task<SaleResponse> FindSaveById(int saveId)
+        public async Task<SaleResponse> FindSaveByIdAsync(int saveId)
         {
-            _logger.LogInformation("Init - FindSaveById");
+            _logger.LogInformation("Init - FindSaveByIdAsync");
             Sale sale = await _saleRepository.FindSaleByIdAsync(saveId);
             if (sale == null) { return null; }
 
             SaleResponse saleResponse = _mapper.Map<SaleResponse>(sale);
             saleResponse.TotalQuantity = sale.SaleProducts.Count;
 
-            _logger.LogInformation("Out - FindSaveById");
+            _logger.LogInformation("Out - FindSaveByIdAsync");
             return saleResponse;
         }
 
         public async Task<List<SaleGetResponse>> GetFilterByDateTime(DateTime from, DateTime to)
         {
-            _logger.LogInformation("Init - GetFilterByDateTime");
+            _logger.LogInformation("Init - FindSaleByDateFilter");
             List<SaleGetResponse> response = new List<SaleGetResponse>();
 
-            List<Sale> listSale = await _saleRepository.GetFilterByDateTime(from, to);
+            List<Sale> listSale = await _saleRepository.FindSaleByDateFilter(from, to);
 
             foreach (Sale sale in listSale)
             {
@@ -103,7 +103,7 @@ namespace Application.UseCase
                 saleAux.TotalQuantity = sale.SaleProducts.Count;
                 response.Add(saleAux);
             }
-            _logger.LogInformation("Out - GetFilterByDateTime");
+            _logger.LogInformation("Out - FindSaleByDateFilter");
             return response;
         }
     }

@@ -23,10 +23,10 @@ namespace Application.UseCase
             _productRepository = productRepository;
         }
 
-        public async Task<SaleResponse> CalculatePrinceAsync(List<SaleProductRequest> products)
+        public async Task<SaleResponse> CalculatePriceAsync(List<SaleProductRequest> products)
         {
-            _logger.LogInformation("Init - CalculatePrinceAsync");
-            decimal taxes = await _parametryRepository.FindValueByCodigoAsync("taxe_iva");
+            _logger.LogInformation("Init - CalculatePriceAsync");
+            decimal taxes = await _parametryRepository.FindValueByCodeAsync("taxe_iva");
             SaleResponse saleResponse = new SaleResponse();
 
             _logger.LogInformation("Inicio el recorrido de los productos y calculo el Subtotal y TotalDicount");
@@ -55,7 +55,7 @@ namespace Application.UseCase
             decimal aux = totalPayTem + (totalPayTem * (taxes / 100));
             saleResponse.TotalPay = Math.Round(aux, 2);
 
-            _logger.LogInformation("Init - CalculatePrinceAsync");
+            _logger.LogInformation("Init - CalculatePriceAsync");
             return saleResponse;
         }
     }
