@@ -175,7 +175,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             {
                 if (await _saleProductService.HasProductAssociatedAsync(Id))
                 {
-                    return Conflict(new ApiError("No se puede eliminar un producto que este asociado a una venta.  ProductoId: " + Id));
+                    return Conflict(new ApiError("No se puede eliminar un producto que este asociado a una venta.  ProductId: " + Id));
                 }
 
                 ProductResponse productResponse = await _productService.DeleteProductAsync(Id);

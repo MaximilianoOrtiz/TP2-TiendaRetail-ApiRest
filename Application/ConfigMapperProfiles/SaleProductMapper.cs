@@ -9,7 +9,7 @@ namespace Application.ConfigMapperProfiles
         public SaleProductMapper()
         {
             CreateMap<Product, SaleProductResponse>()
-               .ForMember(dest => dest.ProductoId, opt => opt.MapFrom(src => src.ProductoId))
+               .ForMember(dest => dest.ProductoId, opt => opt.MapFrom(src => src.ProductId))
                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price));
 
             CreateMap<SaleProduct, SaleProductResponse>()
@@ -21,7 +21,7 @@ namespace Application.ConfigMapperProfiles
                .ReverseMap();
 
             CreateMap<Product, SaleProduct>()
-                .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductoId))
+                .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductId))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
                 .ForMember(dest => dest.Discount, opt => opt.MapFrom(src => src.Discount));
         }

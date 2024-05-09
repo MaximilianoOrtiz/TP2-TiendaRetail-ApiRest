@@ -24,19 +24,19 @@ namespace Infraestructure.Migrations
 
             modelBuilder.Entity("Domain.Entitys.Category", b =>
                 {
-                    b.Property<int>("Category")
+                    b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Category"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("Category");
+                    b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category");
 
                     b.HasData(
                         new
@@ -108,7 +108,7 @@ namespace Infraestructure.Migrations
 
                     b.HasKey("ParametriaId");
 
-                    b.ToTable("Parametries");
+                    b.ToTable("Parametry");
 
                     b.HasData(
                         new
@@ -121,9 +121,13 @@ namespace Infraestructure.Migrations
 
             modelBuilder.Entity("Domain.Entitys.Product", b =>
                 {
-                    b.Property<Guid>("ProductoId")
+                    b.Property<Guid>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int")
+                        .HasColumnName("Category");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -131,6 +135,9 @@ namespace Infraestructure.Migrations
 
                     b.Property<int?>("Discount")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -140,431 +147,424 @@ namespace Infraestructure.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("UrlImage")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("ProductId");
 
-                    b.Property<int>("categoryId")
-                        .HasColumnType("int");
+                    b.HasIndex("CategoryId");
 
-                    b.HasKey("ProductoId");
-
-                    b.HasIndex("categoryId");
-
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Product", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ProductoId = new Guid("036e7897-33dd-4efd-ab74-7a8d8727875b"),
+                            ProductId = new Guid("c992b132-a970-4992-9bec-52c12508d26f"),
+                            CategoryId = 1,
                             Description = "Lavarropas con capacidad de 12 Kg, 14 programas de lavado, eficiencia energética A, centrifugado de 750 rpm, función antiarrugas, dispensador automático de detergente, puerta con visor de vidrio templado y panel de control electrónico.",
                             Discount = 0,
+                            ImageUrl = "https://images.fravega.com/f300/bc553a4d53bb5eb5f9e44184047b212b.jpg.webp",
                             Name = "Lavarropas Carga Frontal Drean Next 6 Kg",
-                            Price = 679999m,
-                            UrlImage = "https://images.fravega.com/f300/bc553a4d53bb5eb5f9e44184047b212b.jpg.webp",
-                            categoryId = 1
+                            Price = 679999m
                         },
                         new
                         {
-                            ProductoId = new Guid("f8dba80d-4ba4-4d96-866f-6a7669a7d5d9"),
+                            ProductId = new Guid("68954802-df19-4a60-b8af-ff41ebe9d7c7"),
+                            CategoryId = 1,
                             Description = "Heladera con capacidad total de 311 litros, 224 litros de heladera y 87 litros de freezer. Sistema de frío No Frost, eficiencia energética A, 4 estrellas de freezer, función de congelamiento rápido, dispenser de agua y luz LED interior.",
                             Discount = 11,
+                            ImageUrl = "https://images.fravega.com/f300/a55db6e62b330fc4768c2bfa9370a5b0.jpg.webp",
                             Name = "Heladera Cíclica GAFA HGF358AFB 282Lts Blanca",
-                            Price = 629999m,
-                            UrlImage = "https://images.fravega.com/f300/a55db6e62b330fc4768c2bfa9370a5b0.jpg.webp",
-                            categoryId = 1
+                            Price = 629999m
                         },
                         new
                         {
-                            ProductoId = new Guid("90867a7e-0c9d-4de6-980a-45b50ef5ba4d"),
+                            ProductId = new Guid("a57d1ab9-ddee-4d5a-9981-e4a64ad7ec63"),
+                            CategoryId = 1,
                             Description = "Aire acondicionado con capacidad de frío de 3000 frigorías y capacidad de calor de 3000 watts. Tecnología Inverter, eficiencia energética A, función de deshumidificación, timer programable, control remoto y modo Sleep.",
                             Discount = 5,
+                            ImageUrl = "https://www.fravega.com/p/aire-acondicionado-split-frio-calor-surrey-3000f-3490w-553bfq1201e--20459/",
                             Name = "Aire Acondicionado Split Surrey Inverter Frio/Calor 3000 F",
-                            Price = 1489999m,
-                            UrlImage = "https://www.fravega.com/p/aire-acondicionado-split-frio-calor-surrey-3000f-3490w-553bfq1201e--20459/",
-                            categoryId = 1
+                            Price = 1489999m
                         },
                         new
                         {
-                            ProductoId = new Guid("63af7491-4d17-4080-8120-401eb6c9971a"),
+                            ProductId = new Guid("7235607e-9a26-417d-aec1-a85e5ed68546"),
+                            CategoryId = 1,
                             Description = "Lavadora de carga frontal con capacidad de lavado de 10.5 kg. Tecnología EcoBubble que activa el detergente con aire y agua antes de que comience el ciclo de lavado, garantizando una limpieza profunda incluso en agua fría. Eficiencia energética A+++, múltiples programas de lavado, pantalla LED táctil, y sistema de auto-limpieza.",
                             Discount = 4,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_910743-MLA73490348656_122023-O.webp",
                             Name = "Lavarropa Samsung Ww10t504daw 10kg Blanco Con Ia Inverter",
-                            Price = 2000999m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_910743-MLA73490348656_122023-O.webp",
-                            categoryId = 1
+                            Price = 2000999m
                         },
                         new
                         {
-                            ProductoId = new Guid("738cfa6e-dbf8-40a7-8dc8-22db03798d58"),
+                            ProductId = new Guid("46d08b71-8534-4c96-a932-75a93cbf2f1a"),
+                            CategoryId = 2,
                             Description = "Televisor Smart TV LED LG de 50 pulgadas con resolución 4K UHD. Cuenta con tecnología LED para un brillo y contraste excepcionales, y su procesador inteligente te garantiza imágenes nítidas y colores vibrantes. Además, su plataforma Smart TV te permite acceder a tus aplicaciones favoritas de streaming con facilidad.",
                             Discount = 0,
+                            ImageUrl = "https://images.fravega.com/f300/9f3103a4c80350aadc0f1f228cbab083.jpg.webp",
                             Name = "Televisor Smart TV LED 50\" 4K UHD LG 50UQ9300PTA",
-                            Price = 573999m,
-                            UrlImage = "https://images.fravega.com/f300/9f3103a4c80350aadc0f1f228cbab083.jpg.webp",
-                            categoryId = 2
+                            Price = 573999m
                         },
                         new
                         {
-                            ProductoId = new Guid("a5d55beb-dfc7-4796-a691-56f83274fead"),
+                            ProductId = new Guid("ab1cc39e-0687-4dc6-9836-aaf5c0a5f684"),
+                            CategoryId = 2,
                             Description = "El celular Samsung Galaxy S23 Ultra 5G es el teléfono inteligente definitivo para los amantes de la tecnología. Con una pantalla AMOLED de 6.8 pulgadas y un potente procesador Snapdragon 8 Gen 1, este teléfono te ofrece un rendimiento ultrarrápido y una experiencia visual inmersiva. Además, su sistema de cámara cuádruple trasera de 108 MP te permite capturar fotos y videos impresionantes.",
                             Discount = 0,
+                            ImageUrl = "https://images.fravega.com/f300/68684fb77ad8b2609023cefea3c6c094.jpg.webp",
                             Name = "Celular Samsung Galaxy S23 Ultra 5G 256GB",
-                            Price = 249999m,
-                            UrlImage = "https://images.fravega.com/f300/68684fb77ad8b2609023cefea3c6c094.jpg.webp",
-                            categoryId = 2
+                            Price = 249999m
                         },
                         new
                         {
-                            ProductoId = new Guid("cbb29284-7653-42e2-bb40-cddb4af8bc04"),
+                            ProductId = new Guid("0fc647c6-b06e-4e60-9f6c-d0736e8da0e9"),
+                            CategoryId = 2,
                             Description = "Disfruta de tus juegos favoritos con el notebook gamer Lenovo Legion 5. Este potente equipo cuenta con un procesador AMD Ryzen 7 6800H, una placa de video NVIDIA GeForce RTX 3050 Ti y 16 GB de RAM, lo que te garantiza un rendimiento fluido y sin interrupciones. Además, su pantalla Full HD de 15.6 pulgadas con una tasa de refresco de 165 Hz te brinda imágenes nítidas y una experiencia de juego inmersiva.",
                             Discount = 10,
+                            ImageUrl = "https://www.fravega.com.ar/wcsstore/fravega/images/catalog/2023/Febrero/02-02-2023/82JW007LAR-01.jpg",
                             Name = "Notebook Gamer Lenovo Legion 5 15ACH6H 82JW007LAR",
-                            Price = 299999m,
-                            UrlImage = "https://www.fravega.com.ar/wcsstore/fravega/images/catalog/2023/Febrero/02-02-2023/82JW007LAR-01.jpg",
-                            categoryId = 2
+                            Price = 299999m
                         },
                         new
                         {
-                            ProductoId = new Guid("e02fdd8a-4207-476b-bdff-0e51e02176c6"),
+                            ProductId = new Guid("940e270a-a9c0-45c8-ba02-42b578b5fd35"),
+                            CategoryId = 2,
                             Description = "Disfruta de imágenes nítidas y colores vibrantes con el Smart TV LG 4K UHD 55' UP77. Con una pantalla de 55 pulgadas, resolución 4K UHD, y tecnología de mejora de imagen AI Picture, ofrece una experiencia visual envolvente. Además, cuenta con webOS, control por voz, y múltiples opciones de conectividad para acceder a tus contenidos favoritos.",
                             Discount = 5,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_672706-MLU75135396807_032024-O.webp",
                             Name = "Smart TV LG 4K UHD 55' UP77",
-                            Price = 799999m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_672706-MLU75135396807_032024-O.webp",
-                            categoryId = 2
+                            Price = 799999m
                         },
                         new
                         {
-                            ProductoId = new Guid("39b877d6-6826-4a2d-9184-62dc77a9f485"),
+                            ProductId = new Guid("b7716299-7c42-4c32-b4b1-29cf7589792c"),
+                            CategoryId = 3,
                             Description = "Estas zapatillas deportivas con plataforma son perfectas para un look casual y cómodo. Su diseño moderno y trendy te hará destacar entre la multitud. La plataforma te dará un poco de altura extra y la suela acolchada te brindará comodidad durante todo el día.",
                             Discount = 0,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_809755-MLA74807971075_022024-O.webp",
                             Name = "Zapatillas Fila deportivas con plataforma",
-                            Price = 79999m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_809755-MLA74807971075_022024-O.webp",
-                            categoryId = 3
+                            Price = 79999m
                         },
                         new
                         {
-                            ProductoId = new Guid("fc8bf7ea-f922-424b-923c-56dffec78e05"),
+                            ProductId = new Guid("b7130e6d-afc9-44bb-9e24-c19e24b7ada7"),
+                            CategoryId = 3,
                             Description = "Este bolso de mano con diseño animal print es el accesorio perfecto para cualquier outfit. Su diseño elegante y sofisticado te hará sentir segura y glamorosa. El tamaño perfecto para llevar todo lo que necesitas.",
                             Discount = 10,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_908309-MLA43823200371_102020-F.webp",
                             Name = "Bolso de mano con diseño animal print",
-                            Price = 12999m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_2X_908309-MLA43823200371_102020-F.webp",
-                            categoryId = 3
+                            Price = 12999m
                         },
                         new
                         {
-                            ProductoId = new Guid("37badf2e-2f3d-4e34-a764-b63ce93b3112"),
+                            ProductId = new Guid("73c79e59-60d8-443d-9588-ce5849f5513b"),
+                            CategoryId = 3,
                             Description = "Este vestido midi con estampado floral es perfecto para cualquier ocasión. Su diseño elegante y femenino te hará sentir segura y hermosa. El tejido suave y fluido te mantendrá cómoda durante todo el día.",
                             Discount = 10,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_827000-MLA73259012235_122023-F.webp",
                             Name = "Vestido midi con estampado floral",
-                            Price = 19199m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_2X_827000-MLA73259012235_122023-F.webp",
-                            categoryId = 3
+                            Price = 19199m
                         },
                         new
                         {
-                            ProductoId = new Guid("0a57991d-da98-418a-8728-4380136fbf0e"),
+                            ProductId = new Guid("a23436b2-63bc-43a9-b5ff-adb2280caf2b"),
+                            CategoryId = 3,
                             Description = "Cafetera Espresso De'Longhi Dedica con bomba de presión de 15 bares. Diseño compacto y elegante. Opciones de preparación personalizadas. Disfruta de café de alta calidad en casa.",
                             Discount = 5,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_924147-MLA32583951215_102019-O.webp",
                             Name = "Cafetera Espresso De'Longhi Dedica",
-                            Price = 82999m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_924147-MLA32583951215_102019-O.webp",
-                            categoryId = 3
+                            Price = 82999m
                         },
                         new
                         {
-                            ProductoId = new Guid("bcbd2bbc-40bf-4a62-930f-a3c269a6b3b4"),
+                            ProductId = new Guid("9040c042-e536-4c15-badd-e8cfc335fe8a"),
+                            CategoryId = 4,
                             Description = "Este juego de sábanas de algodón 100% te brindará una experiencia de sueño confortable y placentera. El algodón es un material suave y transpirable que te mantendrá fresco en verano y cálido en invierno.",
                             Discount = 0,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_992437-MLU73437277182_122023-O.webp",
                             Name = "Juego de sábanas de algodón 100%",
-                            Price = 40999m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_992437-MLU73437277182_122023-O.webp",
-                            categoryId = 4
+                            Price = 40999m
                         },
                         new
                         {
-                            ProductoId = new Guid("eeb407e8-1cc7-4498-80e6-68a868ee34b9"),
+                            ProductId = new Guid("0a1706db-eb15-4de2-bfbc-6e56ae1be039"),
+                            CategoryId = 4,
                             Description = "Este sofá de dos plazas con diseño moderno es perfecto para cualquier living. Su diseño elegante y minimalista le dará un toque de sofisticación a tu hogar. El tapizado de tela es suave y resistente.",
                             Discount = 10,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_953815-MLA46281130948_062021-O.webp",
                             Name = "Sofá de dos plazas con diseño moderno",
-                            Price = 1000000m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_953815-MLA46281130948_062021-O.webp",
-                            categoryId = 4
+                            Price = 1000000m
                         },
                         new
                         {
-                            ProductoId = new Guid("4a4b7071-c4a7-4ddf-b579-f87cbcda6ac7"),
+                            ProductId = new Guid("37eb87a9-ba76-42c4-b25e-b309f389e2d2"),
+                            CategoryId = 4,
                             Description = "Este juego de vajilla para 6 personas es perfecto para cualquier ocasión. Su diseño clásico y elegante le dará un toque de distinción a tu mesa. El material de porcelana es resistente y duradero.",
                             Discount = 5,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_915185-MLA75190486128_032024-F.webp",
                             Name = "Juego de vajilla para 6 personas",
-                            Price = 34879m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_2X_915185-MLA75190486128_032024-F.webp",
-                            categoryId = 4
+                            Price = 34879m
                         },
                         new
                         {
-                            ProductoId = new Guid("4da52bb9-42a2-4f3c-8928-8a0d04f5f802"),
+                            ProductId = new Guid("9e760191-07e7-4d58-9884-a6a617001ee4"),
+                            CategoryId = 4,
                             Description = "Set de 3 cuadros decorativos modernos con diseños abstractos. Fabricados con materiales de alta calidad. Ideal para renovar tu espacio con estilo.",
                             Discount = 8,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_891360-MLA50450337942_062022-O.webp",
                             Name = "Set de 3 Cuadros Decorativos Modernos",
-                            Price = 8999m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_891360-MLA50450337942_062022-O.webp",
-                            categoryId = 4
+                            Price = 8999m
                         },
                         new
                         {
-                            ProductoId = new Guid("02acf71c-7d89-41f5-81fb-1244e41f96f7"),
+                            ProductId = new Guid("20685961-1fa3-4f9a-a53b-c6adcf5f9821"),
+                            CategoryId = 5,
                             Description = "Esta crema hidratante facial con ácido hialurónico es perfecta para todo tipo de piel. El ácido hialurónico es un ingrediente que ayuda a retener la hidratación en la piel, lo que la hace lucir más joven y radiante.",
                             Discount = 0,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_651558-MLA52220013087_102022-O.webp",
                             Name = "Crema hidratante facial con ácido hialurónico",
-                            Price = 24631m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_651558-MLA52220013087_102022-O.webp",
-                            categoryId = 5
+                            Price = 24631m
                         },
                         new
                         {
-                            ProductoId = new Guid("ccfbfecd-16a6-4e9f-bf00-b4cf910af836"),
+                            ProductId = new Guid("61e67677-6c71-4c25-a23d-629a64e0d21c"),
+                            CategoryId = 5,
                             Description = "Este cepillo de dientes eléctrico sónico te ayudará a tener una limpieza bucal más profunda y efectiva. Las cerdas sónicas vibran a alta velocidad para eliminar la placa y el sarro de forma eficaz.",
                             Discount = 0,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_640938-MLA74353765176_022024-F.webp",
                             Name = "Cepillo de dientes eléctrico sónico",
-                            Price = 27953m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_2X_640938-MLA74353765176_022024-F.webp",
-                            categoryId = 5
+                            Price = 27953m
                         },
                         new
                         {
-                            ProductoId = new Guid("fad6d03a-904c-47af-a008-08e1dec882d7"),
+                            ProductId = new Guid("11f64468-2667-4146-b6ab-dba9fb122fb1"),
+                            CategoryId = 5,
                             Description = "Este labial de larga duración te brindará un color intenso y duradero. Su fórmula especial es resistente al agua y a los besos.",
                             Discount = 10,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_990774-MLU75051228244_032024-F.webp",
                             Name = "Maquillaje labial de larga duración",
-                            Price = 45490m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_2X_990774-MLU75051228244_032024-F.webp",
-                            categoryId = 5
+                            Price = 45490m
                         },
                         new
                         {
-                            ProductoId = new Guid("bdc6f74d-344b-45d7-b03e-4541f2a1e0ad"),
+                            ProductId = new Guid("cc3e7a92-16e6-4956-b8b1-36d61f393975"),
+                            CategoryId = 5,
                             Description = "Secador de pelo profesional con tecnología Ionic Ceramic para un secado rápido y sin frizz. Potente motor de 2200W con 3 ajustes de temperatura y 2 velocidades. Incluye boquilla concentradora y difusor para estilizar el cabello según tus preferencias. Consigue un cabello suave, brillante y saludable con este secador de pelo de calidad profesional.",
                             Discount = 0,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_797457-MLA49192142777_022022-O.webp",
                             Name = "Secador de Pelo Profesional Ionic Ceramic",
-                            Price = 59299m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_797457-MLA49192142777_022022-O.webp",
-                            categoryId = 5
+                            Price = 59299m
                         },
                         new
                         {
-                            ProductoId = new Guid("80a6ddf3-6dfa-448d-bbf1-54ff6deb4c26"),
+                            ProductId = new Guid("aa93dbf2-b7f3-4320-9f3e-88715b53741c"),
+                            CategoryId = 6,
                             Description = "Esta pelota de fútbol es perfecta para jugar con amigos o en familia. Su diseño clásico y su material resistente te brindarán horas de diversión.",
                             Discount = 0,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_814346-MLU72542363030_112023-O.webp",
                             Name = "Pelota de fútbol",
-                            Price = 29890m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_814346-MLU72542363030_112023-O.webp",
-                            categoryId = 6
+                            Price = 29890m
                         },
                         new
                         {
-                            ProductoId = new Guid("edf4669e-ddba-4851-a6c0-fd3e32d62083"),
+                            ProductId = new Guid("503d478e-b0e3-4342-bb4f-ca3ebc53e0d2"),
+                            CategoryId = 6,
                             Description = "Esta bicicleta de montaña es perfecta para los amantes del ciclismo. Su diseño resistente y duradero te permitirá disfrutar de tus aventuras al aire libre.",
                             Discount = 5,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_692292-MLA48659462745_122021-O.webp",
                             Name = "Bicicleta de montaña",
-                            Price = 314689m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_692292-MLA48659462745_122021-O.webp",
-                            categoryId = 6
+                            Price = 314689m
                         },
                         new
                         {
-                            ProductoId = new Guid("e323aa91-4ee2-4af8-9f45-2438a00ff787"),
+                            ProductId = new Guid("4cb4394b-2c67-417a-b4e2-28970bae5c78"),
+                            CategoryId = 6,
                             Description = "Este juego de mesa es perfecto para pasar un rato divertido en familia. Su diseño atractivo y sus reglas sencillas te brindarán horas de entretenimiento.",
                             Discount = 0,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_742516-MLA44728186422_012021-F.webp",
                             Name = "Juego de mesa para toda la familia",
-                            Price = 19061m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_2X_742516-MLA44728186422_012021-F.webp",
-                            categoryId = 6
+                            Price = 19061m
                         },
                         new
                         {
-                            ProductoId = new Guid("bb089c1b-4819-48a9-acbd-bdadf16cddb7"),
+                            ProductId = new Guid("3d63c9a2-7793-4106-98d8-66b89f3ef7a0"),
+                            CategoryId = 6,
                             Description = "Disfruta del agua con la tabla de paddle surf hinchable Aqua Marina Fusion. Fabricada con material de alta calidad, esta tabla ofrece estabilidad y durabilidad. Su diseño hinchable la hace fácil de transportar y almacenar. Equipada con una bomba de alta presión y una bolsa de transporte, es perfecta para explorar lagos, ríos y costas. ¡Sumérgete en la diversión con esta tabla de paddle surf!",
                             Discount = 8,
+                            ImageUrl = "https://cdn.shopify.com/s/files/1/0233/3953/2624/products/14-FUSION-01-2020-IMG_1737-2_1000x.jpg?v=1609160293",
                             Name = "Tabla de Paddle Surf Hinchable Aqua Marina Fusion",
-                            Price = 189999m,
-                            UrlImage = "https://cdn.shopify.com/s/files/1/0233/3953/2624/products/14-FUSION-01-2020-IMG_1737-2_1000x.jpg?v=1609160293",
-                            categoryId = 6
+                            Price = 189999m
                         },
                         new
                         {
-                            ProductoId = new Guid("343f757d-bc57-4e10-a3b9-1c31d22f2487"),
+                            ProductId = new Guid("5cebb56c-81e3-40f4-b72b-5a3a12c4fee2"),
+                            CategoryId = 7,
                             Description = "Estos bloques de construcción son perfectos para que los niños desarrollen su creatividad e imaginación. Con ellos podrán construir todo tipo de estructuras, desde casas y castillos hasta naves espaciales y robots.",
                             Discount = 10,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_653633-MLU72122811116_102023-O.webp",
                             Name = "Bloques de construcción",
-                            Price = 46509m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_653633-MLU72122811116_102023-O.webp",
-                            categoryId = 7
+                            Price = 46509m
                         },
                         new
                         {
-                            ProductoId = new Guid("82b55041-b7de-4683-b094-f4c417297570"),
+                            ProductId = new Guid("a79e4ba1-876c-498a-8d5e-975d365e9c17"),
+                            CategoryId = 7,
                             Description = "Esta muñeca es perfecta para que las niñas se diviertan y aprendan a cuidar de los demás. Viene con ropa y accesorios para que las niñas puedan crear todo tipo de historias.",
                             Discount = 0,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_891562-MLU74194879919_012024-O.webp",
                             Name = "Muñeca",
-                            Price = 27169m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_891562-MLU74194879919_012024-O.webp",
-                            categoryId = 7
+                            Price = 27169m
                         },
                         new
                         {
-                            ProductoId = new Guid("ab47bd74-ec15-44d6-9dfc-36fad4c5e97b"),
+                            ProductId = new Guid("66776f20-ced4-492b-856f-ea7ab87282b2"),
+                            CategoryId = 7,
                             Description = "Este juego de mesa es perfecto para que los niños se diviertan en familia. Sus reglas sencillas y su diseño atractivo lo hacen ideal para niños de todas las edades.",
                             Discount = 10,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_874287-MLU72637351761_112023-O.webp",
                             Name = "Juego de mesa para niños",
-                            Price = 44399m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_874287-MLU72637351761_112023-O.webp",
-                            categoryId = 7
+                            Price = 44399m
                         },
                         new
                         {
-                            ProductoId = new Guid("f9bc7722-96ef-41d0-b762-91871d8546d2"),
+                            ProductId = new Guid("6f7b9d6d-1853-4035-b71c-fadfe67e69c3"),
+                            CategoryId = 7,
                             Description = "Construye una de las maravillas del mundo con el set LEGO Creator Expert Taj Mahal. Este impresionante set incluye más de 9500 piezas para recrear fielmente este icónico monumento. Con detalles intrincados y una escala impresionante, esta maqueta proporciona una experiencia de construcción desafiante y gratificante para aficionados y coleccionistas. ¡Embárcate en un viaje arquitectónico con este magnífico set de LEGO!",
                             Discount = 9,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_794783-MLA54926679565_042023-O.webp",
                             Name = "l",
-                            Price = 339999m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_794783-MLA54926679565_042023-O.webp",
-                            categoryId = 7
+                            Price = 339999m
                         },
                         new
                         {
-                            ProductoId = new Guid("4bc5aaf0-074c-46c1-88b3-2bc2a2118e52"),
+                            ProductId = new Guid("01eed05a-694f-4e12-ad03-55d489149abd"),
+                            CategoryId = 8,
                             Description = "Estas manzanas frescas son de la mejor calidad y tienen un sabor delicioso. Son perfectas para comer como snack o para usar en recetas.",
                             Discount = 0,
+                            ImageUrl = "https://img.freepik.com/foto-gratis/manzanas-rojas-frescas-suaves-jugosas-enteras-perfectas-escritorio-blanco_179666-271.jpg",
                             Name = "Manzanas frescas",
-                            Price = 2999m,
-                            UrlImage = "https://img.freepik.com/foto-gratis/manzanas-rojas-frescas-suaves-jugosas-enteras-perfectas-escritorio-blanco_179666-271.jpg",
-                            categoryId = 8
+                            Price = 2999m
                         },
                         new
                         {
-                            ProductoId = new Guid("f5deb667-4d0f-4ac8-8b91-9d38ee616893"),
+                            ProductId = new Guid("89db469f-9ad3-4f81-81a4-55e7aa4f391e"),
+                            CategoryId = 8,
                             Description = "Esta leche descremada es ideal para aquellos que buscan una opción más saludable. Es baja en calorías y grasa, pero aún así tiene un sabor delicioso.",
                             Discount = 0,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_794418-MLU73783720994_012024-F.webp",
                             Name = "Leche descremada",
-                            Price = 1790m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_2X_794418-MLU73783720994_012024-F.webp",
-                            categoryId = 8
+                            Price = 1790m
                         },
                         new
                         {
-                            ProductoId = new Guid("7ca8c055-7659-4309-a2b1-91074e05932c"),
+                            ProductId = new Guid("2ecabb97-02e9-444f-8e5a-ff9b1431c4ff"),
+                            CategoryId = 8,
                             Description = "Estas galletas de chocolate son perfectas para disfrutar con un café o un té. Son deliciosas y crujientes.",
                             Discount = 0,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_770512-MLA52795200078_122022-O.webp",
                             Name = "Galletas de chocolate",
-                            Price = 2849m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_770512-MLA52795200078_122022-O.webp",
-                            categoryId = 8
+                            Price = 2849m
                         },
                         new
                         {
-                            ProductoId = new Guid("da1d1489-590f-4763-831a-c7bb38563ef9"),
+                            ProductId = new Guid("d6eb3e2f-4f1b-432e-b0ec-b9c403b6d5ad"),
+                            CategoryId = 8,
                             Description = "Explora el mundo del vino con este kit de degustación que incluye una selección de vinos de diferentes variedades y regiones. Cada botella está cuidadosamente seleccionada para ofrecer una experiencia única de degustación. Descubre nuevos sabores, aromas y texturas mientras disfrutas de una velada especial con amigos o familiares.",
                             Discount = 8,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_778460-MLA74696522802_022024-F.webp",
                             Name = "Kit de Degustación de Vinos",
-                            Price = 4999m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_2X_778460-MLA74696522802_022024-F.webp",
-                            categoryId = 8
+                            Price = 4999m
                         },
                         new
                         {
-                            ProductoId = new Guid("00d96e24-6072-4609-8944-ef7d71c43799"),
+                            ProductId = new Guid("b5b883b3-7c9b-46c3-9fae-4f63657892c4"),
+                            CategoryId = 9,
                             Description = "Este libro de ficción es una novela apasionante que te atrapará desde el principio.",
                             Discount = 0,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_790538-MLU73106969282_122023-O.webp",
                             Name = "Libro de ficción",
-                            Price = 22900m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_790538-MLU73106969282_122023-O.webp",
-                            categoryId = 9
+                            Price = 22900m
                         },
                         new
                         {
-                            ProductoId = new Guid("1a06e3f7-a838-4e9c-bc7b-67017b671f7b"),
+                            ProductId = new Guid("a95eb30b-db25-4f1d-94d2-d867435d60c9"),
+                            CategoryId = 9,
                             Description = "Estos lápices de colores son ideales para que los niños exploren su creatividad.",
                             Discount = 0,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_625215-MLU73129288734_122023-O.webp",
                             Name = "Lápices de colores",
-                            Price = 19999m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_625215-MLU73129288734_122023-O.webp",
-                            categoryId = 9
+                            Price = 19999m
                         },
                         new
                         {
-                            ProductoId = new Guid("6ab3185d-3541-461f-849c-23b306788e39"),
+                            ProductId = new Guid("a2daf8f7-6ac5-4c33-a87b-0a5585ce28d4"),
+                            CategoryId = 9,
                             Description = "Este cuaderno de notas es perfecto para tomar apuntes en clase o en la oficina.",
                             Discount = 0,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_969804-MLU72605081373_102023-O.webp",
                             Name = "Cuaderno de notas",
-                            Price = 11990m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_969804-MLU72605081373_102023-O.webp",
-                            categoryId = 9
+                            Price = 11990m
                         },
                         new
                         {
-                            ProductoId = new Guid("a37a7be1-5fe4-4e95-bd0f-bef9711194ea"),
+                            ProductId = new Guid("84c2c476-d2da-4dfe-a106-fc66940bb11f"),
+                            CategoryId = 9,
                             Description = "Descubre una variedad de deliciosas recetas de diferentes culturas y regiones del mundo con este libro de cocina. Desde platos tradicionales hasta opciones modernas, este libro te guiará a través de pasos sencillos para crear comidas increíbles en tu propia cocina. Con fotografías inspiradoras y consejos útiles, es perfecto para chefs aficionados y entusiastas de la cocina.",
                             Discount = 8,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_622837-MLU74371917389_022024-O.webp",
                             Name = "Libro de Cocina: Recetas del Mundo",
-                            Price = 1999m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_622837-MLU74371917389_022024-O.webp",
-                            categoryId = 9
+                            Price = 1999m
                         },
                         new
                         {
-                            ProductoId = new Guid("8fd25588-9fda-466c-8510-432b6f32fb10"),
+                            ProductId = new Guid("ba5dfb09-1705-4acc-bed2-7e67b9b53a03"),
+                            CategoryId = 10,
                             Description = "Estas tijeras de podar son ideales para cortar ramas y tallos de plantas.",
                             Discount = 10,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_997006-MLU73673556155_122023-O.webp",
                             Name = "Tijeras de podar",
-                            Price = 64368m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_997006-MLU73673556155_122023-O.webp",
-                            categoryId = 10
+                            Price = 64368m
                         },
                         new
                         {
-                            ProductoId = new Guid("afac0a93-d08d-4a5e-ae46-2ec16ec69e6c"),
+                            ProductId = new Guid("4b4e92f7-b410-4c86-9a1b-15e8ba65b812"),
+                            CategoryId = 10,
                             Description = "Esta manguera de jardín es perfecta para regar tus plantas y flores.",
                             Discount = 10,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_924765-MLU75436466640_042024-O.webp",
                             Name = "Manguera de jardín",
-                            Price = 41582m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_924765-MLU75436466640_042024-O.webp",
-                            categoryId = 10
+                            Price = 41582m
                         },
                         new
                         {
-                            ProductoId = new Guid("4e0e6517-9a98-49a3-8399-18a6a83577af"),
+                            ProductId = new Guid("523c2790-da82-4e8a-9797-a1b6753e39d2"),
+                            CategoryId = 10,
                             Description = "Este kit de herramientas básicas es perfecto para realizar pequeños trabajos de bricolaje en casa.",
                             Discount = 10,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_649163-MLU75509398453_032024-O.webp",
                             Name = "Kit de herramientas básicas",
-                            Price = 65499m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_649163-MLU75509398453_032024-O.webp",
-                            categoryId = 10
+                            Price = 65499m
                         },
                         new
                         {
-                            ProductoId = new Guid("f727bcaf-b030-4704-97f9-1d80b1e786fb"),
+                            ProductId = new Guid("ed17203e-d9a4-4245-bc00-c6daa9e9acd8"),
+                            CategoryId = 10,
                             Description = "Haz que tu jardín florezca con este completo kit de herramientas de jardinería. Incluye una variedad de herramientas esenciales como palas, rastrillos, tijeras de podar y más, todo en un práctico estuche. Diseñadas para durar y facilitar el trabajo en el jardín, estas herramientas te ayudarán a mantener tu espacio verde hermoso y saludable durante todo el año.",
                             Discount = 9,
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_845110-MLA43219745617_082020-O.webp",
                             Name = "Kit de Herramientas de Jardinería",
-                            Price = 2299m,
-                            UrlImage = "https://http2.mlstatic.com/D_NQ_NP_845110-MLA43219745617_082020-O.webp",
-                            categoryId = 10
+                            Price = 2299m
                         });
                 });
 
             modelBuilder.Entity("Domain.Entitys.Sale", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("SaleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SaleId"));
 
-                    b.Property<DateTime>("DateTime")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("SubTotal")
@@ -579,9 +579,9 @@ namespace Infraestructure.Migrations
                     b.Property<decimal>("TotalPay")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("Id");
+                    b.HasKey("SaleId");
 
-                    b.ToTable("Sales", (string)null);
+                    b.ToTable("Sale", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entitys.SaleProduct", b =>
@@ -598,29 +598,31 @@ namespace Infraestructure.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("ProductoId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Product");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
+                    b.Property<int>("SaleId")
+                        .HasColumnType("int")
+                        .HasColumnName("Sale");
 
                     b.HasKey("ShoppingCartId");
 
-                    b.HasIndex("ProductoId");
+                    b.HasIndex("ProductId");
 
-                    b.HasIndex("Id");
+                    b.HasIndex("SaleId");
 
-                    b.ToTable("SaleProducts", (string)null);
+                    b.ToTable("SaleProduct", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entitys.Product", b =>
                 {
                     b.HasOne("Domain.Entitys.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("categoryId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -629,19 +631,19 @@ namespace Infraestructure.Migrations
 
             modelBuilder.Entity("Domain.Entitys.SaleProduct", b =>
                 {
-                    b.HasOne("Domain.Entitys.Product", "Products")
+                    b.HasOne("Domain.Entitys.Product", "Product")
                         .WithMany("SaleProducts")
-                        .HasForeignKey("ProductoId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Entitys.Sale", "Sales")
                         .WithMany("SaleProducts")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("SaleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Products");
+                    b.Navigation("Product");
 
                     b.Navigation("Sales");
                 });

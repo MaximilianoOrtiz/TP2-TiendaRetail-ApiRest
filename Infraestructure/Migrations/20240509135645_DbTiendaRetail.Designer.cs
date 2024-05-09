@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240507215509_DbTiendaRetail")]
+    [Migration("20240509135645_DbTiendaRetail")]
     partial class DbTiendaRetail
     {
         /// <inheritdoc />
@@ -27,17 +27,17 @@ namespace Infraestructure.Migrations
 
             modelBuilder.Entity("Domain.Entitys.Category", b =>
                 {
-                    b.Property<int>("Category")
+                    b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Category"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
 
                     b.Property<string>("Name")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("Category");
+                    b.HasKey("CategoryId");
 
                     b.ToTable("Category");
 
@@ -124,11 +124,11 @@ namespace Infraestructure.Migrations
 
             modelBuilder.Entity("Domain.Entitys.Product", b =>
                 {
-                    b.Property<Guid>("ProductoId")
+                    b.Property<Guid>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Category")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int")
                         .HasColumnName("Category");
 
@@ -150,16 +150,16 @@ namespace Infraestructure.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("ProductoId");
+                    b.HasKey("ProductId");
 
-                    b.HasIndex("Category");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Product", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ProductoId = new Guid("518aeebb-c952-4733-a160-261cd33538c8"),
+                            ProductId = new Guid("c992b132-a970-4992-9bec-52c12508d26f"),
                             CategoryId = 1,
                             Description = "Lavarropas con capacidad de 12 Kg, 14 programas de lavado, eficiencia energética A, centrifugado de 750 rpm, función antiarrugas, dispensador automático de detergente, puerta con visor de vidrio templado y panel de control electrónico.",
                             Discount = 0,
@@ -169,7 +169,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("39fa7e61-6349-454b-872f-b42ee362b3b2"),
+                            ProductId = new Guid("68954802-df19-4a60-b8af-ff41ebe9d7c7"),
                             CategoryId = 1,
                             Description = "Heladera con capacidad total de 311 litros, 224 litros de heladera y 87 litros de freezer. Sistema de frío No Frost, eficiencia energética A, 4 estrellas de freezer, función de congelamiento rápido, dispenser de agua y luz LED interior.",
                             Discount = 11,
@@ -179,7 +179,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("1824f116-da8a-4e6e-8801-bde12d3480c3"),
+                            ProductId = new Guid("a57d1ab9-ddee-4d5a-9981-e4a64ad7ec63"),
                             CategoryId = 1,
                             Description = "Aire acondicionado con capacidad de frío de 3000 frigorías y capacidad de calor de 3000 watts. Tecnología Inverter, eficiencia energética A, función de deshumidificación, timer programable, control remoto y modo Sleep.",
                             Discount = 5,
@@ -189,7 +189,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("66ad7a0c-73ad-4120-a620-271f7324f525"),
+                            ProductId = new Guid("7235607e-9a26-417d-aec1-a85e5ed68546"),
                             CategoryId = 1,
                             Description = "Lavadora de carga frontal con capacidad de lavado de 10.5 kg. Tecnología EcoBubble que activa el detergente con aire y agua antes de que comience el ciclo de lavado, garantizando una limpieza profunda incluso en agua fría. Eficiencia energética A+++, múltiples programas de lavado, pantalla LED táctil, y sistema de auto-limpieza.",
                             Discount = 4,
@@ -199,7 +199,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("b97801da-957f-4729-84be-7ed78f167f23"),
+                            ProductId = new Guid("46d08b71-8534-4c96-a932-75a93cbf2f1a"),
                             CategoryId = 2,
                             Description = "Televisor Smart TV LED LG de 50 pulgadas con resolución 4K UHD. Cuenta con tecnología LED para un brillo y contraste excepcionales, y su procesador inteligente te garantiza imágenes nítidas y colores vibrantes. Además, su plataforma Smart TV te permite acceder a tus aplicaciones favoritas de streaming con facilidad.",
                             Discount = 0,
@@ -209,7 +209,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("dabb3841-2e67-43e0-b741-6f8c3097a55b"),
+                            ProductId = new Guid("ab1cc39e-0687-4dc6-9836-aaf5c0a5f684"),
                             CategoryId = 2,
                             Description = "El celular Samsung Galaxy S23 Ultra 5G es el teléfono inteligente definitivo para los amantes de la tecnología. Con una pantalla AMOLED de 6.8 pulgadas y un potente procesador Snapdragon 8 Gen 1, este teléfono te ofrece un rendimiento ultrarrápido y una experiencia visual inmersiva. Además, su sistema de cámara cuádruple trasera de 108 MP te permite capturar fotos y videos impresionantes.",
                             Discount = 0,
@@ -219,7 +219,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("323da16e-26cc-4afc-98fb-e8d695afabcf"),
+                            ProductId = new Guid("0fc647c6-b06e-4e60-9f6c-d0736e8da0e9"),
                             CategoryId = 2,
                             Description = "Disfruta de tus juegos favoritos con el notebook gamer Lenovo Legion 5. Este potente equipo cuenta con un procesador AMD Ryzen 7 6800H, una placa de video NVIDIA GeForce RTX 3050 Ti y 16 GB de RAM, lo que te garantiza un rendimiento fluido y sin interrupciones. Además, su pantalla Full HD de 15.6 pulgadas con una tasa de refresco de 165 Hz te brinda imágenes nítidas y una experiencia de juego inmersiva.",
                             Discount = 10,
@@ -229,7 +229,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("c89adda0-13ec-46e2-a96a-26c15d5d0170"),
+                            ProductId = new Guid("940e270a-a9c0-45c8-ba02-42b578b5fd35"),
                             CategoryId = 2,
                             Description = "Disfruta de imágenes nítidas y colores vibrantes con el Smart TV LG 4K UHD 55' UP77. Con una pantalla de 55 pulgadas, resolución 4K UHD, y tecnología de mejora de imagen AI Picture, ofrece una experiencia visual envolvente. Además, cuenta con webOS, control por voz, y múltiples opciones de conectividad para acceder a tus contenidos favoritos.",
                             Discount = 5,
@@ -239,7 +239,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("201bb12f-9780-40b9-86ae-48b61e5bb56b"),
+                            ProductId = new Guid("b7716299-7c42-4c32-b4b1-29cf7589792c"),
                             CategoryId = 3,
                             Description = "Estas zapatillas deportivas con plataforma son perfectas para un look casual y cómodo. Su diseño moderno y trendy te hará destacar entre la multitud. La plataforma te dará un poco de altura extra y la suela acolchada te brindará comodidad durante todo el día.",
                             Discount = 0,
@@ -249,7 +249,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("38494165-f789-4506-964f-cee6debc6259"),
+                            ProductId = new Guid("b7130e6d-afc9-44bb-9e24-c19e24b7ada7"),
                             CategoryId = 3,
                             Description = "Este bolso de mano con diseño animal print es el accesorio perfecto para cualquier outfit. Su diseño elegante y sofisticado te hará sentir segura y glamorosa. El tamaño perfecto para llevar todo lo que necesitas.",
                             Discount = 10,
@@ -259,7 +259,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("01f3cd25-a66d-47a4-ae34-5f34283ed359"),
+                            ProductId = new Guid("73c79e59-60d8-443d-9588-ce5849f5513b"),
                             CategoryId = 3,
                             Description = "Este vestido midi con estampado floral es perfecto para cualquier ocasión. Su diseño elegante y femenino te hará sentir segura y hermosa. El tejido suave y fluido te mantendrá cómoda durante todo el día.",
                             Discount = 10,
@@ -269,7 +269,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("c3d89639-cd7a-4908-af1c-1c78fbd8d83f"),
+                            ProductId = new Guid("a23436b2-63bc-43a9-b5ff-adb2280caf2b"),
                             CategoryId = 3,
                             Description = "Cafetera Espresso De'Longhi Dedica con bomba de presión de 15 bares. Diseño compacto y elegante. Opciones de preparación personalizadas. Disfruta de café de alta calidad en casa.",
                             Discount = 5,
@@ -279,7 +279,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("eec38ecf-7ac1-4c88-8089-fe2099477533"),
+                            ProductId = new Guid("9040c042-e536-4c15-badd-e8cfc335fe8a"),
                             CategoryId = 4,
                             Description = "Este juego de sábanas de algodón 100% te brindará una experiencia de sueño confortable y placentera. El algodón es un material suave y transpirable que te mantendrá fresco en verano y cálido en invierno.",
                             Discount = 0,
@@ -289,7 +289,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("72191b2b-b4a3-485b-a1dd-00c4c46f4f3a"),
+                            ProductId = new Guid("0a1706db-eb15-4de2-bfbc-6e56ae1be039"),
                             CategoryId = 4,
                             Description = "Este sofá de dos plazas con diseño moderno es perfecto para cualquier living. Su diseño elegante y minimalista le dará un toque de sofisticación a tu hogar. El tapizado de tela es suave y resistente.",
                             Discount = 10,
@@ -299,7 +299,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("6cda1640-ec45-48c9-964d-39e386b20448"),
+                            ProductId = new Guid("37eb87a9-ba76-42c4-b25e-b309f389e2d2"),
                             CategoryId = 4,
                             Description = "Este juego de vajilla para 6 personas es perfecto para cualquier ocasión. Su diseño clásico y elegante le dará un toque de distinción a tu mesa. El material de porcelana es resistente y duradero.",
                             Discount = 5,
@@ -309,7 +309,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("2040d461-02f5-49c2-be7b-4eb438c642a3"),
+                            ProductId = new Guid("9e760191-07e7-4d58-9884-a6a617001ee4"),
                             CategoryId = 4,
                             Description = "Set de 3 cuadros decorativos modernos con diseños abstractos. Fabricados con materiales de alta calidad. Ideal para renovar tu espacio con estilo.",
                             Discount = 8,
@@ -319,7 +319,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("9ced7950-289d-4e8e-86e6-f733e5cbc6da"),
+                            ProductId = new Guid("20685961-1fa3-4f9a-a53b-c6adcf5f9821"),
                             CategoryId = 5,
                             Description = "Esta crema hidratante facial con ácido hialurónico es perfecta para todo tipo de piel. El ácido hialurónico es un ingrediente que ayuda a retener la hidratación en la piel, lo que la hace lucir más joven y radiante.",
                             Discount = 0,
@@ -329,7 +329,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("3777f689-d2c4-423c-a895-182ed25f5667"),
+                            ProductId = new Guid("61e67677-6c71-4c25-a23d-629a64e0d21c"),
                             CategoryId = 5,
                             Description = "Este cepillo de dientes eléctrico sónico te ayudará a tener una limpieza bucal más profunda y efectiva. Las cerdas sónicas vibran a alta velocidad para eliminar la placa y el sarro de forma eficaz.",
                             Discount = 0,
@@ -339,7 +339,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("ff42a759-248f-4b2b-997e-ffd3cd2324c6"),
+                            ProductId = new Guid("11f64468-2667-4146-b6ab-dba9fb122fb1"),
                             CategoryId = 5,
                             Description = "Este labial de larga duración te brindará un color intenso y duradero. Su fórmula especial es resistente al agua y a los besos.",
                             Discount = 10,
@@ -349,7 +349,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("33d15e60-f860-4536-ae9b-4335e92ead82"),
+                            ProductId = new Guid("cc3e7a92-16e6-4956-b8b1-36d61f393975"),
                             CategoryId = 5,
                             Description = "Secador de pelo profesional con tecnología Ionic Ceramic para un secado rápido y sin frizz. Potente motor de 2200W con 3 ajustes de temperatura y 2 velocidades. Incluye boquilla concentradora y difusor para estilizar el cabello según tus preferencias. Consigue un cabello suave, brillante y saludable con este secador de pelo de calidad profesional.",
                             Discount = 0,
@@ -359,7 +359,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("ce53c62d-e77f-43f6-bea4-2a5303f7b251"),
+                            ProductId = new Guid("aa93dbf2-b7f3-4320-9f3e-88715b53741c"),
                             CategoryId = 6,
                             Description = "Esta pelota de fútbol es perfecta para jugar con amigos o en familia. Su diseño clásico y su material resistente te brindarán horas de diversión.",
                             Discount = 0,
@@ -369,7 +369,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("9d0c45bb-ef9e-4669-95db-b2e773efff79"),
+                            ProductId = new Guid("503d478e-b0e3-4342-bb4f-ca3ebc53e0d2"),
                             CategoryId = 6,
                             Description = "Esta bicicleta de montaña es perfecta para los amantes del ciclismo. Su diseño resistente y duradero te permitirá disfrutar de tus aventuras al aire libre.",
                             Discount = 5,
@@ -379,7 +379,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("c12587ce-e570-47bb-ad01-d5a98de7068a"),
+                            ProductId = new Guid("4cb4394b-2c67-417a-b4e2-28970bae5c78"),
                             CategoryId = 6,
                             Description = "Este juego de mesa es perfecto para pasar un rato divertido en familia. Su diseño atractivo y sus reglas sencillas te brindarán horas de entretenimiento.",
                             Discount = 0,
@@ -389,7 +389,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("a5944141-8c1a-4a3a-ad7e-492c45f2fb33"),
+                            ProductId = new Guid("3d63c9a2-7793-4106-98d8-66b89f3ef7a0"),
                             CategoryId = 6,
                             Description = "Disfruta del agua con la tabla de paddle surf hinchable Aqua Marina Fusion. Fabricada con material de alta calidad, esta tabla ofrece estabilidad y durabilidad. Su diseño hinchable la hace fácil de transportar y almacenar. Equipada con una bomba de alta presión y una bolsa de transporte, es perfecta para explorar lagos, ríos y costas. ¡Sumérgete en la diversión con esta tabla de paddle surf!",
                             Discount = 8,
@@ -399,7 +399,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("91407ebe-ced2-4d84-a30f-a23ce69df566"),
+                            ProductId = new Guid("5cebb56c-81e3-40f4-b72b-5a3a12c4fee2"),
                             CategoryId = 7,
                             Description = "Estos bloques de construcción son perfectos para que los niños desarrollen su creatividad e imaginación. Con ellos podrán construir todo tipo de estructuras, desde casas y castillos hasta naves espaciales y robots.",
                             Discount = 10,
@@ -409,7 +409,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("f615213e-07f7-4043-b107-9e42dea29502"),
+                            ProductId = new Guid("a79e4ba1-876c-498a-8d5e-975d365e9c17"),
                             CategoryId = 7,
                             Description = "Esta muñeca es perfecta para que las niñas se diviertan y aprendan a cuidar de los demás. Viene con ropa y accesorios para que las niñas puedan crear todo tipo de historias.",
                             Discount = 0,
@@ -419,7 +419,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("55fcc465-704e-4287-998c-bfded3a14d97"),
+                            ProductId = new Guid("66776f20-ced4-492b-856f-ea7ab87282b2"),
                             CategoryId = 7,
                             Description = "Este juego de mesa es perfecto para que los niños se diviertan en familia. Sus reglas sencillas y su diseño atractivo lo hacen ideal para niños de todas las edades.",
                             Discount = 10,
@@ -429,7 +429,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("5aa36dd5-1899-4eee-93b6-81c5c6726349"),
+                            ProductId = new Guid("6f7b9d6d-1853-4035-b71c-fadfe67e69c3"),
                             CategoryId = 7,
                             Description = "Construye una de las maravillas del mundo con el set LEGO Creator Expert Taj Mahal. Este impresionante set incluye más de 9500 piezas para recrear fielmente este icónico monumento. Con detalles intrincados y una escala impresionante, esta maqueta proporciona una experiencia de construcción desafiante y gratificante para aficionados y coleccionistas. ¡Embárcate en un viaje arquitectónico con este magnífico set de LEGO!",
                             Discount = 9,
@@ -439,7 +439,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("ea816fb4-eacd-42aa-9994-b2d6d10cf250"),
+                            ProductId = new Guid("01eed05a-694f-4e12-ad03-55d489149abd"),
                             CategoryId = 8,
                             Description = "Estas manzanas frescas son de la mejor calidad y tienen un sabor delicioso. Son perfectas para comer como snack o para usar en recetas.",
                             Discount = 0,
@@ -449,7 +449,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("73988485-0742-455d-8e52-df3d56cfebc0"),
+                            ProductId = new Guid("89db469f-9ad3-4f81-81a4-55e7aa4f391e"),
                             CategoryId = 8,
                             Description = "Esta leche descremada es ideal para aquellos que buscan una opción más saludable. Es baja en calorías y grasa, pero aún así tiene un sabor delicioso.",
                             Discount = 0,
@@ -459,7 +459,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("0f838257-ea41-4b98-938f-380b8eeffb6a"),
+                            ProductId = new Guid("2ecabb97-02e9-444f-8e5a-ff9b1431c4ff"),
                             CategoryId = 8,
                             Description = "Estas galletas de chocolate son perfectas para disfrutar con un café o un té. Son deliciosas y crujientes.",
                             Discount = 0,
@@ -469,7 +469,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("33cfed73-dd37-4968-84d8-6286a466a3a6"),
+                            ProductId = new Guid("d6eb3e2f-4f1b-432e-b0ec-b9c403b6d5ad"),
                             CategoryId = 8,
                             Description = "Explora el mundo del vino con este kit de degustación que incluye una selección de vinos de diferentes variedades y regiones. Cada botella está cuidadosamente seleccionada para ofrecer una experiencia única de degustación. Descubre nuevos sabores, aromas y texturas mientras disfrutas de una velada especial con amigos o familiares.",
                             Discount = 8,
@@ -479,7 +479,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("7d431943-3a01-4733-a5f8-b119b7ffaecc"),
+                            ProductId = new Guid("b5b883b3-7c9b-46c3-9fae-4f63657892c4"),
                             CategoryId = 9,
                             Description = "Este libro de ficción es una novela apasionante que te atrapará desde el principio.",
                             Discount = 0,
@@ -489,7 +489,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("226b352a-3a49-49ce-8994-4622926396be"),
+                            ProductId = new Guid("a95eb30b-db25-4f1d-94d2-d867435d60c9"),
                             CategoryId = 9,
                             Description = "Estos lápices de colores son ideales para que los niños exploren su creatividad.",
                             Discount = 0,
@@ -499,7 +499,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("dbc63226-819b-4732-8919-8db8bfed915b"),
+                            ProductId = new Guid("a2daf8f7-6ac5-4c33-a87b-0a5585ce28d4"),
                             CategoryId = 9,
                             Description = "Este cuaderno de notas es perfecto para tomar apuntes en clase o en la oficina.",
                             Discount = 0,
@@ -509,7 +509,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("4e059cff-8ac9-4421-baec-073b83627976"),
+                            ProductId = new Guid("84c2c476-d2da-4dfe-a106-fc66940bb11f"),
                             CategoryId = 9,
                             Description = "Descubre una variedad de deliciosas recetas de diferentes culturas y regiones del mundo con este libro de cocina. Desde platos tradicionales hasta opciones modernas, este libro te guiará a través de pasos sencillos para crear comidas increíbles en tu propia cocina. Con fotografías inspiradoras y consejos útiles, es perfecto para chefs aficionados y entusiastas de la cocina.",
                             Discount = 8,
@@ -519,7 +519,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("fe4312d7-8d3c-4f7f-ab01-8f05e99e603a"),
+                            ProductId = new Guid("ba5dfb09-1705-4acc-bed2-7e67b9b53a03"),
                             CategoryId = 10,
                             Description = "Estas tijeras de podar son ideales para cortar ramas y tallos de plantas.",
                             Discount = 10,
@@ -529,7 +529,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("5e2cee25-2243-4f90-ac2d-a9df74551741"),
+                            ProductId = new Guid("4b4e92f7-b410-4c86-9a1b-15e8ba65b812"),
                             CategoryId = 10,
                             Description = "Esta manguera de jardín es perfecta para regar tus plantas y flores.",
                             Discount = 10,
@@ -539,7 +539,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("2fb85e9f-8546-4d84-a9bc-23e4535fbb66"),
+                            ProductId = new Guid("523c2790-da82-4e8a-9797-a1b6753e39d2"),
                             CategoryId = 10,
                             Description = "Este kit de herramientas básicas es perfecto para realizar pequeños trabajos de bricolaje en casa.",
                             Discount = 10,
@@ -549,7 +549,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductoId = new Guid("e0df1b5a-fefa-4026-9f82-83c1bd2cf0f0"),
+                            ProductId = new Guid("ed17203e-d9a4-4245-bc00-c6daa9e9acd8"),
                             CategoryId = 10,
                             Description = "Haz que tu jardín florezca con este completo kit de herramientas de jardinería. Incluye una variedad de herramientas esenciales como palas, rastrillos, tijeras de podar y más, todo en un práctico estuche. Diseñadas para durar y facilitar el trabajo en el jardín, estas herramientas te ayudarán a mantener tu espacio verde hermoso y saludable durante todo el año.",
                             Discount = 9,
@@ -561,11 +561,11 @@ namespace Infraestructure.Migrations
 
             modelBuilder.Entity("Domain.Entitys.Sale", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("SaleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SaleId"));
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -582,7 +582,7 @@ namespace Infraestructure.Migrations
                     b.Property<decimal>("TotalPay")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("Id");
+                    b.HasKey("SaleId");
 
                     b.ToTable("Sale", (string)null);
                 });
@@ -608,7 +608,7 @@ namespace Infraestructure.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("SaleId")
                         .HasColumnType("int")
                         .HasColumnName("Sale");
 
@@ -616,7 +616,7 @@ namespace Infraestructure.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("Id");
+                    b.HasIndex("SaleId");
 
                     b.ToTable("SaleProduct", (string)null);
                 });
@@ -625,7 +625,7 @@ namespace Infraestructure.Migrations
                 {
                     b.HasOne("Domain.Entitys.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("Category")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -642,7 +642,7 @@ namespace Infraestructure.Migrations
 
                     b.HasOne("Domain.Entitys.Sale", "Sales")
                         .WithMany("SaleProducts")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("SaleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

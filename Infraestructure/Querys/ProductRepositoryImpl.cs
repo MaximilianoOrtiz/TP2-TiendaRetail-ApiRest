@@ -43,7 +43,7 @@ namespace Infraestructure.Querys
         public async Task<Product> FindProductByIdAsync(Guid productoId)
         {
             var products = (from product in _context.Product
-                            where product.ProductoId == productoId
+                            where product.ProductId == productoId
                             select product).FirstOrDefault();
             return products;
 
