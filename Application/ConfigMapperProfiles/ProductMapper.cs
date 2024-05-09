@@ -1,5 +1,5 @@
 ﻿using Application.Dtos;
-using Application.Dtos.Product;
+using Application.Dtos.Product.Response;
 using AutoMapper;
 using Domain.Entitys;
 

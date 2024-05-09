@@ -1,6 +1,6 @@
 ﻿using Application.Dtos;
 using Application.Dtos.ApiError;
-using Application.Dtos.Product;
+using Application.Dtos.Product.Response;
 using Application.Exceptions;
 using Application.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;

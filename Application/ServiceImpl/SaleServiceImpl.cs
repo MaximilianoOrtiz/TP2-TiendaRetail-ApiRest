@@ -84,16 +84,27 @@ namespace Application.UseCase
             if (sale == null) { return null; }
 
             SaleResponse saleResponse = _mapper.Map<SaleResponse>(sale);
+            saleResponse.TotalQuantity = sale.SaleProducts.Count;
 
-            int totalQuantity = 0;
-            //Calculo el TotalQuantity y se lo incorporo a la respuesta
-            foreach (SaleProduct product in sale.SaleProducts)
-            {
-                totalQuantity += product.Quantity;
-            }
-            saleResponse.TotalQuantity = totalQuantity;
             _logger.LogInformation("Out - FindSaveById");
             return saleResponse;
+        }
+
+        public async Task<List<SaleGetResponse>> GetFilterByDateTime(DateTime from, DateTime to)
+        {
+            _logger.LogInformation("Init - GetFilterByDateTime");
+            List<SaleGetResponse> response = new List<SaleGetResponse>();
+
+            List<Sale> listSale = await _saleRepository.GetFilterByDateTime(from, to);
+
+            foreach (Sale sale in listSale)
+            {
+                var saleAux = _mapper.Map<SaleGetResponse>(sale);
+                saleAux.TotalQuantity = sale.SaleProducts.Count;
+                response.Add(saleAux);
+            }
+            _logger.LogInformation("Out - GetFilterByDateTime");
+            return response;
         }
     }
 }

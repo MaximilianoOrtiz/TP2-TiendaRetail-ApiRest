@@ -4,13 +4,14 @@ using Application.Dtos.Sale.Response;
 using Application.Exceptions;
 using Application.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using System.Data.Common;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TP2_TiendaRetail_ApiRest.Controllers
 {
-    [Route("api/")]
+    [Route("")]
     [ApiController]
     public class SaleController : ControllerBase
     {
@@ -52,8 +53,27 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
                 {
                     return NotFound(new ApiError("No existe una venta asociada al Id: " + id));
                 }
-
                 return Ok(saleResponse);
+            }
+            catch (DbException ex)
+            {
+                return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
+            }
+        }
+
+        [HttpGet]
+        [Route("[controller]")]
+        public async Task<ActionResult<List<SaleGetResponse>>> GetFilterByDateTime([FromQuery] DateTime from, [FromQuery] DateTime to)
+        {
+            try
+            {
+                List<SaleGetResponse> saleGetResponse = await _saleService.GetFilterByDateTime(from, to);
+                if (saleGetResponse.IsNullOrEmpty())
+                {
+                    return NotFound(new ApiError("No existen ventas dentro del periodo indicado - Inicio : " + from + " Fin: " + to));
+                }
+
+                return Ok(saleGetResponse);
             }
             catch (DbException ex)
             {
