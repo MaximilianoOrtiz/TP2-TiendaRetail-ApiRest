@@ -39,7 +39,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         [HttpGet]
         [Route("[controller]")]
         public async Task<ActionResult<ProductoGetResponse>> GetProductbyFilters([FromQuery] int[] categorys,
-                                                                                  [FromQuery] string name,
+                                                                                  [FromQuery] string? name,
                                                                                   [FromQuery][DefaultValue(0)] int limit,
                                                                                   [FromQuery][DefaultValue(0)] int offset)
         {
