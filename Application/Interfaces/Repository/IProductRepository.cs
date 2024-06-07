@@ -9,5 +9,6 @@ namespace Application.Interfaces.Repository
         public Task<List<Product>> FindProductByNameAsync(string name);
         public Task<Product> FindProductByEqualNameAsync(string name);
         public Task<Product> FindProductByIdAsync(Guid productoId);
+        public Task<List<Product>> FindAllProduct();
     }
 }

@@ -55,6 +55,10 @@ namespace Application.UseCase
                 }
                 else
                 {
+                    if (categorys.Length == 1 && categorys[0] == 0)
+                    {
+                        listProducts = await _productRepository.FindAllProduct();
+                    }
                     foreach (int category in categorys)
                     {
                         listProducts = listProducts.Concat(
