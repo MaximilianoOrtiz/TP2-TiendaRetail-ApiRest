@@ -43,13 +43,29 @@ namespace Application.UseCase
 
             if (categorys.Length > 0)
             {
-                //Traigo todos los productos a partir de las categorias seleccionadas
-                foreach (int category in categorys)
+                if (!string.IsNullOrEmpty(name))
                 {
-                    listProducts = listProducts.Concat(
-                        await _productRepository.FindProductByCategoryIdAndNameAsync(category, name)).ToList();
+                    //Traigo todos los productos a partir de las categorias seleccionadas
+                    foreach (int category in categorys)
+                    {
+                        listProducts = listProducts.Concat(
+                            await _productRepository.FindProductByCategoryIdAndNameAsync(category, name)).ToList();
+                    }
+                    _logger.LogInformation($"Cantidad de productos encontrados por todas las categorias ingresadas: {listProducts.Count}");
                 }
-                _logger.LogInformation($"Cantidad de productos encontrados por todas las categorias ingresadas: {listProducts.Count}");
+                else
+                {
+                    if (categorys.Length == 1 && categorys[0] == 0)
+                    {
+                        listProducts = await _productRepository.FindAllProduct();
+                    }
+                    foreach (int category in categorys)
+                    {
+                        listProducts = listProducts.Concat(
+                            await _productRepository.FindProductByCategoryIdAsync(category)).ToList();
+                    }
+                    _logger.LogInformation($"Cantidad de productos encontrados por categpriaId: {listProducts.Count}");
+                }
             }
             else
             {

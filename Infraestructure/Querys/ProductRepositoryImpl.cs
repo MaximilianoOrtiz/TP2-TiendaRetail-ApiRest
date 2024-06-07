@@ -48,5 +48,24 @@ namespace Infraestructure.Querys
             return products;
 
         }
+
+        public async Task<List<Product>> FindProductByCategoryIdAsync(int category)
+        {
+            var products = _context.Product
+               .Include(product => product.Category)
+               .Where(product => product.CategoryId == category)
+               .ToList();
+
+            return products;
+        }
+
+        public async Task<List<Product>> FindAllProduct()
+        {
+            var allProducts = await _context.Product
+                .Include(product => product.Category)
+                .ToListAsync();
+
+            return allProducts;
+        }
     }
 }

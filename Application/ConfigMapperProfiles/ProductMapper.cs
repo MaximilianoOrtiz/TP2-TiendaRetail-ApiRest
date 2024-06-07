@@ -10,8 +10,8 @@ namespace Application.ConfigMapperProfiles
         public ProductMapper()
         {
             CreateMap<Product, ProductoGetResponse>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ProductId))
-                .ForMember(dest => dest.CategoriaName, opt => opt.MapFrom(src => src.Category.Name));
+                    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ProductId))
+                    .ForMember(dest => dest.CategoriaName, opt => opt.MapFrom(src => src.Category.Name));
 
             CreateMap<Product, ProductResponse>()
                  .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ProductId));

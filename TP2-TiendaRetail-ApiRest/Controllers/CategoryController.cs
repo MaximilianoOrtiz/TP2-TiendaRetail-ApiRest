@@ -45,5 +45,38 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             }
 
         }
+
+        [HttpGet]
+        [Route("prueba")]
+        public IActionResult Get()
+        {
+            var tutorials = new List<object>
+            {
+                new
+                {
+                    id = "html",
+                    title = "HTML: Descripcion de HTML",
+                    text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident error ut,velit commodi harum a explicabo? Velit voluptatibus vero quos ex molestias.",
+                    listItem = new [] { "Etiquetas (tags)", "Atributos", "Elementos" }
+                },
+                new
+                {
+                    id = "css",
+                    title = "CSS: Descripcion de CSS",
+                    text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident error ut,velit commodi harum a explicabo? Velit voluptatibus vero quos ex molestias.",
+                    listItem = new [] { "Etiquetas (tags)", "Atributos", "Elementos" }
+                },
+                new
+                {
+                    id = "javascript",
+                    title = "Javascript: Descripcion de Javascript",
+                    text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident error ut,velit commodi harum a explicabo? Velit voluptatibus vero quos ex molestias.",
+                    listItem = new [] { "Etiquetas (tags)", "Atributos", "Elementos" }
+                }
+            };
+
+            return Ok(tutorials);
+        }
+
     }
 }
