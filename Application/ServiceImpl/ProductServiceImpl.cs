@@ -74,7 +74,9 @@ namespace Application.UseCase
                     listProducts = await _productRepository.FindProductByNameAsync(name);
                     _logger.LogInformation($"Cantidad de productos encontrados por nombre ingresado: {listProducts.Count}");
                 }
-                else return response;
+                else {
+                    listProducts = await _productRepository.FindAllProduct();
+                }
             }
 
             _logger.LogInformation("Inicio paginación");

@@ -46,10 +46,6 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             try
             {
                 List<ProductoGetResponse> listProduct = await _productService.FindProductByCategoryIdAndNameAsync(categorys, name, limit, offset);
-                if (listProduct.Count() == 0)
-                {
-                    return NotFound(new ApiError("No se encontraron productos"));
-                }
 
                 return Ok(listProduct);
             }
