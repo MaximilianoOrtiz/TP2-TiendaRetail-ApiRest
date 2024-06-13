@@ -26,11 +26,11 @@ namespace TP2_TiendaRetail_ApiRest
                                   policy =>
                                   {
                                       policy.WithOrigins("http://127.0.0.1:5501"); // add the allowed origins  
-                                  });   
+                                  });
             });
 
             // Add services to the container.
-                
+
             builder.Services.AddControllers();
 
             builder.Logging.AddLog4Net();

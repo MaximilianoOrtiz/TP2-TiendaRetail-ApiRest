@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240607000840_DbTiendaRetail")]
+    [Migration("20240607005824_DbTiendaRetail")]
     partial class DbTiendaRetail
     {
         /// <inheritdoc />
@@ -159,7 +159,7 @@ namespace Infraestructure.Migrations
                     b.HasData(
                         new
                         {
-                            ProductId = new Guid("391fe6bd-81f0-4d3e-86bf-41b868de49fd"),
+                            ProductId = new Guid("c0acf26a-1bdf-4eed-b9cc-6d79139a8972"),
                             CategoryId = 1,
                             Description = "Lavarropas con capacidad de 12 Kg, 14 programas de lavado, eficiencia energética A, centrifugado de 750 rpm, función antiarrugas, dispensador automático de detergente, puerta con visor de vidrio templado y panel de control electrónico.",
                             Discount = 0,
@@ -169,7 +169,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("6886c212-34ae-47d6-9895-024c71679c2e"),
+                            ProductId = new Guid("bdb5bf12-0c79-495c-be21-10adf0a1cf0a"),
                             CategoryId = 1,
                             Description = "Heladera con capacidad total de 311 litros, 224 litros de heladera y 87 litros de freezer. Sistema de frío No Frost, eficiencia energética A, 4 estrellas de freezer, función de congelamiento rápido, dispenser de agua y luz LED interior.",
                             Discount = 11,
@@ -179,7 +179,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("2d8c7a41-d8d2-45c8-81a1-5f15e1a4aefa"),
+                            ProductId = new Guid("4b8c15a5-bc43-4c36-81a7-d954904fff18"),
                             CategoryId = 1,
                             Description = "Aire acondicionado con capacidad de frío de 3000 frigorías y capacidad de calor de 3000 watts. Tecnología Inverter, eficiencia energética A, función de deshumidificación, timer programable, control remoto y modo Sleep.",
                             Discount = 5,
@@ -189,7 +189,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("421f0e62-4e6e-4e19-b25f-1dbef5638785"),
+                            ProductId = new Guid("16711208-6699-4ce9-b7f4-2ddea76ed1ff"),
                             CategoryId = 1,
                             Description = "Lavadora de carga frontal con capacidad de lavado de 10.5 kg. Tecnología EcoBubble que activa el detergente con aire y agua antes de que comience el ciclo de lavado, garantizando una limpieza profunda incluso en agua fría. Eficiencia energética A+++, múltiples programas de lavado, pantalla LED táctil, y sistema de auto-limpieza.",
                             Discount = 4,
@@ -199,7 +199,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("555a8d23-554a-4c2b-a432-6bdedfabb116"),
+                            ProductId = new Guid("bd7cff12-17ba-4326-9446-013c7b46000f"),
                             CategoryId = 2,
                             Description = "Televisor Smart TV LED LG de 50 pulgadas con resolución 4K UHD. Cuenta con tecnología LED para un brillo y contraste excepcionales, y su procesador inteligente te garantiza imágenes nítidas y colores vibrantes. Además, su plataforma Smart TV te permite acceder a tus aplicaciones favoritas de streaming con facilidad.",
                             Discount = 0,
@@ -209,7 +209,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("64495d40-7d29-49a7-bf54-712fba99cbf5"),
+                            ProductId = new Guid("aa74160d-fd03-4cc0-8b31-8b2f53fbb3be"),
                             CategoryId = 2,
                             Description = "El celular Samsung Galaxy S23 Ultra 5G es el teléfono inteligente definitivo para los amantes de la tecnología. Con una pantalla AMOLED de 6.8 pulgadas y un potente procesador Snapdragon 8 Gen 1, este teléfono te ofrece un rendimiento ultrarrápido y una experiencia visual inmersiva. Además, su sistema de cámara cuádruple trasera de 108 MP te permite capturar fotos y videos impresionantes.",
                             Discount = 0,
@@ -219,17 +219,17 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("05aa4944-705b-4397-bb82-dac21fa4c9c0"),
+                            ProductId = new Guid("3424bd93-2864-4fce-9942-db1bd6ed263a"),
                             CategoryId = 2,
                             Description = "Disfruta de tus juegos favoritos con el notebook gamer Lenovo Legion 5. Este potente equipo cuenta con un procesador AMD Ryzen 7 6800H, una placa de video NVIDIA GeForce RTX 3050 Ti y 16 GB de RAM, lo que te garantiza un rendimiento fluido y sin interrupciones. Además, su pantalla Full HD de 15.6 pulgadas con una tasa de refresco de 165 Hz te brinda imágenes nítidas y una experiencia de juego inmersiva.",
                             Discount = 10,
-                            ImageUrl = "https://www.fravega.com.ar/wcsstore/fravega/images/catalog/2023/Febrero/02-02-2023/82JW007LAR-01.jpg",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_871625-MLA75823629201_042024-O.webp",
                             Name = "Notebook Gamer Lenovo Legion 5 15ACH6H 82JW007LAR",
                             Price = 299999m
                         },
                         new
                         {
-                            ProductId = new Guid("b5326ea4-5926-4e7b-9e3e-3f9c26405108"),
+                            ProductId = new Guid("57f5a861-3721-4bc0-8572-6eadaf73db34"),
                             CategoryId = 2,
                             Description = "Disfruta de imágenes nítidas y colores vibrantes con el Smart TV LG 4K UHD 55' UP77. Con una pantalla de 55 pulgadas, resolución 4K UHD, y tecnología de mejora de imagen AI Picture, ofrece una experiencia visual envolvente. Además, cuenta con webOS, control por voz, y múltiples opciones de conectividad para acceder a tus contenidos favoritos.",
                             Discount = 5,
@@ -239,7 +239,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("b6db4957-2138-4b04-87a1-d3a78357c28d"),
+                            ProductId = new Guid("59da04e5-044c-42ee-ae1a-3ce2455ab823"),
                             CategoryId = 3,
                             Description = "Estas zapatillas deportivas con plataforma son perfectas para un look casual y cómodo. Su diseño moderno y trendy te hará destacar entre la multitud. La plataforma te dará un poco de altura extra y la suela acolchada te brindará comodidad durante todo el día.",
                             Discount = 0,
@@ -249,7 +249,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("9cce47a3-fac7-46d5-88f5-4dbb952cd71b"),
+                            ProductId = new Guid("581936bf-1439-4e1a-b549-d3f1ebd21e7a"),
                             CategoryId = 3,
                             Description = "Este bolso de mano con diseño animal print es el accesorio perfecto para cualquier outfit. Su diseño elegante y sofisticado te hará sentir segura y glamorosa. El tamaño perfecto para llevar todo lo que necesitas.",
                             Discount = 10,
@@ -259,7 +259,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("6178dad1-b05e-4d1c-9881-dfa66b5c9865"),
+                            ProductId = new Guid("cac4da75-8cd2-436e-b8ef-a27f1e6ed801"),
                             CategoryId = 3,
                             Description = "Este vestido midi con estampado floral es perfecto para cualquier ocasión. Su diseño elegante y femenino te hará sentir segura y hermosa. El tejido suave y fluido te mantendrá cómoda durante todo el día.",
                             Discount = 10,
@@ -269,7 +269,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("898c64a1-9468-432e-8710-6e4ddeb45ec5"),
+                            ProductId = new Guid("f9dd46d4-b90d-4f20-82da-21b5632c3bae"),
                             CategoryId = 3,
                             Description = "Cafetera Espresso De'Longhi Dedica con bomba de presión de 15 bares. Diseño compacto y elegante. Opciones de preparación personalizadas. Disfruta de café de alta calidad en casa.",
                             Discount = 5,
@@ -279,7 +279,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("067fde6a-c792-45a7-accc-befc18d9833a"),
+                            ProductId = new Guid("edb560a7-6304-43cc-96d8-867dc2fec521"),
                             CategoryId = 4,
                             Description = "Este juego de sábanas de algodón 100% te brindará una experiencia de sueño confortable y placentera. El algodón es un material suave y transpirable que te mantendrá fresco en verano y cálido en invierno.",
                             Discount = 0,
@@ -289,7 +289,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("42a9ca2b-15ed-4433-8df2-3cf090bacccf"),
+                            ProductId = new Guid("4dff321a-1973-479d-bfa2-b86d37ea8ada"),
                             CategoryId = 4,
                             Description = "Este sofá de dos plazas con diseño moderno es perfecto para cualquier living. Su diseño elegante y minimalista le dará un toque de sofisticación a tu hogar. El tapizado de tela es suave y resistente.",
                             Discount = 10,
@@ -299,7 +299,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("f01f0a16-675f-48ef-bd39-fec54b708cb8"),
+                            ProductId = new Guid("55f49b3c-849b-4f9e-b7b5-733f9bee478a"),
                             CategoryId = 4,
                             Description = "Este juego de vajilla para 6 personas es perfecto para cualquier ocasión. Su diseño clásico y elegante le dará un toque de distinción a tu mesa. El material de porcelana es resistente y duradero.",
                             Discount = 5,
@@ -309,7 +309,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("71524f18-34c5-4835-bc5f-88b70bde4340"),
+                            ProductId = new Guid("6908fe49-3e6f-463a-84f1-6c171e456d3e"),
                             CategoryId = 4,
                             Description = "Set de 3 cuadros decorativos modernos con diseños abstractos. Fabricados con materiales de alta calidad. Ideal para renovar tu espacio con estilo.",
                             Discount = 8,
@@ -319,7 +319,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("92df43c4-c332-420a-8d6c-7af3be2e590b"),
+                            ProductId = new Guid("3a04d161-a786-4d9f-bff0-bfba70dccc97"),
                             CategoryId = 5,
                             Description = "Esta crema hidratante facial con ácido hialurónico es perfecta para todo tipo de piel. El ácido hialurónico es un ingrediente que ayuda a retener la hidratación en la piel, lo que la hace lucir más joven y radiante.",
                             Discount = 0,
@@ -329,7 +329,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("48c6b0ce-5e99-418f-8556-5662d3e8b7a6"),
+                            ProductId = new Guid("143f773b-827d-4e36-8cf3-7aad40400d48"),
                             CategoryId = 5,
                             Description = "Este cepillo de dientes eléctrico sónico te ayudará a tener una limpieza bucal más profunda y efectiva. Las cerdas sónicas vibran a alta velocidad para eliminar la placa y el sarro de forma eficaz.",
                             Discount = 0,
@@ -339,7 +339,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("cb64fc5c-b1d9-4a10-ac7d-ae5ad21cd993"),
+                            ProductId = new Guid("936fb017-90f4-49ef-8e46-6748af45ece2"),
                             CategoryId = 5,
                             Description = "Este labial de larga duración te brindará un color intenso y duradero. Su fórmula especial es resistente al agua y a los besos.",
                             Discount = 10,
@@ -349,7 +349,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("dc7c4da6-018f-4554-ad6c-83d6e7f4fd24"),
+                            ProductId = new Guid("a5b925a1-0d18-45b5-92e8-ce91e1a00af4"),
                             CategoryId = 5,
                             Description = "Secador de pelo profesional con tecnología Ionic Ceramic para un secado rápido y sin frizz. Potente motor de 2200W con 3 ajustes de temperatura y 2 velocidades. Incluye boquilla concentradora y difusor para estilizar el cabello según tus preferencias. Consigue un cabello suave, brillante y saludable con este secador de pelo de calidad profesional.",
                             Discount = 0,
@@ -359,7 +359,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("68b6f9b0-ac7b-469c-ae19-f501dcca2dce"),
+                            ProductId = new Guid("d2c2d780-6198-4eeb-9062-afccd512b5d8"),
                             CategoryId = 6,
                             Description = "Esta pelota de fútbol es perfecta para jugar con amigos o en familia. Su diseño clásico y su material resistente te brindarán horas de diversión.",
                             Discount = 0,
@@ -369,7 +369,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("86b35554-3a2d-447d-b28b-f242e2f91106"),
+                            ProductId = new Guid("ab55391f-74c1-4e12-991f-49918744fdff"),
                             CategoryId = 6,
                             Description = "Esta bicicleta de montaña es perfecta para los amantes del ciclismo. Su diseño resistente y duradero te permitirá disfrutar de tus aventuras al aire libre.",
                             Discount = 5,
@@ -379,7 +379,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("5cd81d79-59fe-49f5-ab32-e1d84a63f630"),
+                            ProductId = new Guid("b353b64f-03f5-48d2-8c95-9b95fadd607b"),
                             CategoryId = 6,
                             Description = "Este juego de mesa es perfecto para pasar un rato divertido en familia. Su diseño atractivo y sus reglas sencillas te brindarán horas de entretenimiento.",
                             Discount = 0,
@@ -389,7 +389,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("d1dcf6c0-782d-4f44-89c8-8f8e0dd21e1d"),
+                            ProductId = new Guid("e28516c4-3829-49c4-a9bd-5ac53c500cf4"),
                             CategoryId = 6,
                             Description = "Disfruta del agua con la tabla de paddle surf hinchable Aqua Marina Fusion. Fabricada con material de alta calidad, esta tabla ofrece estabilidad y durabilidad. Su diseño hinchable la hace fácil de transportar y almacenar. Equipada con una bomba de alta presión y una bolsa de transporte, es perfecta para explorar lagos, ríos y costas. ¡Sumérgete en la diversión con esta tabla de paddle surf!",
                             Discount = 8,
@@ -399,7 +399,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("4b739e59-d143-4907-8e52-c4f24de329b6"),
+                            ProductId = new Guid("13441901-a744-4063-8deb-e805a27c3bc4"),
                             CategoryId = 7,
                             Description = "Estos bloques de construcción son perfectos para que los niños desarrollen su creatividad e imaginación. Con ellos podrán construir todo tipo de estructuras, desde casas y castillos hasta naves espaciales y robots.",
                             Discount = 10,
@@ -409,7 +409,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("a08e7afc-ae25-4f08-b48c-d39ec8a582a6"),
+                            ProductId = new Guid("a8afbdf8-ea44-4339-9f9c-b22fa1853cb6"),
                             CategoryId = 7,
                             Description = "Esta muñeca es perfecta para que las niñas se diviertan y aprendan a cuidar de los demás. Viene con ropa y accesorios para que las niñas puedan crear todo tipo de historias.",
                             Discount = 0,
@@ -419,7 +419,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("16b18263-b489-428d-bdb6-f14b5fa6b261"),
+                            ProductId = new Guid("e1ffb8d0-0547-48e4-b2c4-0f1d73c81d3d"),
                             CategoryId = 7,
                             Description = "Este juego de mesa es perfecto para que los niños se diviertan en familia. Sus reglas sencillas y su diseño atractivo lo hacen ideal para niños de todas las edades.",
                             Discount = 10,
@@ -429,7 +429,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("3f329579-9f38-4324-ab5a-5f51709a4746"),
+                            ProductId = new Guid("2ca4cfc5-85c7-41fd-92cf-4d5f8238df4c"),
                             CategoryId = 7,
                             Description = "Construye una de las maravillas del mundo con el set LEGO Creator Expert Taj Mahal. Este impresionante set incluye más de 9500 piezas para recrear fielmente este icónico monumento. Con detalles intrincados y una escala impresionante, esta maqueta proporciona una experiencia de construcción desafiante y gratificante para aficionados y coleccionistas. ¡Embárcate en un viaje arquitectónico con este magnífico set de LEGO!",
                             Discount = 9,
@@ -439,7 +439,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("732fb105-77d3-41e2-8246-c10f1dbbfb29"),
+                            ProductId = new Guid("9e64b535-c352-4ae4-9805-edc1c6bf1dae"),
                             CategoryId = 8,
                             Description = "Estas manzanas frescas son de la mejor calidad y tienen un sabor delicioso. Son perfectas para comer como snack o para usar en recetas.",
                             Discount = 0,
@@ -449,7 +449,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("b79e6d9d-1529-4d4b-88c4-f5975a129973"),
+                            ProductId = new Guid("91a448bc-9960-41e0-a997-a9f458100dfd"),
                             CategoryId = 8,
                             Description = "Esta leche descremada es ideal para aquellos que buscan una opción más saludable. Es baja en calorías y grasa, pero aún así tiene un sabor delicioso.",
                             Discount = 0,
@@ -459,7 +459,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("85ec14ff-1673-4a10-af72-115ff87f9605"),
+                            ProductId = new Guid("5836e9ed-be73-4c5a-98c6-5fa7be76f895"),
                             CategoryId = 8,
                             Description = "Estas galletas de chocolate son perfectas para disfrutar con un café o un té. Son deliciosas y crujientes.",
                             Discount = 0,
@@ -469,7 +469,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("eb47e222-8fcf-41ec-bf38-c69b677017cd"),
+                            ProductId = new Guid("00aac302-8293-4f56-bf55-0fac8f35c895"),
                             CategoryId = 8,
                             Description = "Explora el mundo del vino con este kit de degustación que incluye una selección de vinos de diferentes variedades y regiones. Cada botella está cuidadosamente seleccionada para ofrecer una experiencia única de degustación. Descubre nuevos sabores, aromas y texturas mientras disfrutas de una velada especial con amigos o familiares.",
                             Discount = 8,
@@ -479,7 +479,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("5a95261d-7c5f-407a-9049-05916c52b103"),
+                            ProductId = new Guid("91a64e43-1777-42be-9c41-5778df6f2093"),
                             CategoryId = 9,
                             Description = "Este libro de ficción es una novela apasionante que te atrapará desde el principio.",
                             Discount = 0,
@@ -489,7 +489,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("ef03c4ec-b8c1-4cb8-93c9-8fc53e82e533"),
+                            ProductId = new Guid("5c79275b-c202-486c-bf26-72a6f84319d8"),
                             CategoryId = 9,
                             Description = "Estos lápices de colores son ideales para que los niños exploren su creatividad.",
                             Discount = 0,
@@ -499,7 +499,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("f9941b2e-6c7f-4f38-bdeb-974dc1158c3d"),
+                            ProductId = new Guid("570b28ee-e8e3-4cf3-87b0-456a9f60b398"),
                             CategoryId = 9,
                             Description = "Este cuaderno de notas es perfecto para tomar apuntes en clase o en la oficina.",
                             Discount = 0,
@@ -509,7 +509,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("d6fa39dd-cf8b-4dc9-9aa3-ec4204d80dd4"),
+                            ProductId = new Guid("8bea91bf-1118-49b7-a6e1-45560627e1f5"),
                             CategoryId = 9,
                             Description = "Descubre una variedad de deliciosas recetas de diferentes culturas y regiones del mundo con este libro de cocina. Desde platos tradicionales hasta opciones modernas, este libro te guiará a través de pasos sencillos para crear comidas increíbles en tu propia cocina. Con fotografías inspiradoras y consejos útiles, es perfecto para chefs aficionados y entusiastas de la cocina.",
                             Discount = 8,
@@ -519,7 +519,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("5ab9a6ee-a4ef-4ae3-8f2d-a25af1b557d3"),
+                            ProductId = new Guid("522e01c1-b864-4baa-8734-2aec56dcdb8b"),
                             CategoryId = 10,
                             Description = "Estas tijeras de podar son ideales para cortar ramas y tallos de plantas.",
                             Discount = 10,
@@ -529,7 +529,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("2a4c477e-96c4-49a0-8970-ab3aaa45d920"),
+                            ProductId = new Guid("a4ed7e73-c099-488b-8682-32bced889773"),
                             CategoryId = 10,
                             Description = "Esta manguera de jardín es perfecta para regar tus plantas y flores.",
                             Discount = 10,
@@ -539,7 +539,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("eb3bef5b-762e-4648-a23c-0e54b2b2a867"),
+                            ProductId = new Guid("dedf990a-9a63-455d-8350-ccdba0d0be12"),
                             CategoryId = 10,
                             Description = "Este kit de herramientas básicas es perfecto para realizar pequeños trabajos de bricolaje en casa.",
                             Discount = 10,
@@ -549,7 +549,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("4e9b15ec-756c-46e3-befe-2381f0db92dd"),
+                            ProductId = new Guid("b2187c8b-5ce1-4e23-a388-fd51632cd69b"),
                             CategoryId = 10,
                             Description = "Haz que tu jardín florezca con este completo kit de herramientas de jardinería. Incluye una variedad de herramientas esenciales como palas, rastrillos, tijeras de podar y más, todo en un práctico estuche. Diseñadas para durar y facilitar el trabajo en el jardín, estas herramientas te ayudarán a mantener tu espacio verde hermoso y saludable durante todo el año.",
                             Discount = 9,
@@ -559,7 +559,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("ded53ea1-715d-45cd-b770-74474b7f185c"),
+                            ProductId = new Guid("4d91e358-a233-469d-8e20-ce47c29aaa12"),
                             CategoryId = 10,
                             Description = "Haz que tu jardín florezca con este completo kit de herramientas de jardinería. Incluye una variedad de herramientas esenciales como palas, rastrillos, tijeras de podar y más, todo en un práctico estuche. Diseñadas para durar y facilitar el trabajo en el jardín, estas herramientas te ayudarán a mantener tu espacio verde hermoso y saludable durante todo el año.",
                             Discount = 9,
@@ -569,7 +569,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("13c4b683-d39a-4120-9a1e-0b3c8b030656"),
+                            ProductId = new Guid("e123dba4-21e4-498d-95f3-620804bf2127"),
                             CategoryId = 2,
                             Description = "Televisor Smart TV LED LG de 50 pulgadas con resolución 4K UHD. Cuenta con tecnología LED para un brillo y contraste excepcionales, y su procesador inteligente te garantiza imágenes nítidas y colores vibrantes. Además, su plataforma Smart TV te permite acceder a tus aplicaciones favoritas de streaming con facilidad.",
                             Discount = 0,
@@ -579,7 +579,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("9e4dc5b8-3461-495d-9e61-af836768be70"),
+                            ProductId = new Guid("a0af3858-043a-48fc-b296-a0141378cd64"),
                             CategoryId = 2,
                             Description = "El celular Samsung Galaxy S23 Ultra 5G es el teléfono inteligente definitivo para los amantes de la tecnología. Con una pantalla AMOLED de 6.8 pulgadas y un potente procesador Snapdragon 8 Gen 1, este teléfono te ofrece un rendimiento ultrarrápido y una experiencia visual inmersiva. Además, su sistema de cámara cuádruple trasera de 108 MP te permite capturar fotos y videos impresionantes.",
                             Discount = 0,
@@ -589,17 +589,17 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("1d49f55f-30b1-4db5-8282-010aa05b16a0"),
+                            ProductId = new Guid("7848384f-9d3a-4d44-b890-887c96d43e0f"),
                             CategoryId = 2,
                             Description = "Disfruta de tus juegos favoritos con el notebook gamer Lenovo Legion 5. Este potente equipo cuenta con un procesador AMD Ryzen 7 6800H, una placa de video NVIDIA GeForce RTX 3050 Ti y 16 GB de RAM, lo que te garantiza un rendimiento fluido y sin interrupciones. Además, su pantalla Full HD de 15.6 pulgadas con una tasa de refresco de 165 Hz te brinda imágenes nítidas y una experiencia de juego inmersiva.",
                             Discount = 10,
-                            ImageUrl = "https://www.fravega.com.ar/wcsstore/fravega/images/catalog/2023/Febrero/02-02-2023/82JW007LAR-01.jpg",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_871625-MLA75823629201_042024-O.webp",
                             Name = "Notebook Gamer Lenovo Legion 5 15ACH6H 82JW007LAR",
                             Price = 299999m
                         },
                         new
                         {
-                            ProductId = new Guid("c02c6d85-1d3d-458f-b5cc-99d8e9ed02a9"),
+                            ProductId = new Guid("38663bf0-3bca-401b-8d59-1ede42bc92ff"),
                             CategoryId = 2,
                             Description = "Disfruta de imágenes nítidas y colores vibrantes con el Smart TV LG 4K UHD 55' UP77. Con una pantalla de 55 pulgadas, resolución 4K UHD, y tecnología de mejora de imagen AI Picture, ofrece una experiencia visual envolvente. Además, cuenta con webOS, control por voz, y múltiples opciones de conectividad para acceder a tus contenidos favoritos.",
                             Discount = 5,
@@ -609,7 +609,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("020068c1-f5d2-4290-a906-ed95d7d5b055"),
+                            ProductId = new Guid("6ffb2fde-2b92-41e8-9292-1a2cc413eecf"),
                             CategoryId = 3,
                             Description = "Estas zapatillas deportivas con plataforma son perfectas para un look casual y cómodo. Su diseño moderno y trendy te hará destacar entre la multitud. La plataforma te dará un poco de altura extra y la suela acolchada te brindará comodidad durante todo el día.",
                             Discount = 0,
@@ -619,7 +619,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("1e63b871-1792-4c87-9a4d-5bda9e45d52b"),
+                            ProductId = new Guid("a3b01b5d-0a93-46a4-892b-38ee89ed5989"),
                             CategoryId = 3,
                             Description = "Este bolso de mano con diseño animal print es el accesorio perfecto para cualquier outfit. Su diseño elegante y sofisticado te hará sentir segura y glamorosa. El tamaño perfecto para llevar todo lo que necesitas.",
                             Discount = 10,
@@ -629,7 +629,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("587d9724-27c6-484c-9538-614498cf252b"),
+                            ProductId = new Guid("7a08b9d8-105c-41e7-ba93-5616146c7b96"),
                             CategoryId = 3,
                             Description = "Este vestido midi con estampado floral es perfecto para cualquier ocasión. Su diseño elegante y femenino te hará sentir segura y hermosa. El tejido suave y fluido te mantendrá cómoda durante todo el día.",
                             Discount = 10,
@@ -639,7 +639,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("dafa9957-9bc2-43f8-8bf6-8094281de0fb"),
+                            ProductId = new Guid("d8fd56e2-1293-4fcc-8441-dcd23411e57f"),
                             CategoryId = 3,
                             Description = "Cafetera Espresso De'Longhi Dedica con bomba de presión de 15 bares. Diseño compacto y elegante. Opciones de preparación personalizadas. Disfruta de café de alta calidad en casa.",
                             Discount = 5,
@@ -649,7 +649,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("246ed521-cfa2-4e64-a906-92db26a721bf"),
+                            ProductId = new Guid("51d3ea1c-d8a1-40c1-ae2b-a3350205207d"),
                             CategoryId = 4,
                             Description = "Este juego de sábanas de algodón 100% te brindará una experiencia de sueño confortable y placentera. El algodón es un material suave y transpirable que te mantendrá fresco en verano y cálido en invierno.",
                             Discount = 0,
@@ -659,7 +659,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("e2fe8dea-cac4-49c9-a991-dd4b36e77914"),
+                            ProductId = new Guid("c4d11b3d-60f3-451e-bfaf-123f5ba25845"),
                             CategoryId = 4,
                             Description = "Este sofá de dos plazas con diseño moderno es perfecto para cualquier living. Su diseño elegante y minimalista le dará un toque de sofisticación a tu hogar. El tapizado de tela es suave y resistente.",
                             Discount = 10,
@@ -669,7 +669,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("cf521447-cf31-4c1d-b11e-6d2a16e864ef"),
+                            ProductId = new Guid("98195b2c-9938-483d-9646-7a657d905eba"),
                             CategoryId = 4,
                             Description = "Este juego de vajilla para 6 personas es perfecto para cualquier ocasión. Su diseño clásico y elegante le dará un toque de distinción a tu mesa. El material de porcelana es resistente y duradero.",
                             Discount = 5,
@@ -679,7 +679,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("49decd1e-d1b2-481a-bb9e-10dbf42a0282"),
+                            ProductId = new Guid("95ef3b5d-fc06-4bcc-94b6-ea1746c3d2b7"),
                             CategoryId = 4,
                             Description = "Set de 3 cuadros decorativos modernos con diseños abstractos. Fabricados con materiales de alta calidad. Ideal para renovar tu espacio con estilo.",
                             Discount = 8,
@@ -689,7 +689,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("94533af4-fa19-4013-a684-b5f8a9f7b04e"),
+                            ProductId = new Guid("9a1a5470-2fa6-4c78-8b91-87e352dc1f03"),
                             CategoryId = 5,
                             Description = "Esta crema hidratante facial con ácido hialurónico es perfecta para todo tipo de piel. El ácido hialurónico es un ingrediente que ayuda a retener la hidratación en la piel, lo que la hace lucir más joven y radiante.",
                             Discount = 0,
@@ -699,7 +699,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("727a9b41-2e29-4006-b4ed-66d69692df83"),
+                            ProductId = new Guid("3d74c30a-bf4b-4123-b0f5-f683b84b9453"),
                             CategoryId = 5,
                             Description = "Este cepillo de dientes eléctrico sónico te ayudará a tener una limpieza bucal más profunda y efectiva. Las cerdas sónicas vibran a alta velocidad para eliminar la placa y el sarro de forma eficaz.",
                             Discount = 0,
@@ -709,7 +709,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("2552fdf2-32d3-4d52-9562-7a0f9c888d78"),
+                            ProductId = new Guid("52437375-71c4-47eb-a729-435a9d4b9792"),
                             CategoryId = 5,
                             Description = "Este labial de larga duración te brindará un color intenso y duradero. Su fórmula especial es resistente al agua y a los besos.",
                             Discount = 10,
@@ -719,7 +719,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("62928705-3d65-4d4b-9d64-ab50cdf0e391"),
+                            ProductId = new Guid("33f3dedb-83d1-4332-b8e5-30c184c6294a"),
                             CategoryId = 5,
                             Description = "Secador de pelo profesional con tecnología Ionic Ceramic para un secado rápido y sin frizz. Potente motor de 2200W con 3 ajustes de temperatura y 2 velocidades. Incluye boquilla concentradora y difusor para estilizar el cabello según tus preferencias. Consigue un cabello suave, brillante y saludable con este secador de pelo de calidad profesional.",
                             Discount = 0,
@@ -729,7 +729,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("7900349a-092a-452b-a132-b6b0ddb13fd4"),
+                            ProductId = new Guid("9b316990-b93e-4dad-94ba-15a2816ba271"),
                             CategoryId = 6,
                             Description = "Esta pelota de fútbol es perfecta para jugar con amigos o en familia. Su diseño clásico y su material resistente te brindarán horas de diversión.",
                             Discount = 0,
@@ -739,7 +739,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("539db988-21b3-4d97-a6f3-30a039214c61"),
+                            ProductId = new Guid("3887dd40-7924-49de-8cfe-9caf6add157a"),
                             CategoryId = 6,
                             Description = "Esta bicicleta de montaña es perfecta para los amantes del ciclismo. Su diseño resistente y duradero te permitirá disfrutar de tus aventuras al aire libre.",
                             Discount = 5,
@@ -749,7 +749,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("450868fb-95b7-4e28-bf86-2b29aee2d143"),
+                            ProductId = new Guid("06bcb0ee-699f-4f70-ac96-b28ed65c3da5"),
                             CategoryId = 6,
                             Description = "Este juego de mesa es perfecto para pasar un rato divertido en familia. Su diseño atractivo y sus reglas sencillas te brindarán horas de entretenimiento.",
                             Discount = 0,
@@ -759,7 +759,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("18896fb8-1aad-44f6-9db1-849e9a33d264"),
+                            ProductId = new Guid("1ac16293-3bb1-4a29-9929-ff13879845ae"),
                             CategoryId = 6,
                             Description = "Disfruta del agua con la tabla de paddle surf hinchable Aqua Marina Fusion. Fabricada con material de alta calidad, esta tabla ofrece estabilidad y durabilidad. Su diseño hinchable la hace fácil de transportar y almacenar. Equipada con una bomba de alta presión y una bolsa de transporte, es perfecta para explorar lagos, ríos y costas. ¡Sumérgete en la diversión con esta tabla de paddle surf!",
                             Discount = 8,
@@ -769,7 +769,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("374b3911-e69e-482e-9f06-490809a48288"),
+                            ProductId = new Guid("b85da6f1-2b1e-4196-85b2-35d516972da6"),
                             CategoryId = 7,
                             Description = "Estos bloques de construcción son perfectos para que los niños desarrollen su creatividad e imaginación. Con ellos podrán construir todo tipo de estructuras, desde casas y castillos hasta naves espaciales y robots.",
                             Discount = 10,
@@ -779,7 +779,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("940f37db-9d3c-400e-80ad-378f52e3ad71"),
+                            ProductId = new Guid("34b33f43-ed50-4f18-8eba-9a52adc6baf3"),
                             CategoryId = 7,
                             Description = "Esta muñeca es perfecta para que las niñas se diviertan y aprendan a cuidar de los demás. Viene con ropa y accesorios para que las niñas puedan crear todo tipo de historias.",
                             Discount = 0,
@@ -789,7 +789,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("b11b3487-4f8c-4d2a-8702-21d481c9356d"),
+                            ProductId = new Guid("94520a5d-2aba-4e23-97fc-a123568fe52e"),
                             CategoryId = 7,
                             Description = "Este juego de mesa es perfecto para que los niños se diviertan en familia. Sus reglas sencillas y su diseño atractivo lo hacen ideal para niños de todas las edades.",
                             Discount = 10,
@@ -799,7 +799,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("555ff85e-40e4-4007-9099-39330335e487"),
+                            ProductId = new Guid("cfcffb14-94a4-44bc-978f-a3337ebdf593"),
                             CategoryId = 7,
                             Description = "Construye una de las maravillas del mundo con el set LEGO Creator Expert Taj Mahal. Este impresionante set incluye más de 9500 piezas para recrear fielmente este icónico monumento. Con detalles intrincados y una escala impresionante, esta maqueta proporciona una experiencia de construcción desafiante y gratificante para aficionados y coleccionistas. ¡Embárcate en un viaje arquitectónico con este magnífico set de LEGO!",
                             Discount = 9,
@@ -809,7 +809,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("766e01a5-d473-4dd3-ad5e-fdf7e711de98"),
+                            ProductId = new Guid("0c90ad99-2961-4f76-8fff-a6583567d105"),
                             CategoryId = 8,
                             Description = "Estas manzanas frescas son de la mejor calidad y tienen un sabor delicioso. Son perfectas para comer como snack o para usar en recetas.",
                             Discount = 0,
@@ -819,7 +819,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("8990e979-c4ef-4f70-81f4-84f6d0d866fe"),
+                            ProductId = new Guid("b2ffd05d-1051-49e0-b588-155414b35b67"),
                             CategoryId = 8,
                             Description = "Esta leche descremada es ideal para aquellos que buscan una opción más saludable. Es baja en calorías y grasa, pero aún así tiene un sabor delicioso.",
                             Discount = 0,
@@ -829,7 +829,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("74c73272-4ab8-434f-a728-e822a39f96a4"),
+                            ProductId = new Guid("c2dd806c-d4c9-4876-9726-04d22ca54a18"),
                             CategoryId = 8,
                             Description = "Estas galletas de chocolate son perfectas para disfrutar con un café o un té. Son deliciosas y crujientes.",
                             Discount = 0,
@@ -839,7 +839,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("7444b4dc-bc75-4186-ba35-88303b5a0cb8"),
+                            ProductId = new Guid("17f44f3a-48d3-432a-b5f1-53f13bcdfaae"),
                             CategoryId = 8,
                             Description = "Explora el mundo del vino con este kit de degustación que incluye una selección de vinos de diferentes variedades y regiones. Cada botella está cuidadosamente seleccionada para ofrecer una experiencia única de degustación. Descubre nuevos sabores, aromas y texturas mientras disfrutas de una velada especial con amigos o familiares.",
                             Discount = 8,
@@ -849,7 +849,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("f2d6de35-a8a6-4e0a-9cb4-8274de541cb4"),
+                            ProductId = new Guid("2143d2c2-fdcb-4b15-bfee-94a22fd4865d"),
                             CategoryId = 9,
                             Description = "Este libro de ficción es una novela apasionante que te atrapará desde el principio.",
                             Discount = 0,
@@ -859,7 +859,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("d61139e0-9825-4c43-9e55-19f016b58941"),
+                            ProductId = new Guid("2373544b-cacb-4aaf-9ba9-3ef99361a115"),
                             CategoryId = 9,
                             Description = "Estos lápices de colores son ideales para que los niños exploren su creatividad.",
                             Discount = 0,
@@ -869,7 +869,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("6853c6d4-8968-4b38-9d70-0adf00409c44"),
+                            ProductId = new Guid("f14a26f3-0688-4949-b241-01719f352d3b"),
                             CategoryId = 9,
                             Description = "Este cuaderno de notas es perfecto para tomar apuntes en clase o en la oficina.",
                             Discount = 0,
@@ -879,7 +879,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("dc513d25-5aae-402c-a0b4-ac542aa6f9cf"),
+                            ProductId = new Guid("53f37b64-bc4b-4305-86ec-531b91db8310"),
                             CategoryId = 9,
                             Description = "Descubre una variedad de deliciosas recetas de diferentes culturas y regiones del mundo con este libro de cocina. Desde platos tradicionales hasta opciones modernas, este libro te guiará a través de pasos sencillos para crear comidas increíbles en tu propia cocina. Con fotografías inspiradoras y consejos útiles, es perfecto para chefs aficionados y entusiastas de la cocina.",
                             Discount = 8,
@@ -889,7 +889,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("3e405c97-ce8d-4b0d-b666-076e5b000a8e"),
+                            ProductId = new Guid("4f0e7bc8-cb24-4097-897c-f39c6a3412e7"),
                             CategoryId = 10,
                             Description = "Estas tijeras de podar son ideales para cortar ramas y tallos de plantas.",
                             Discount = 10,
@@ -899,7 +899,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("e89324eb-331a-4cc4-a72b-5bbdc83c6dc1"),
+                            ProductId = new Guid("a9f85745-18c6-4bb6-991a-47f94102dec9"),
                             CategoryId = 10,
                             Description = "Esta manguera de jardín es perfecta para regar tus plantas y flores.",
                             Discount = 10,
@@ -909,7 +909,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("9b970e0c-2c94-460a-a2e2-fe2f2aa98258"),
+                            ProductId = new Guid("9469da21-bd4e-43ac-8a72-604b190548a1"),
                             CategoryId = 10,
                             Description = "Este kit de herramientas básicas es perfecto para realizar pequeños trabajos de bricolaje en casa.",
                             Discount = 10,
@@ -919,7 +919,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("1346f58f-54fb-4b89-9b70-f07d0e6909da"),
+                            ProductId = new Guid("187f3a29-cc08-4770-8a39-48b22ad9ae99"),
                             CategoryId = 10,
                             Description = "Haz que tu jardín florezca con este completo kit de herramientas de jardinería. Incluye una variedad de herramientas esenciales como palas, rastrillos, tijeras de podar y más, todo en un práctico estuche. Diseñadas para durar y facilitar el trabajo en el jardín, estas herramientas te ayudarán a mantener tu espacio verde hermoso y saludable durante todo el año.",
                             Discount = 9,
@@ -929,7 +929,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("c5acf62b-305a-4bc8-9aee-a534c8a6d32f"),
+                            ProductId = new Guid("b7bbf975-ae02-4d46-bd37-d3c411f98c93"),
                             CategoryId = 2,
                             Description = "Televisor Smart TV LED LG de 50 pulgadas con resolución 4K UHD. Cuenta con tecnología LED para un brillo y contraste excepcionales, y su procesador inteligente te garantiza imágenes nítidas y colores vibrantes. Además, su plataforma Smart TV te permite acceder a tus aplicaciones favoritas de streaming con facilidad.",
                             Discount = 0,
@@ -939,7 +939,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("5654fb28-3cab-4522-a7ae-08d3eac9a7d4"),
+                            ProductId = new Guid("f3511856-639f-4198-b64e-3dd082e135ca"),
                             CategoryId = 2,
                             Description = "El celular Samsung Galaxy S23 Ultra 5G es el teléfono inteligente definitivo para los amantes de la tecnología. Con una pantalla AMOLED de 6.8 pulgadas y un potente procesador Snapdragon 8 Gen 1, este teléfono te ofrece un rendimiento ultrarrápido y una experiencia visual inmersiva. Además, su sistema de cámara cuádruple trasera de 108 MP te permite capturar fotos y videos impresionantes.",
                             Discount = 0,
@@ -949,17 +949,17 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("639fa8a9-3ec4-44fa-bfd7-1d7afa644911"),
+                            ProductId = new Guid("5698dfdd-ac06-4a2d-9669-f5b3d25b5f47"),
                             CategoryId = 2,
                             Description = "Disfruta de tus juegos favoritos con el notebook gamer Lenovo Legion 5. Este potente equipo cuenta con un procesador AMD Ryzen 7 6800H, una placa de video NVIDIA GeForce RTX 3050 Ti y 16 GB de RAM, lo que te garantiza un rendimiento fluido y sin interrupciones. Además, su pantalla Full HD de 15.6 pulgadas con una tasa de refresco de 165 Hz te brinda imágenes nítidas y una experiencia de juego inmersiva.",
                             Discount = 10,
-                            ImageUrl = "https://www.fravega.com.ar/wcsstore/fravega/images/catalog/2023/Febrero/02-02-2023/82JW007LAR-01.jpg",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_871625-MLA75823629201_042024-O.webpg",
                             Name = "Notebook Gamer Lenovo Legion 5 15ACH6H 82JW007LAR",
                             Price = 299999m
                         },
                         new
                         {
-                            ProductId = new Guid("0c22a510-add2-4b95-9f52-8793fcb696c2"),
+                            ProductId = new Guid("95d982ea-6e32-4696-89f1-cb5e5c336a8c"),
                             CategoryId = 2,
                             Description = "Disfruta de imágenes nítidas y colores vibrantes con el Smart TV LG 4K UHD 55' UP77. Con una pantalla de 55 pulgadas, resolución 4K UHD, y tecnología de mejora de imagen AI Picture, ofrece una experiencia visual envolvente. Además, cuenta con webOS, control por voz, y múltiples opciones de conectividad para acceder a tus contenidos favoritos.",
                             Discount = 5,
@@ -969,7 +969,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("c68afdfd-1fb9-41f6-bfee-8a5d2a899846"),
+                            ProductId = new Guid("edbab087-f7d8-4d0d-8461-7a90985d95e8"),
                             CategoryId = 3,
                             Description = "Estas zapatillas deportivas con plataforma son perfectas para un look casual y cómodo. Su diseño moderno y trendy te hará destacar entre la multitud. La plataforma te dará un poco de altura extra y la suela acolchada te brindará comodidad durante todo el día.",
                             Discount = 0,
@@ -979,7 +979,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("7a51d6a8-3139-4ae7-8634-101d38500d83"),
+                            ProductId = new Guid("4c5def02-86f0-4d8a-a4bf-1fe0ae39e6a9"),
                             CategoryId = 3,
                             Description = "Este bolso de mano con diseño animal print es el accesorio perfecto para cualquier outfit. Su diseño elegante y sofisticado te hará sentir segura y glamorosa. El tamaño perfecto para llevar todo lo que necesitas.",
                             Discount = 10,
@@ -989,7 +989,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("e03c768f-9022-47fd-b641-3c3507cf189d"),
+                            ProductId = new Guid("d63340f0-79eb-4a84-a142-17a0c6122879"),
                             CategoryId = 3,
                             Description = "Este vestido midi con estampado floral es perfecto para cualquier ocasión. Su diseño elegante y femenino te hará sentir segura y hermosa. El tejido suave y fluido te mantendrá cómoda durante todo el día.",
                             Discount = 10,
@@ -999,7 +999,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("a4df1bbd-169a-40aa-a62b-bcaf53f4a17e"),
+                            ProductId = new Guid("2f30a9cc-d14b-4f61-a086-7ad29ae226a8"),
                             CategoryId = 3,
                             Description = "Cafetera Espresso De'Longhi Dedica con bomba de presión de 15 bares. Diseño compacto y elegante. Opciones de preparación personalizadas. Disfruta de café de alta calidad en casa.",
                             Discount = 5,
@@ -1009,7 +1009,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("edbd1147-a7dc-44ca-a04f-ff207039185d"),
+                            ProductId = new Guid("79b0096b-e936-4e0b-96d9-b67c72ae9efa"),
                             CategoryId = 4,
                             Description = "Este juego de sábanas de algodón 100% te brindará una experiencia de sueño confortable y placentera. El algodón es un material suave y transpirable que te mantendrá fresco en verano y cálido en invierno.",
                             Discount = 0,
@@ -1019,7 +1019,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("08ad5c35-2ac9-4d93-9334-a47508209061"),
+                            ProductId = new Guid("e5eede83-d3aa-43df-bac0-14d048382d7f"),
                             CategoryId = 4,
                             Description = "Este sofá de dos plazas con diseño moderno es perfecto para cualquier living. Su diseño elegante y minimalista le dará un toque de sofisticación a tu hogar. El tapizado de tela es suave y resistente.",
                             Discount = 10,
@@ -1029,7 +1029,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("bcc603c1-40c7-46c4-85e2-99f5517743dd"),
+                            ProductId = new Guid("53bbbbc0-7d93-4003-a077-156002bd0776"),
                             CategoryId = 4,
                             Description = "Este juego de vajilla para 6 personas es perfecto para cualquier ocasión. Su diseño clásico y elegante le dará un toque de distinción a tu mesa. El material de porcelana es resistente y duradero.",
                             Discount = 5,
@@ -1039,7 +1039,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("8ac967ba-3f35-4d7f-9234-216b83291e0a"),
+                            ProductId = new Guid("68979080-e35c-446e-8281-2644346b5f0b"),
                             CategoryId = 4,
                             Description = "Set de 3 cuadros decorativos modernos con diseños abstractos. Fabricados con materiales de alta calidad. Ideal para renovar tu espacio con estilo.",
                             Discount = 8,
@@ -1049,7 +1049,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("689675be-b8ee-4cd6-bee6-79c2477de649"),
+                            ProductId = new Guid("2913f385-99da-4090-b136-5273d0f8bdce"),
                             CategoryId = 5,
                             Description = "Esta crema hidratante facial con ácido hialurónico es perfecta para todo tipo de piel. El ácido hialurónico es un ingrediente que ayuda a retener la hidratación en la piel, lo que la hace lucir más joven y radiante.",
                             Discount = 0,
@@ -1059,7 +1059,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("8db28a8e-51ef-43ae-9d53-403b08e7e982"),
+                            ProductId = new Guid("03b45ee4-de23-468f-993b-9de77bef07e7"),
                             CategoryId = 5,
                             Description = "Este cepillo de dientes eléctrico sónico te ayudará a tener una limpieza bucal más profunda y efectiva. Las cerdas sónicas vibran a alta velocidad para eliminar la placa y el sarro de forma eficaz.",
                             Discount = 0,
@@ -1069,7 +1069,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("5c91b127-b0a2-40e0-887e-739f48f8993c"),
+                            ProductId = new Guid("c781c3c9-f7ec-4b9b-9d29-6a5de96c20fd"),
                             CategoryId = 5,
                             Description = "Este labial de larga duración te brindará un color intenso y duradero. Su fórmula especial es resistente al agua y a los besos.",
                             Discount = 10,
@@ -1079,7 +1079,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("ea2e7b8d-f88b-4fcc-9fd6-94892e7d2f60"),
+                            ProductId = new Guid("269b9b41-d76c-49b9-83ca-3e9eedca92a1"),
                             CategoryId = 5,
                             Description = "Secador de pelo profesional con tecnología Ionic Ceramic para un secado rápido y sin frizz. Potente motor de 2200W con 3 ajustes de temperatura y 2 velocidades. Incluye boquilla concentradora y difusor para estilizar el cabello según tus preferencias. Consigue un cabello suave, brillante y saludable con este secador de pelo de calidad profesional.",
                             Discount = 0,
@@ -1089,7 +1089,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("dd61b4ed-5368-464d-b68f-91425530c20a"),
+                            ProductId = new Guid("49348ac7-f690-464b-879f-e44d427c2e3c"),
                             CategoryId = 6,
                             Description = "Esta pelota de fútbol es perfecta para jugar con amigos o en familia. Su diseño clásico y su material resistente te brindarán horas de diversión.",
                             Discount = 0,
@@ -1099,7 +1099,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("2c2e08a6-c282-4893-8e59-aaf999ca7178"),
+                            ProductId = new Guid("52ba4980-3c85-45a2-976a-877e711c8cd3"),
                             CategoryId = 6,
                             Description = "Esta bicicleta de montaña es perfecta para los amantes del ciclismo. Su diseño resistente y duradero te permitirá disfrutar de tus aventuras al aire libre.",
                             Discount = 5,
@@ -1109,7 +1109,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("84bffe43-13a3-43f5-8c7d-d86d81787a62"),
+                            ProductId = new Guid("33857d2f-4ce6-4cdf-931d-3a9f7d1a935c"),
                             CategoryId = 6,
                             Description = "Este juego de mesa es perfecto para pasar un rato divertido en familia. Su diseño atractivo y sus reglas sencillas te brindarán horas de entretenimiento.",
                             Discount = 0,
@@ -1119,7 +1119,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("06754372-12b8-41e6-9396-40cffb86594e"),
+                            ProductId = new Guid("e7c085b2-868e-4fa6-b2f1-76a64bce481d"),
                             CategoryId = 6,
                             Description = "Disfruta del agua con la tabla de paddle surf hinchable Aqua Marina Fusion. Fabricada con material de alta calidad, esta tabla ofrece estabilidad y durabilidad. Su diseño hinchable la hace fácil de transportar y almacenar. Equipada con una bomba de alta presión y una bolsa de transporte, es perfecta para explorar lagos, ríos y costas. ¡Sumérgete en la diversión con esta tabla de paddle surf!",
                             Discount = 8,
@@ -1129,7 +1129,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("d8acb384-fa5f-44ee-8f21-b17f533ef098"),
+                            ProductId = new Guid("90b8dfa7-b298-4a60-aca2-43bb748750a7"),
                             CategoryId = 7,
                             Description = "Estos bloques de construcción son perfectos para que los niños desarrollen su creatividad e imaginación. Con ellos podrán construir todo tipo de estructuras, desde casas y castillos hasta naves espaciales y robots.",
                             Discount = 10,
@@ -1139,7 +1139,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("6912c5ff-82f4-4de9-b06b-7ab54c5bb2b7"),
+                            ProductId = new Guid("a61c559a-dcab-474f-b759-80282613b0c3"),
                             CategoryId = 7,
                             Description = "Esta muñeca es perfecta para que las niñas se diviertan y aprendan a cuidar de los demás. Viene con ropa y accesorios para que las niñas puedan crear todo tipo de historias.",
                             Discount = 0,
@@ -1149,7 +1149,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("562f15f0-c18e-4fb0-aece-4d607608bd3b"),
+                            ProductId = new Guid("b84d99dd-7efd-4ded-a61a-99def4ccded5"),
                             CategoryId = 7,
                             Description = "Este juego de mesa es perfecto para que los niños se diviertan en familia. Sus reglas sencillas y su diseño atractivo lo hacen ideal para niños de todas las edades.",
                             Discount = 10,
@@ -1159,7 +1159,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("1a53cdc4-10da-4743-8621-1988c4ef2873"),
+                            ProductId = new Guid("9dca9c3e-61e9-4eb2-8309-19d0d1bde74a"),
                             CategoryId = 7,
                             Description = "Construye una de las maravillas del mundo con el set LEGO Creator Expert Taj Mahal. Este impresionante set incluye más de 9500 piezas para recrear fielmente este icónico monumento. Con detalles intrincados y una escala impresionante, esta maqueta proporciona una experiencia de construcción desafiante y gratificante para aficionados y coleccionistas. ¡Embárcate en un viaje arquitectónico con este magnífico set de LEGO!",
                             Discount = 9,
@@ -1169,7 +1169,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("68dfd47e-cb0b-47ff-8089-832e06d29422"),
+                            ProductId = new Guid("aab8f3b7-571f-40ff-a902-ba8282feaccc"),
                             CategoryId = 8,
                             Description = "Estas manzanas frescas son de la mejor calidad y tienen un sabor delicioso. Son perfectas para comer como snack o para usar en recetas.",
                             Discount = 0,
@@ -1179,7 +1179,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("03e3922a-70f7-48d7-8a8f-6361b55ec2db"),
+                            ProductId = new Guid("a9e3b776-b7b6-4202-a62d-3543f242c094"),
                             CategoryId = 8,
                             Description = "Esta leche descremada es ideal para aquellos que buscan una opción más saludable. Es baja en calorías y grasa, pero aún así tiene un sabor delicioso.",
                             Discount = 0,
@@ -1189,7 +1189,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("b4be5d6a-3b09-4883-b671-bc545013077d"),
+                            ProductId = new Guid("ad6c52d9-0265-4c88-bfec-ce9729b07528"),
                             CategoryId = 8,
                             Description = "Estas galletas de chocolate son perfectas para disfrutar con un café o un té. Son deliciosas y crujientes.",
                             Discount = 0,
@@ -1199,7 +1199,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("4c27ba23-8426-49d6-a92c-7b39aac60104"),
+                            ProductId = new Guid("8e688d40-9cca-47df-8ba7-44d81c128c39"),
                             CategoryId = 8,
                             Description = "Explora el mundo del vino con este kit de degustación que incluye una selección de vinos de diferentes variedades y regiones. Cada botella está cuidadosamente seleccionada para ofrecer una experiencia única de degustación. Descubre nuevos sabores, aromas y texturas mientras disfrutas de una velada especial con amigos o familiares.",
                             Discount = 8,
@@ -1209,7 +1209,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("6728d1c4-425c-42b2-bc04-bfdd4473a26b"),
+                            ProductId = new Guid("97f7e14c-95d8-4cc0-8260-8f6260919865"),
                             CategoryId = 9,
                             Description = "Este libro de ficción es una novela apasionante que te atrapará desde el principio.",
                             Discount = 0,
@@ -1219,7 +1219,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("dcc934be-1509-4e13-9f31-31feba2040a5"),
+                            ProductId = new Guid("fd4a5c2a-0326-4367-9a1a-415665a1f2bf"),
                             CategoryId = 9,
                             Description = "Estos lápices de colores son ideales para que los niños exploren su creatividad.",
                             Discount = 0,
@@ -1229,7 +1229,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("b3fd014c-46a9-437e-ba76-01fa5e6b1762"),
+                            ProductId = new Guid("7be312d1-513f-461d-b88e-e62aff70d2a2"),
                             CategoryId = 9,
                             Description = "Este cuaderno de notas es perfecto para tomar apuntes en clase o en la oficina.",
                             Discount = 0,
@@ -1239,7 +1239,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("86436f1e-b8d1-45b9-955d-7013910894a6"),
+                            ProductId = new Guid("7eb0d139-f1a9-4aa6-9a84-ee6792da1dbf"),
                             CategoryId = 9,
                             Description = "Descubre una variedad de deliciosas recetas de diferentes culturas y regiones del mundo con este libro de cocina. Desde platos tradicionales hasta opciones modernas, este libro te guiará a través de pasos sencillos para crear comidas increíbles en tu propia cocina. Con fotografías inspiradoras y consejos útiles, es perfecto para chefs aficionados y entusiastas de la cocina.",
                             Discount = 8,
@@ -1249,7 +1249,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("92c0693d-dce4-4dce-b3bc-beede3217330"),
+                            ProductId = new Guid("7a2d2d12-9de9-4026-956e-db73fddc1f5e"),
                             CategoryId = 10,
                             Description = "Estas tijeras de podar son ideales para cortar ramas y tallos de plantas.",
                             Discount = 10,
@@ -1259,7 +1259,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("b0f2ffd5-bae7-43e7-bf38-943edb452c7f"),
+                            ProductId = new Guid("f6c925b5-c3d8-4ee7-944c-5844391ecbb3"),
                             CategoryId = 10,
                             Description = "Esta manguera de jardín es perfecta para regar tus plantas y flores.",
                             Discount = 10,
@@ -1269,7 +1269,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("49e5a750-ac44-400c-babb-19a996b364d0"),
+                            ProductId = new Guid("81662cf8-6801-44b7-9884-b041e0fbc9bc"),
                             CategoryId = 10,
                             Description = "Este kit de herramientas básicas es perfecto para realizar pequeños trabajos de bricolaje en casa.",
                             Discount = 10,
@@ -1279,7 +1279,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("61d989b9-55b8-4542-b936-ce48576fb727"),
+                            ProductId = new Guid("5e911bec-80f6-494a-adee-095ecd8ac525"),
                             CategoryId = 10,
                             Description = "Haz que tu jardín florezca con este completo kit de herramientas de jardinería. Incluye una variedad de herramientas esenciales como palas, rastrillos, tijeras de podar y más, todo en un práctico estuche. Diseñadas para durar y facilitar el trabajo en el jardín, estas herramientas te ayudarán a mantener tu espacio verde hermoso y saludable durante todo el año.",
                             Discount = 9,

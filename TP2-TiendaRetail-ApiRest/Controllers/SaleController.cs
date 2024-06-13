@@ -9,7 +9,7 @@ using System.Data.Common;
 
 namespace TP2_TiendaRetail_ApiRest.Controllers
 {
-    [Route("")]
+    [Route("api/")]
     [ApiController]
     public class SaleController : ControllerBase
     {
@@ -42,7 +42,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             {
                 return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
             }
-            catch (CustomException ex)
+            catch (CustomExceptionBadRequest ex)
             {
                 return Conflict(new ApiError(ex.Message));
             }

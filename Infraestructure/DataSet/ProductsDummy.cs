@@ -71,7 +71,7 @@ namespace Infraestructure.DataSet
                    "Disfruta de tus juegos favoritos con el notebook gamer Lenovo Legion 5. Este potente equipo cuenta con un procesador AMD Ryzen 7 6800H, una placa de video NVIDIA GeForce RTX 3050 Ti y 16 GB de RAM, lo que te garantiza un rendimiento fluido y sin interrupciones. Además, su pantalla Full HD de 15.6 pulgadas con una tasa de refresco de 165 Hz te brinda imágenes nítidas y una experiencia de juego inmersiva.",
                    299999,
                    10,
-                   "https://www.fravega.com.ar/wcsstore/fravega/images/catalog/2023/Febrero/02-02-2023/82JW007LAR-01.jpg",
+                   "https://http2.mlstatic.com/D_NQ_NP_871625-MLA75823629201_042024-O.webp",
                    2
                    ),
                new Product(
@@ -392,7 +392,7 @@ namespace Infraestructure.DataSet
 
 
 
-               //DATOS REPETIDOS
+                //DATOS REPETIDOS
 
                 new Product(
                     Guid.NewGuid(),
@@ -427,7 +427,7 @@ namespace Infraestructure.DataSet
                    "Disfruta de tus juegos favoritos con el notebook gamer Lenovo Legion 5. Este potente equipo cuenta con un procesador AMD Ryzen 7 6800H, una placa de video NVIDIA GeForce RTX 3050 Ti y 16 GB de RAM, lo que te garantiza un rendimiento fluido y sin interrupciones. Además, su pantalla Full HD de 15.6 pulgadas con una tasa de refresco de 165 Hz te brinda imágenes nítidas y una experiencia de juego inmersiva.",
                    299999,
                    10,
-                   "https://www.fravega.com.ar/wcsstore/fravega/images/catalog/2023/Febrero/02-02-2023/82JW007LAR-01.jpg",
+                   "https://http2.mlstatic.com/D_NQ_NP_871625-MLA75823629201_042024-O.webp",
                    2
                    ),
                new Product(
@@ -769,7 +769,7 @@ namespace Infraestructure.DataSet
                    "Disfruta de tus juegos favoritos con el notebook gamer Lenovo Legion 5. Este potente equipo cuenta con un procesador AMD Ryzen 7 6800H, una placa de video NVIDIA GeForce RTX 3050 Ti y 16 GB de RAM, lo que te garantiza un rendimiento fluido y sin interrupciones. Además, su pantalla Full HD de 15.6 pulgadas con una tasa de refresco de 165 Hz te brinda imágenes nítidas y una experiencia de juego inmersiva.",
                    299999,
                    10,
-                   "https://www.fravega.com.ar/wcsstore/fravega/images/catalog/2023/Febrero/02-02-2023/82JW007LAR-01.jpg",
+                   "https://http2.mlstatic.com/D_NQ_NP_871625-MLA75823629201_042024-O.webpg",
                    2
                    ),
                new Product(

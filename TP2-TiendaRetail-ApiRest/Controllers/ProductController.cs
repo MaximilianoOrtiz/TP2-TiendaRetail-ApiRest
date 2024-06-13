@@ -89,6 +89,10 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             {
                 return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos. Error --> " + ex.Message)) { StatusCode = 500 };
             }
+            catch (CustomExceptionBadRequest ex)
+            {
+                return BadRequest(new ApiError(ex.Message));
+            }
         }
 
         /// <summary>
@@ -151,7 +155,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             {
                 return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos. Error --> " + ex.Message)) { StatusCode = 500 };
             }
-            catch (CustomException ex)
+            catch (CustomExceptionBadRequest ex)
             {
                 return Conflict(new ApiError(ex.Message));
             }

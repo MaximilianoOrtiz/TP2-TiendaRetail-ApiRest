@@ -101,12 +101,19 @@ namespace Application.UseCase
 
         public async Task<ProductResponse> SaveProductAsync(ProductRequest productRequest)
         {
+
             _logger.LogInformation("Init - SaveProductAsync");
             Category category = await _categoryRepository.FindCategoryByIdAsync(productRequest.Category);
             Product product = new Product();
-
-            product = _mapper.Map<Product>(productRequest);
-            product.Category = category;
+            if (category != null)
+            {
+                product = _mapper.Map<Product>(productRequest);
+                product.Category = category;
+            }
+            else
+            {
+                throw new CustomExceptionBadRequest("No se encotro una categoria con id: " + productRequest.Category);
+            }
 
             _logger.LogInformation("Out - SaveProductAsync");
             return _mapper.Map<ProductResponse>(await _genericRepository.SaveAsync(product));
@@ -151,7 +158,7 @@ namespace Application.UseCase
                     Product productConflit = await _productRepository.FindProductByEqualNameAsync(productRequest.Name);
                     if (productConflit != null)
                     {
-                        throw new CustomException("Ya existe un producto con ese nombre");
+                        throw new CustomExceptionBadRequest("Ya existe un producto con ese nombre");
                     }
                 }
 
