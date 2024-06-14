@@ -46,7 +46,7 @@ namespace Application.UseCase
                 }
                 else
                 {
-                    throw new CustomException("No existe el producto con Id: " + item.ProductId
+                    throw new CustomExceptionBadRequest("No existe el producto con Id: " + item.ProductId
                                               + " en la bases de datos al momento de realizar la verificación del precio total");
                 }
             }
@@ -74,7 +74,7 @@ namespace Application.UseCase
         {
             int totalQuantity = 0;
 
-            foreach(SaleProduct item in products)
+            foreach (SaleProduct item in products)
             {
                 totalQuantity += item.Quantity;
             }

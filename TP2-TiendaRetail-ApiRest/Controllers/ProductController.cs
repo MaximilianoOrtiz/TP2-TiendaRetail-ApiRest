@@ -46,10 +46,6 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             try
             {
                 List<ProductoGetResponse> listProduct = await _productService.FindProductByCategoryIdAndNameAsync(categorys, name, limit, offset);
-                if (listProduct.Count() == 0)
-                {
-                    return NotFound(new ApiError("No se encontraron productos"));
-                }
 
                 return Ok(listProduct);
             }
@@ -88,6 +84,10 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             catch (DbException ex)
             {
                 return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos. Error --> " + ex.Message)) { StatusCode = 500 };
+            }
+            catch (CustomExceptionBadRequest ex)
+            {
+                return BadRequest(new ApiError(ex.Message));
             }
         }
 
@@ -151,7 +151,11 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             {
                 return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos. Error --> " + ex.Message)) { StatusCode = 500 };
             }
-            catch (CustomException ex)
+            catch (CustomExceptionBadRequest ex)
+            {
+                return BadRequest(new ApiError(ex.Message));
+            }
+            catch (CustomExceptionConflict ex)
             {
                 return Conflict(new ApiError(ex.Message));
             }

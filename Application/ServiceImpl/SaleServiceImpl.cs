@@ -45,7 +45,7 @@ namespace Application.UseCase
             _logger.LogInformation("Valido que el total ingresado sea igual al calulado por el sistema");
             if (saleResponse.TotalPay != saleRequest.TotalPayed)
             {
-                throw new CustomException("El total ingresado no coincide con el calculo realizado por el sistema.");
+                throw new CustomExceptionBadRequest("El total ingresado no coincide con el calculo realizado por el sistema.");
             }
 
             _logger.LogInformation("Inicio la carga y conteo de los productos a partir del Request");
@@ -101,7 +101,7 @@ namespace Application.UseCase
             foreach (Sale sale in listSale)
             {
                 var saleAux = _mapper.Map<SaleGetResponse>(sale);
-               saleAux.TotalQuantity = _calculatorService.CalculateTotalQuantityFromSaleProduct(sale.SaleProducts);
+                saleAux.TotalQuantity = _calculatorService.CalculateTotalQuantityFromSaleProduct(sale.SaleProducts);
                 response.Add(saleAux);
             }
 

@@ -7,6 +7,8 @@
 
         public ICollection<Product> Products { get; set; }
 
+        public Category() { }
+
         public Category(int categoryId, string name)
         {
             CategoryId = categoryId;

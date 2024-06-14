@@ -74,7 +74,9 @@ namespace Application.UseCase
                     listProducts = await _productRepository.FindProductByNameAsync(name);
                     _logger.LogInformation($"Cantidad de productos encontrados por nombre ingresado: {listProducts.Count}");
                 }
-                else return response;
+                else {
+                    listProducts = await _productRepository.FindAllProduct();
+                }
             }
 
             _logger.LogInformation("Inicio paginación");
@@ -101,12 +103,19 @@ namespace Application.UseCase
 
         public async Task<ProductResponse> SaveProductAsync(ProductRequest productRequest)
         {
+
             _logger.LogInformation("Init - SaveProductAsync");
             Category category = await _categoryRepository.FindCategoryByIdAsync(productRequest.Category);
             Product product = new Product();
-
-            product = _mapper.Map<Product>(productRequest);
-            product.Category = category;
+            if (category != null)
+            {
+                product = _mapper.Map<Product>(productRequest);
+                product.Category = category;
+            }
+            else
+            {
+                throw new CustomExceptionBadRequest("No se encotro una categoria con id: " + productRequest.Category);
+            }
 
             _logger.LogInformation("Out - SaveProductAsync");
             return _mapper.Map<ProductResponse>(await _genericRepository.SaveAsync(product));
@@ -137,6 +146,7 @@ namespace Application.UseCase
 
             ProductResponse productResponse = new ProductResponse();
             Product productUpdate = new Product();
+            Category category = new Category();
 
             Product product = await _productRepository.FindProductByIdAsync(productId);
             if (product == null)
@@ -151,13 +161,22 @@ namespace Application.UseCase
                     Product productConflit = await _productRepository.FindProductByEqualNameAsync(productRequest.Name);
                     if (productConflit != null)
                     {
-                        throw new CustomException("Ya existe un producto con ese nombre");
+                        throw new CustomExceptionConflict("Ya existe un producto con ese nombre");
                     }
+                }
+
+                category = await _categoryRepository.FindCategoryByIdAsync(productRequest.Category);
+                if (category != null)
+                {
+                    product.CategoryId = productRequest.Category;
+                }
+                else
+                {
+                    throw new CustomExceptionBadRequest("No se encotro una categoria con id: " + productRequest.Category);
                 }
 
                 product.Name = productRequest.Name;
                 product.Description = productRequest.Description;
-                product.CategoryId = productRequest.Category;
                 product.Price = productRequest.Price;
                 product.Discount = productRequest.Discount;
                 product.ImageUrl = productRequest.ImageUrl;

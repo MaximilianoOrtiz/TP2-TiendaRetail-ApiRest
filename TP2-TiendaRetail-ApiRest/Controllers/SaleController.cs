@@ -6,10 +6,11 @@ using Application.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Data.Common;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TP2_TiendaRetail_ApiRest.Controllers
 {
-    [Route("")]
+    [Route("api/")]
     [ApiController]
     public class SaleController : ControllerBase
     {
@@ -42,9 +43,9 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             {
                 return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
             }
-            catch (CustomException ex)
+            catch (CustomExceptionBadRequest ex)
             {
-                return Conflict(new ApiError(ex.Message));
+                return BadRequest(new ApiError(ex.Message));
             }
         }
 
@@ -94,11 +95,20 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         {
             try
             {
+                if (from > to)
+                {
+                    return BadRequest(new ApiError("Fecha de inicio mayor a la fecha de fin "));
+                }else
+                    if (from.Date.Year == 1) 
+                {
+                    to = DateTime.Now;
+                }
+
                 List<SaleGetResponse> saleGetResponse = await _saleService.GetFilterByDateTime(from, to);
-                if (saleGetResponse.IsNullOrEmpty())
+                /*if (saleGetResponse.IsNullOrEmpty())
                 {
                     return NotFound(new ApiError("No existen ventas dentro del periodo indicado - Inicio : " + from + " Fin: " + to));
-                }
+                }*/
 
                 return Ok(saleGetResponse);
             }
