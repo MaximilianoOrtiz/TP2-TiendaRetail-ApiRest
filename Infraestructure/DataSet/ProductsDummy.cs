@@ -388,9 +388,9 @@ namespace Infraestructure.DataSet
                     9,
                     "https://http2.mlstatic.com/D_NQ_NP_845110-MLA43219745617_082020-O.webp",
                     10
-                ),
+                )
 
-
+                /*
 
                 //DATOS REPETIDOS
 
@@ -1087,6 +1087,7 @@ namespace Infraestructure.DataSet
                     "https://http2.mlstatic.com/D_NQ_NP_845110-MLA43219745617_082020-O.webp",
                     10
                 )
+                */
             );
         }
     }

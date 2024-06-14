@@ -146,6 +146,7 @@ namespace Application.UseCase
 
             ProductResponse productResponse = new ProductResponse();
             Product productUpdate = new Product();
+            Category category = new Category();
 
             Product product = await _productRepository.FindProductByIdAsync(productId);
             if (product == null)
@@ -160,13 +161,22 @@ namespace Application.UseCase
                     Product productConflit = await _productRepository.FindProductByEqualNameAsync(productRequest.Name);
                     if (productConflit != null)
                     {
-                        throw new CustomExceptionBadRequest("Ya existe un producto con ese nombre");
+                        throw new CustomExceptionConflict("Ya existe un producto con ese nombre");
                     }
+                }
+
+                category = await _categoryRepository.FindCategoryByIdAsync(productRequest.Category);
+                if (category != null)
+                {
+                    product.CategoryId = productRequest.Category;
+                }
+                else
+                {
+                    throw new CustomExceptionBadRequest("No se encotro una categoria con id: " + productRequest.Category);
                 }
 
                 product.Name = productRequest.Name;
                 product.Description = productRequest.Description;
-                product.CategoryId = productRequest.Category;
                 product.Price = productRequest.Price;
                 product.Discount = productRequest.Discount;
                 product.ImageUrl = productRequest.ImageUrl;

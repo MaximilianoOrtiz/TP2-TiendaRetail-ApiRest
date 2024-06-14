@@ -153,6 +153,10 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             }
             catch (CustomExceptionBadRequest ex)
             {
+                return BadRequest(new ApiError(ex.Message));
+            }
+            catch (CustomExceptionConflict ex)
+            {
                 return Conflict(new ApiError(ex.Message));
             }
         }
