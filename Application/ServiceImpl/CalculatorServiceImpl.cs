@@ -38,7 +38,7 @@ namespace Application.UseCase
                     decimal princeTotalProduct = product.Price * item.Quantity;
 
                     //Actualizo el Subtotal en el saleResponse. Es la suma de los productos sin ningun tipo de descuento e impuesto.
-                    saleResponse.SubTotal += princeTotalProduct;
+                    saleResponse.Subtotal += princeTotalProduct;
 
                     //Obtengo el descuento y lo sumo en el saleResponse.
                     if (product.Discount != null && product.Discount != 0)
@@ -51,7 +51,7 @@ namespace Application.UseCase
                 }
             }
             //Calculo el TotalPay
-            decimal totalPayTem = saleResponse.SubTotal - saleResponse.TotalDiscount;
+            decimal totalPayTem = saleResponse.Subtotal - saleResponse.TotalDiscount;
             decimal aux = totalPayTem + (totalPayTem * (taxes / 100));
             saleResponse.TotalPay = Math.Round(aux, 2);
 

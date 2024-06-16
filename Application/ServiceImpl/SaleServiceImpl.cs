@@ -1,4 +1,5 @@
-﻿using Application.Dtos.Sale.Request;
+﻿using Application.Dtos.ApiError;
+using Application.Dtos.Sale.Request;
 using Application.Dtos.Sale.Response;
 using Application.Exceptions;
 using Application.Interfaces.Repository;
@@ -64,7 +65,7 @@ namespace Application.UseCase
             }
 
             //Armo la Venta para persistirla en base
-            //Obtengo  el TotalPay, SubTotal y TotalDiscount del saleResponse
+            //Obtengo  el TotalPay, Subtotal y TotalDiscount del saleResponse
             Sale sale = _mapper.Map<Sale>(saleResponse);
             sale.Taxes = await _parametryRepository.FindValueByCodeAsync("taxe_iva");
             sale.Date = DateTime.Now;
@@ -91,9 +92,21 @@ namespace Application.UseCase
             return saleResponse;
         }
 
-        public async Task<List<SaleGetResponse>> GetFilterByDateTime(DateTime from, DateTime to)
+        public async Task<List<SaleGetResponse>> GetFilterByDateTimeAsync(DateTime from, DateTime to)
         {
-            _logger.LogInformation("Init - FindSaleByDateFilter");
+            _logger.LogInformation($"Init - FindSaleByDateFilter. From: {from}, To: {to}");
+
+            if (from > to)
+            {
+                throw new CustomExceptionBadRequest("Fecha de inicio mayor a la fecha de fin");  
+            }
+
+            if (to.Year == 1)
+            {
+                // Si `to` es 0001-01-01 (valor por defecto), establecerla como la fecha actual
+                to = DateTime.Today;
+            }
+
             List<SaleGetResponse> response = new List<SaleGetResponse>();
 
             List<Sale> listSale = await _saleRepository.FindSaleByDateFilter(from, to);
@@ -105,7 +118,7 @@ namespace Application.UseCase
                 response.Add(saleAux);
             }
 
-            _logger.LogInformation("Out - FindSaleByDateFilter");
+            _logger.LogInformation($"Out - FindSaleByDateFilter. Total sales found: {response.Count}");
             return response;
         }
     }

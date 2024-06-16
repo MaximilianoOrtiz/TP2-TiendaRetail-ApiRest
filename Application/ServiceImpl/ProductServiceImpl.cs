@@ -30,10 +30,10 @@ namespace Application.UseCase
             _categoryRepository = categoryRepository;
         }
 
-        public async Task<List<ProductoGetResponse>> FindProductByCategoryIdAndNameAsync(int[] categorys, string name, int limit, int offSet)
+        public async Task<List<ProductoGetResponse>> FindProductByCategoryIdAndNameAsync(int[] categories, string name, int limit, int offSet)
         {
             _logger.LogInformation("Init - find Product by Category and Name");
-            _logger.LogInformation("Datos de entrada --> Category.Length: " + categorys.Length
+            _logger.LogInformation("Datos de entrada --> Categories.Length: " + categories.Length
                 + " Name: " + name
                 + " limit: " + limit
                 + " offSet: " + offSet);
@@ -41,12 +41,12 @@ namespace Application.UseCase
             List<Product> listProducts = new List<Product>();
             List<ProductoGetResponse> response = new List<ProductoGetResponse>();
 
-            if (categorys.Length > 0)
+            if (categories.Length != 0)
             {
                 if (!string.IsNullOrEmpty(name))
                 {
                     //Traigo todos los productos a partir de las categorias seleccionadas
-                    foreach (int category in categorys)
+                    foreach (int category in categories)
                     {
                         listProducts = listProducts.Concat(
                             await _productRepository.FindProductByCategoryIdAndNameAsync(category, name)).ToList();
@@ -55,11 +55,12 @@ namespace Application.UseCase
                 }
                 else
                 {
-                    if (categorys.Length == 1 && categorys[0] == 0)
+                    //chequear si tiene sentido despues de la correccion, si no se recibe ningun parametro se van a devolver todos los productos
+                   /* if (categories.Length == 1 && categories[0] == 0)
                     {
                         listProducts = await _productRepository.FindAllProduct();
-                    }
-                    foreach (int category in categorys)
+                    }*/
+                    foreach (int category in categories)
                     {
                         listProducts = listProducts.Concat(
                             await _productRepository.FindProductByCategoryIdAsync(category)).ToList();

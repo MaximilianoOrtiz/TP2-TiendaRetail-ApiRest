@@ -7,6 +7,6 @@ namespace Application.Interfaces.Service
     {
         public Task<SaleResponse> SaveSaleAsync(SaleRequest saleRequest);
         public Task<SaleResponse> FindSaveByIdAsync(int saveId);
-        public Task<List<SaleGetResponse>> GetFilterByDateTime(DateTime from, DateTime to);
+        public Task<List<SaleGetResponse>> GetFilterByDateTimeAsync(DateTime from, DateTime to);
     }
 }

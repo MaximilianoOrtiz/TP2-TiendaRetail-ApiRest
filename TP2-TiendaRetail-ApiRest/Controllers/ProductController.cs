@@ -28,7 +28,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         /// <remarks>
         /// Recupera una lista de productos disponibles, con opciones de filtrado.
         /// </remarks>
-        /// <param name="categorys">Filtrar productos por categorías. Es posible filtrar por 1 o más categorias. Filtro opcional</param>
+        /// <param name="categories">Filtrar productos por categorías. Es posible filtrar por 1 o más categorias. Filtro opcional</param>
         /// <param name="name">Filtrar productos por nombre. Es posible filtrar por nombres incompletos</param>
         /// <param name="limit">Limita el número de productos devueltos.</param>
         /// <param name="offset">Número de productos a omitir antes de empezar a devolver los resultados.</param>
@@ -38,14 +38,14 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         /// <returns>Una lista de productos.</returns>
         [HttpGet]
         [Route("[controller]")]
-        public async Task<ActionResult<ProductoGetResponse>> GetProductbyFilters([FromQuery] int[] categorys,
+        public async Task<ActionResult<ProductoGetResponse>> GetProductbyFilters([FromQuery] int[] categories,
                                                                                   [FromQuery] string? name,
-                                                                                  [FromQuery][DefaultValue(0)] int limit,
-                                                                                  [FromQuery][DefaultValue(0)] int offset)
+                                                                                  [FromQuery] int limit = 0,
+                                                                                  [FromQuery] int offset = 0)
         {
             try
             {
-                List<ProductoGetResponse> listProduct = await _productService.FindProductByCategoryIdAndNameAsync(categorys, name, limit, offset);
+                List<ProductoGetResponse> listProduct = await _productService.FindProductByCategoryIdAndNameAsync(categories, name, limit, offset);
 
                 return Ok(listProduct);
             }
