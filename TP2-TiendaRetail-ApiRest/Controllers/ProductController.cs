@@ -4,7 +4,6 @@ using Application.Dtos.Product.Response;
 using Application.Exceptions;
 using Application.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel;
 using System.Data.Common;
 
 namespace TP2_TiendaRetail_ApiRest.Controllers

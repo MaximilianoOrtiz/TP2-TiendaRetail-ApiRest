@@ -4,9 +4,7 @@ using Application.Dtos.Sale.Response;
 using Application.Exceptions;
 using Application.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using System.Data.Common;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TP2_TiendaRetail_ApiRest.Controllers
 {
@@ -98,10 +96,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             {
 
                 List<SaleGetResponse> saleGetResponse = await _saleService.GetFilterByDateTimeAsync(from, to);
-                /*if (saleGetResponse.IsNullOrEmpty())
-                {
-                    return NotFound(new ApiError("No existen ventas dentro del periodo indicado - Inicio : " + from + " Fin: " + to));
-                }*/
+
                 int cant = saleGetResponse.Count;
 
                 return Ok(saleGetResponse);
@@ -110,7 +105,7 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
             {
                 return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
             }
-            catch(CustomExceptionBadRequest ex)
+            catch (CustomExceptionBadRequest ex)
             {
                 return BadRequest(new ApiError(ex.Message));
             }

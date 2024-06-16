@@ -1,5 +1,4 @@
-﻿using Application.Dtos.ApiError;
-using Application.Dtos.Sale.Request;
+﻿using Application.Dtos.Sale.Request;
 using Application.Dtos.Sale.Response;
 using Application.Exceptions;
 using Application.Interfaces.Repository;
@@ -98,7 +97,7 @@ namespace Application.UseCase
 
             if (from > to)
             {
-                throw new CustomExceptionBadRequest("Fecha de inicio mayor a la fecha de fin");  
+                throw new CustomExceptionBadRequest("Fecha de inicio mayor a la fecha de fin");
             }
 
             if (to.Year == 1)
