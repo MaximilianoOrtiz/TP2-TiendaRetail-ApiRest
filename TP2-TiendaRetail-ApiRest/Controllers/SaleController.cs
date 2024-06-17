@@ -4,9 +4,7 @@ using Application.Dtos.Sale.Response;
 using Application.Exceptions;
 using Application.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using System.Data.Common;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TP2_TiendaRetail_ApiRest.Controllers
 {
@@ -91,30 +89,25 @@ namespace TP2_TiendaRetail_ApiRest.Controllers
         /// <response code="400">Solicitud incorrecta.</response>
         [HttpGet]
         [Route("[controller]")]
-        public async Task<ActionResult<List<SaleGetResponse>>> GetFilterByDateTime([FromQuery] DateTime from, [FromQuery] DateTime to)
+        public async Task<IActionResult> GetFilterByDateTime([FromQuery] DateTime from, [FromQuery] DateTime to)
         {
+
             try
             {
-                if (from > to)
-                {
-                    return BadRequest(new ApiError("Fecha de inicio mayor a la fecha de fin "));
-                }else
-                    if (from.Date.Year == 1) 
-                {
-                    to = DateTime.Now;
-                }
 
-                List<SaleGetResponse> saleGetResponse = await _saleService.GetFilterByDateTime(from, to);
-                /*if (saleGetResponse.IsNullOrEmpty())
-                {
-                    return NotFound(new ApiError("No existen ventas dentro del periodo indicado - Inicio : " + from + " Fin: " + to));
-                }*/
+                List<SaleGetResponse> saleGetResponse = await _saleService.GetFilterByDateTimeAsync(from, to);
+
+                int cant = saleGetResponse.Count;
 
                 return Ok(saleGetResponse);
             }
             catch (DbException ex)
             {
                 return new JsonResult(new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message)) { StatusCode = 500 };
+            }
+            catch (CustomExceptionBadRequest ex)
+            {
+                return BadRequest(new ApiError(ex.Message));
             }
         }
     }

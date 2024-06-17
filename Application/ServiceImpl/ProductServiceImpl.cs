@@ -30,23 +30,20 @@ namespace Application.UseCase
             _categoryRepository = categoryRepository;
         }
 
-        public async Task<List<ProductoGetResponse>> FindProductByCategoryIdAndNameAsync(int[] categorys, string name, int limit, int offSet)
+        public async Task<List<ProductoGetResponse>> FindProductByCategoryIdAndNameAsync(int[] categories, string name, int limit, int offSet)
         {
             _logger.LogInformation("Init - find Product by Category and Name");
-            _logger.LogInformation("Datos de entrada --> Category.Length: " + categorys.Length
-                + " Name: " + name
-                + " limit: " + limit
-                + " offSet: " + offSet);
+            _logger.LogInformation($"Datos de entrada --> Categories.Length: {categories.Length}, Name: {name}, limit: {limit}, offSet: {offSet}");
 
             List<Product> listProducts = new List<Product>();
             List<ProductoGetResponse> response = new List<ProductoGetResponse>();
 
-            if (categorys.Length > 0)
+            if (categories.Length != 0)
             {
                 if (!string.IsNullOrEmpty(name))
                 {
-                    //Traigo todos los productos a partir de las categorias seleccionadas
-                    foreach (int category in categorys)
+                    //Caso 1: Se ingreso categoria y nombre --> Traigo todos los productos a partir de la categoria y nombre
+                    foreach (int category in categories)
                     {
                         listProducts = listProducts.Concat(
                             await _productRepository.FindProductByCategoryIdAndNameAsync(category, name)).ToList();
@@ -54,12 +51,8 @@ namespace Application.UseCase
                     _logger.LogInformation($"Cantidad de productos encontrados por todas las categorias ingresadas: {listProducts.Count}");
                 }
                 else
-                {
-                    if (categorys.Length == 1 && categorys[0] == 0)
-                    {
-                        listProducts = await _productRepository.FindAllProduct();
-                    }
-                    foreach (int category in categorys)
+                {   //Caso 2: Se ingreso solamente categorias --> Traigo los productos de las categorias seleccionadas
+                    foreach (int category in categories)
                     {
                         listProducts = listProducts.Concat(
                             await _productRepository.FindProductByCategoryIdAsync(category)).ToList();
@@ -69,12 +62,14 @@ namespace Application.UseCase
             }
             else
             {
+                //Caso 3: Solo se ingreso un nombre --> busco por el nombre
                 if (!string.IsNullOrEmpty(name))
                 {
                     listProducts = await _productRepository.FindProductByNameAsync(name);
                     _logger.LogInformation($"Cantidad de productos encontrados por nombre ingresado: {listProducts.Count}");
                 }
-                else {
+                else
+                {   //Caso 4: No se ingreso ningo argumento --> busco todos los productos
                     listProducts = await _productRepository.FindAllProduct();
                 }
             }
