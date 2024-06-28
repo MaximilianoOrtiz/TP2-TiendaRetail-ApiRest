@@ -20,14 +20,13 @@ namespace TP2_TiendaRetail_ApiRest
 
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
-                                  policy =>
-                                  {
-                                      policy.WithOrigins("http://127.0.0.1:5501"); // add the allowed origins  
-                                  });
-            });
+
+            builder.Services.AddCors(p => p.AddPolicy("PolicyCors", build
+               => {
+                   build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+
+            }));
+            
 
             // Add services to the container.
 
@@ -95,11 +94,12 @@ namespace TP2_TiendaRetail_ApiRest
             var app = builder.Build();
 
             // Habilitar CORS en la aplicación
-            app.UseCors(MyAllowSpecificOrigins);
+            //app.UseCors(MyAllowSpecificOrigins);
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
+                app.UseCors("PolicyCors");
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
