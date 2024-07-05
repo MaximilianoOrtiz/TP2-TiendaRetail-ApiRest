@@ -47,6 +47,71 @@ namespace Infraestructure.DataSet
                     1
                     ),
 
+               new Product(
+                    Guid.NewGuid(),
+                    "Microondas Whirlpool MW 25 BA 25L",
+                    "Microondas con capacidad de 25 litros, potencia de 800W, función de cocina rápida, pantalla LED y botones de control electrónicos.",
+                    449999,
+                    2,
+                    "https://http2.mlstatic.com/D_NQ_NP_798058-MLU74033812160_012024-O.webp",
+                    1
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Lavarropas LG F-1402H5B 12Kg Inverter",
+                    "Lavarropas con capacidad de 12 kg, tecnología Inverter, eficiencia energética A++, 14 programas de lavado, función de vapor para eliminar arrugas, y pantalla LED táctil.",
+                    899999,
+                    3,
+                    "https://http2.mlstatic.com/D_NQ_NP_742423-MLA51835012835_102022-O.webp",
+                    1
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Heladera Side by Side Samsung RS50N3513SL/AA 505Lts",
+                    "Heladera con capacidad total de 505 litros, 342 litros de heladera y 163 litros de freezer. Sistema de frío No Frost, eficiencia energética A++, 4 estrellas de freezer, función de congelamiento rápido, y dispenser de agua y hielo.",
+                    2499999,
+                    10,
+                    "https://http2.mlstatic.com/D_NQ_NP_972873-MLA50008739804_052022-O.webp",
+                    1
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Aire Acondicionado Split LG F-Q186KXA 18000 F",
+                    "Aire acondicionado con capacidad de frío de 18000 frigorías y capacidad de calor de 18000 watts. Tecnología Inverter, eficiencia energética A++, función de deshumidificación, timer programable, control remoto y modo Sleep.",
+                    1999999,
+                    6,
+                    "https://http2.mlstatic.com/D_NQ_NP_629906-MLA74780228753_022024-O.webp",
+                    1
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Lavarropas Drean Next 8 Kg Inverter",
+                    "Lavarropas con capacidad de 8 kg, tecnología Inverter, eficiencia energética A++, 14 programas de lavado, función de vapor para eliminar arrugas, y pantalla LED táctil.",
+                    749999,
+                    1,
+                    "https://http2.mlstatic.com/D_NQ_NP_816984-MLA53496425042_012023-O.webp",
+                    1
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Heladera Cíclica GAFA HGF358AFB 282Lts Inoxidable",
+                    "Heladera con capacidad total de 311 litros, 224 litros de heladera y 87 litros de freezer. Sistema de frío No Frost, eficiencia energética A, 4 estrellas de freezer, función de congelamiento rápido, dispenser de agua y luz LED interior.",
+                    699999,
+                    12,
+                    "https://http2.mlstatic.com/D_NQ_NP_986989-MLU74218962327_012024-O.webp",
+                    1
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Microondas Panasonic NN-ST665B 27L",
+                    "Microondas con capacidad de 27 litros, potencia de 1000W, función de cocina rápida, pantalla LED y botones de control electrónicos.",
+                    549999,
+                    2,
+                    "https://http2.mlstatic.com/D_NQ_NP_858971-MLA74978511181_032024-O.webp",
+                    1
+                ),  
+
+
                //Tecnología y Electrónica
                new Product(
                    Guid.NewGuid(),
@@ -83,6 +148,155 @@ namespace Infraestructure.DataSet
                     "https://http2.mlstatic.com/D_NQ_NP_672706-MLU75135396807_032024-O.webp",
                     2
                 ),
+
+               new Product(
+                    Guid.NewGuid(),
+                    "Tablet Apple iPad Pro 12.9\" 128GB Wi-Fi",
+                    "La nueva iPad Pro de 12.9 pulgadas de Apple ofrece una potencia sin igual gracias a su chip M1. Con 128GB de almacenamiento y una pantalla Liquid Retina XDR, es perfecta para tareas creativas y de productividad. Además, cuenta con un sistema de cámaras avanzadas y compatibilidad con el Apple Pencil y el Magic Keyboard.",
+                    1029999,
+                    3,
+                    "https://http2.mlstatic.com/D_NQ_NP_814559-MLA53970921150_022023-O.webp",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Smartwatch Apple Watch Series 7 GPS 45mm",
+                    "El Apple Watch Series 7 cuenta con una pantalla más grande y avanzada, resistencia al polvo y al agua, y un cargado rápido. Además, incluye funcionalidades de salud y fitness como monitoreo de oxígeno en sangre, ECG y una amplia variedad de aplicaciones deportivas.",
+                    529999,
+                    7,
+                    "https://http2.mlstatic.com/D_NQ_NP_858093-MLA48096508611_112021-O.webp",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Auriculares Inalámbricos Sony WH-1000XM4",
+                    "Los auriculares Sony WH-1000XM4 ofrecen una cancelación de ruido líder en la industria, un sonido excepcional y comodidad durante todo el día. Con una batería de larga duración y características inteligentes como el control táctil y el Speak-to-Chat, son ideales para disfrutar de tu música sin interrupciones.",
+                    149999,
+                    12,
+                    "https://http2.mlstatic.com/D_NQ_NP_918604-MLA44483909501_012021-O.webp",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Consola PlayStation 5",
+                    "La consola PlayStation 5 de Sony ofrece una experiencia de juego de próxima generación con gráficos impresionantes, tiempos de carga ultrarrápidos y una nueva generación de juegos exclusivos. Su controlador DualSense proporciona una inmersión sin precedentes gracias a su respuesta háptica y gatillos adaptativos.",
+                    1199999,
+                    0,
+                    "https://http2.mlstatic.com/D_NQ_NP_802856-MLU76753493373_052024-O.webp",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Parlante Bluetooth JBL Charge 5",
+                    "El JBL Charge 5 es un parlante Bluetooth portátil que ofrece un sonido potente y claro. Con una batería de hasta 20 horas de duración, resistencia al agua y polvo (IP67) y la capacidad de cargar tus dispositivos móviles, es perfecto para llevar tu música a cualquier lugar.",
+                    69999,
+                    15,
+                    "https://http2.mlstatic.com/D_NQ_NP_778458-MLU72636564641_112023-O.webp",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Monitor Samsung Curvo 27\" Full HD LC27R500FHNXZA",
+                    "El monitor curvo de Samsung de 27 pulgadas te ofrece una experiencia inmersiva con su pantalla Full HD y una curvatura 1800R. Con tecnología AMD FreeSync y una frecuencia de actualización de 75 Hz, es ideal para juegos y entretenimiento.",
+                    109999,
+                    8,
+                    "https://http2.mlstatic.com/D_NQ_NP_904906-MLU69761863493_062023-O.webp",
+                    2
+                ),
+
+                new Product(
+                    Guid.NewGuid(),
+                    "Cámara Canon EOS Rebel T7",
+                    "La cámara Canon EOS Rebel T7 es perfecta para fotógrafos principiantes. Cuenta con un sensor CMOS de 24.1 MP, pantalla LCD de 3 pulgadas y conectividad Wi-Fi para compartir tus fotos al instante. Además, incluye una lente 18-55mm.",
+                    189999,
+                    5,
+                    "",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Laptop Apple MacBook Pro 14\" M1 Pro",
+                    "El MacBook Pro de 14 pulgadas con chip M1 Pro de Apple ofrece un rendimiento y eficiencia excepcionales. Con una pantalla Liquid Retina XDR, hasta 32GB de RAM y 1TB de almacenamiento SSD, es ideal para profesionales creativos.",
+                    2399999,
+                    3,
+                    "",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Drone DJI Mavic Air 2",
+                    "El DJI Mavic Air 2 es un drone avanzado con una cámara 4K de 48MP, tiempo de vuelo de hasta 34 minutos y múltiples modos de vuelo inteligentes. Perfecto para capturar fotos y videos aéreos de alta calidad.",
+                    699999,
+                    0,
+                    "https://http2.mlstatic.com/D_NQ_NP_727004-MLA75232255242_032024-O.webp",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Barra de Sonido Bose Smart Soundbar 700",
+                    "La Bose Smart Soundbar 700 ofrece un sonido inmersivo y conectividad inteligente con Alexa y Google Assistant integrados. Su diseño elegante y su rendimiento acústico superior mejoran cualquier sistema de entretenimiento en el hogar.",
+                    399999,
+                    10,
+                    "https://http2.mlstatic.com/D_NQ_NP_843862-MLA42478366506_072020-O.webp",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Impresora Multifuncional HP OfficeJet Pro 9015e",
+                    "La HP OfficeJet Pro 9015e es una impresora multifuncional ideal para oficinas pequeñas y medianas. Ofrece impresión a doble cara, escaneo, copia y fax con alta velocidad y calidad profesional.",
+                    229999,
+                    7,
+                    "https://http2.mlstatic.com/D_NQ_NP_768300-MLA41233060022_032020-O.webp",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Router WiFi 6 ASUS RT-AX86U",
+                    "El router ASUS RT-AX86U es ideal para juegos y transmisión en 4K. Ofrece tecnología WiFi 6 con velocidades de hasta 5700 Mbps, puerto gaming de 2.5 Gbps y seguridad AiProtection Pro.",
+                    199999,
+                    12,
+                    "https://http2.mlstatic.com/D_NQ_NP_760437-MLU76150445423_052024-O.webp",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Proyector Epson Home Cinema 2150",
+                    "El proyector Epson Home Cinema 2150 ofrece una experiencia de cine en casa con resolución Full HD 1080p, 2500 lúmenes de brillo y conectividad inalámbrica. Perfecto para ver películas y jugar videojuegos en gran pantalla.",
+                    299999,
+                    6,
+                    "https://http2.mlstatic.com/D_NQ_NP_650108-MLA74903080735_032024-O.webp",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Bocina Inteligente Amazon Echo Dot 4ta Generación",
+                    "El Amazon Echo Dot de 4ta generación con reloj ofrece control por voz con Alexa, sonido mejorado y un diseño elegante. Ideal para gestionar dispositivos inteligentes, reproducir música y obtener información instantánea.",
+                    49999,
+                    15,
+                    "https://http2.mlstatic.com/D_NQ_NP_907304-MLA76219497482_052024-O.webp",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Cámara de Seguridad Ring Stick Up Cam Battery",
+                    "La Ring Stick Up Cam Battery es una cámara de seguridad versátil para interiores y exteriores. Ofrece video HD 1080p, detección de movimiento, visión nocturna y comunicación bidireccional. Funciona con batería recargable o alimentación solar.",
+                    89999,
+                    10,
+                    "https://http2.mlstatic.com/D_NQ_NP_968604-MLA73899541113_012024-O.webp",
+                    2
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Audífonos Bluetooth Bose QuietComfort Earbuds",
+                    "Los Bose QuietComfort Earbuds ofrecen cancelación de ruido avanzada, sonido de alta calidad y un ajuste cómodo y seguro. Son ideales para disfrutar de tu música sin interrupciones, con una batería de hasta 6 horas de duración.",
+                    199999,
+                    8,
+                    "https://http2.mlstatic.com/D_NQ_NP_609529-MLU74226371875_012024-O.webp",
+                    2
+                ),
+
+
+
 
                 // Moda y Accesorios:
                 new Product(
@@ -122,6 +336,144 @@ namespace Infraestructure.DataSet
                     3
                     ),
 
+
+                new Product(
+                    Guid.NewGuid(),
+                    "Gafas de sol Ray-Ban Aviator",
+                    "Las gafas de sol Ray-Ban Aviator son un clásico atemporal. Con su diseño elegante y lentes polarizados, ofrecen protección UV y estilo. Perfectas para cualquier ocasión.",
+                    19999,
+                    20,
+                    "https://http2.mlstatic.com/D_NQ_NP_876333-MLA74134571216_012024-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Reloj inteligente Apple Watch Series 6",
+                    "El Apple Watch Series 6 es un accesorio moderno y funcional. Con monitoreo de salud, GPS, y múltiples aplicaciones, es perfecto para mantenerte conectado y saludable.",
+                    499999,
+                    15,
+                    "https://http2.mlstatic.com/D_NQ_NP_792553-MLU73159525351_112023-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Mochila Jansport clásica",
+                    "La mochila Jansport clásica es ideal para la escuela o el trabajo. Con amplio espacio de almacenamiento y diseño resistente, ofrece comodidad y durabilidad.",
+                    59999,
+                    8,
+                    "https://http2.mlstatic.com/D_NQ_NP_967659-MLU70516232392_072023-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Cartera de cuero Michael Kors",
+                    "La cartera de cuero Michael Kors es un accesorio elegante y práctico. Con múltiples compartimentos y un diseño sofisticado, es perfecta para llevar tus esenciales con estilo.",
+                    159999,
+                    12,
+                    "https://http2.mlstatic.com/D_NQ_NP_990693-MLA74704426792_022024-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Sombrero Fedora de lana",
+                    "El sombrero Fedora de lana es un accesorio clásico y elegante. Perfecto para añadir un toque de estilo a cualquier atuendo, este sombrero es ideal para el otoño e invierno.",
+                    29999,
+                    5,
+                    "https://http2.mlstatic.com/D_NQ_NP_671496-MLA45427114933_042021-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Chaqueta de cuero negra",
+                    "La chaqueta de cuero negra es un básico de moda imprescindible. Con su diseño atemporal y ajuste perfecto, es ideal para cualquier ocasión y combina con todo.",
+                    249999,
+                    7,
+                    "https://http2.mlstatic.com/D_NQ_NP_829598-MLA75171128806_032024-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Pantalones de mezclilla Levi's 501",
+                    "Los pantalones de mezclilla Levi's 501 son un clásico que nunca pasa de moda. Con su corte recto y ajuste cómodo, son ideales para un look casual y versátil.",
+                    99999,
+                    10,
+                    "https://http2.mlstatic.com/D_NQ_NP_925069-MLA49693821162_042022-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Blusa de seda con lazo",
+                    "Esta blusa de seda con lazo es perfecta para un look elegante y femenino. Su diseño delicado y tejido suave te harán sentir cómoda y chic en cualquier ocasión.",
+                    74999,
+                    0,
+                    "https://http2.mlstatic.com/D_NQ_NP_668789-MLA73659925632_012024-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Cinturón de cuero Calvin Klein",
+                    "El cinturón de cuero Calvin Klein es un accesorio sofisticado y versátil. Con su diseño minimalista y elegante, es perfecto para completar cualquier atuendo.",
+                    34999,
+                    20,
+                    "https://http2.mlstatic.com/D_NQ_NP_913222-MLA77275857767_062024-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Zapatillas deportivas Nike Air Max",
+                    "Las zapatillas deportivas Nike Air Max combinan estilo y comodidad. Con su diseño icónico y tecnología de amortiguación, son perfectas para el uso diario y actividades deportivas.",
+                    129999,
+                    0,
+                    "https://http2.mlstatic.com/D_NQ_NP_912442-MLA77092906427_062024-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Bufanda de lana merino",
+                    "La bufanda de lana merino es un accesorio esencial para el invierno. Suave y cálida, es perfecta para mantenerte abrigado con estilo durante los días fríos.",
+                    19999,
+                    10,
+                    "https://http2.mlstatic.com/D_NQ_NP_744846-MLA76662301416_062024-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Bolso tote de tela",
+                    "El bolso tote de tela es práctico y estiloso. Con amplio espacio de almacenamiento y un diseño moderno, es perfecto para llevar tus esenciales diarios.",
+                    44999,
+                    15,
+                    "https://http2.mlstatic.com/D_NQ_NP_949148-MLU75692429655_042024-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Falda plisada midi",
+                    "Esta falda plisada midi es elegante y versátil. Con su diseño femenino y tejido ligero, es perfecta para cualquier ocasión, desde el trabajo hasta eventos especiales.",
+                    59999,
+                    8,
+                    "https://http2.mlstatic.com/D_NQ_NP_713957-MLA70114688153_062023-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Botines de cuero marrón",
+                    "Los botines de cuero marrón son un calzado clásico y atemporal. Con su diseño robusto y elegante, son perfectos para el uso diario y combinan con cualquier atuendo.",
+                    149999,
+                    5,
+                    "https://http2.mlstatic.com/D_NQ_NP_777105-MLA70924305746_082023-O.webp",
+                    3
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Gorro de lana tejido",
+                    "El gorro de lana tejido es un accesorio esencial para el invierno. Suave y cálido, es perfecto para mantener tu cabeza abrigada y añadir un toque de estilo a tu look.",
+                    9999,
+                    0,
+                    "https://http2.mlstatic.com/D_NQ_NP_766012-MLA54959307419_042023-O.webp",
+                    3
+                ),
+
+
                 //Hogar y Decoración
                 new Product(
                    Guid.NewGuid(),
@@ -159,6 +511,101 @@ namespace Infraestructure.DataSet
                     "https://http2.mlstatic.com/D_NQ_NP_891360-MLA50450337942_062022-O.webp",
                     4
                     ),
+
+
+                new Product(
+                    Guid.NewGuid(),
+                    "Alfombra de área grande",
+                    "Esta alfombra de área grande es perfecta para darle un toque de calidez y estilo a tu hogar. Su diseño moderno y colores vibrantes complementarán cualquier decoración.",
+                    59999,
+                    3,
+                    "https://http2.mlstatic.com/D_NQ_NP_678277-MLA50585725957_072022-O.webp",
+                    4
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Lámpara de mesa de diseño",
+                    "Esta lámpara de mesa de diseño es ideal para iluminar tu espacio con estilo. Su base elegante y pantalla de tela proporcionan una luz suave y agradable.",
+                    24999,
+                    10,
+                    "https://http2.mlstatic.com/D_NQ_NP_747581-MLA73179961416_122023-O.webp",
+                    4
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Cortinas blackout de lino",
+                    "Las cortinas blackout de lino son perfectas para mantener la privacidad y bloquear la luz no deseada. Su tejido de alta calidad y diseño elegante mejorarán cualquier habitación.",
+                    32999,
+                    5,
+                    "https://http2.mlstatic.com/D_NQ_NP_888846-MLA69964681489_062023-O.webp",
+                    4
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Estantería modular de madera",
+                    "Esta estantería modular de madera es una solución de almacenamiento versátil y estilosa. Su diseño modular te permite personalizarla según tus necesidades.",
+                    45999,
+                    0,
+                    "https://http2.mlstatic.com/D_NQ_NP_683332-MLU74725847452_032024-O.webp",
+                    4
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Juego de toallas de algodón egipcio",
+                    "Este juego de toallas de algodón egipcio es lujoso y absorbente. Perfecto para añadir un toque de elegancia a tu baño. El set incluye toallas de baño, de mano y toallas faciales.",
+                    29999,
+                    12,
+                    "https://http2.mlstatic.com/D_NQ_NP_935868-MLA76111646337_042024-O.webp",
+                    4
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Planta artificial decorativa",
+                    "La planta artificial decorativa es perfecta para agregar un toque de verde a tu hogar sin necesidad de mantenimiento. Su diseño realista complementará cualquier decoración.",
+                    15999,
+                    0,
+                    "https://http2.mlstatic.com/D_NQ_NP_611532-MLA72597798496_112023-O.webp",
+                    4
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Espejo de pared grande",
+                    "El espejo de pared grande es un accesorio esencial para cualquier hogar. Su diseño elegante y marco robusto lo convierten en una pieza decorativa y funcional.",
+                    78999,
+                    5,
+                    "https://http2.mlstatic.com/D_NQ_NP_983208-MLU75985619618_052024-O.webp",
+                    4
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Mesa de centro de madera y metal",
+                    "Esta mesa de centro de madera y metal combina estilo industrial y funcionalidad. Es perfecta para complementar la decoración de tu sala de estar.",
+                    89999,
+                    0,
+                    "https://http2.mlstatic.com/D_NQ_NP_867489-MLA74928886215_032024-O.webp",
+                    4
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Colcha de cama King size",
+                    "La colcha de cama King size es ideal para agregar un toque de lujo a tu dormitorio. Su diseño elegante y material suave te proporcionarán confort y estilo.",
+                    54999,
+                    0,
+                    "https://http2.mlstatic.com/D_NQ_NP_934128-MLA48538774826_122021-O.webp",
+                    4
+                ),
+                new Product(
+                    Guid.NewGuid(),
+                    "Juego de candelabros de metal",
+                    "Este juego de candelabros de metal es perfecto para crear una atmósfera acogedora en tu hogar. Su diseño elegante y acabado en oro añaden un toque de sofisticación.",
+                    19999,
+                    0,
+                    "https://http2.mlstatic.com/D_NQ_NP_866208-MLA74951585635_032024-O.webp",
+                    4
+                ),
+
+
+
 
                 //Salud y Belleza
                 new Product(
@@ -1088,7 +1535,9 @@ namespace Infraestructure.DataSet
                 10
             )
             */
+            
             );
+            
         }
     }
 }
