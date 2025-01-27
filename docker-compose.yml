@@ -1,0 +1,32 @@
+version: '3.4'
+
+networks:
+  mynetworkapi:
+
+services:
+  sqlserverdocker:
+    container_name: sql-server-docker
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+       - 8006:1433
+    environment:
+       - ACCEPT_EULA=Y
+       - MSSQL_SA_PASSWORD=MyPassword*1234
+    networks:
+       - mynetworkapi
+  
+  tp2-tiendaretail-apirest:
+    image: ${DOCKER_REGISTRY-}tp2tiendaretailapirest
+    build:
+      context: .
+      dockerfile: TP2-TiendaRetail-ApiRest/Dockerfile
+    networks:
+        - mynetworkapi
+    depends_on:
+        - sqlserverdocker
+    ports:
+        - 61928:8081
+    volumes:
+      - ./TP2-TiendaRetail-ApiRest:/app/src/TP2-TiendaRetail-ApiRest
+  
+   

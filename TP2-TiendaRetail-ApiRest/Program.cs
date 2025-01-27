@@ -56,9 +56,8 @@ namespace TP2_TiendaRetail_ApiRest
             });
 
 
-
             //Inyection DbContext
-            var connectionString = builder.Configuration["ConnectionString"];
+            var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? builder.Configuration["ConnectionString"];
             builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(connectionString));
 
             //Custom Inyection Dependency

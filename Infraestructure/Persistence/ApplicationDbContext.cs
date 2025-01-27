@@ -1,6 +1,8 @@
 ﻿using Domain.Entitys;
 using Infraestructure.DataSet;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Infraestructure
 {
@@ -12,7 +14,17 @@ namespace Infraestructure
         public DbSet<SaleProduct> SaleProduct { get; set; }
         public DbSet<Parametry> Parametry { get; set; }
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {
+
+            var dbCreator = Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator;
+            if( dbCreator != null)
+            {
+                if (!dbCreator.CanConnect())
+                    dbCreator.Create();
+                if(!dbCreator.HasTables())
+                    dbCreator.CreateTables();
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
