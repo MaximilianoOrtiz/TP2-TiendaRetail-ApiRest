@@ -26,6 +26,8 @@ services:
         - sqlserverdocker
     ports:
         - 7071:8081
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:8081
     volumes:
       - ./TP2-TiendaRetail-ApiRest:/app/src/TP2-TiendaRetail-ApiRest
   
