@@ -1,4 +1,4 @@
-using Application.Interfaces.Repository;
+﻿using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
 using Application.ServiceImpl;
 using Application.UseCase;
@@ -6,6 +6,8 @@ using Infraestructure;
 using Infraestructure.Commands;
 using Infraestructure.Querys;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -21,12 +23,15 @@ namespace TP2_TiendaRetail_ApiRest
             var builder = WebApplication.CreateBuilder(args);
 
 
-            builder.Services.AddCors(p => p.AddPolicy("PolicyCors", build
-               => {
-                   build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
-
-            }));
-            
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("PolicyCors", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
 
             // Add services to the container.
 
@@ -92,8 +97,26 @@ namespace TP2_TiendaRetail_ApiRest
 
             var app = builder.Build();
 
-            // Habilitar CORS en la aplicaci�n
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<ApplicationDbContext>();
+
+                    // 🔹 Aplica migraciones pendientes (si las hay)
+                    context.Database.Migrate();
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "Error al aplicar las migraciones o inicializar la base de datos.");
+                }
+            }
+
+            // Habilitar CORS en la aplicación
             //app.UseCors(MyAllowSpecificOrigins);
+            app.UseCors("PolicyCors");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

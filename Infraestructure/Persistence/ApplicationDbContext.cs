@@ -15,7 +15,7 @@ namespace Infraestructure
         public DbSet<Parametry> Parametry { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {
-
+         /*
             var dbCreator = Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator;
             if( dbCreator != null)
             {
@@ -24,6 +24,7 @@ namespace Infraestructure
                 if(!dbCreator.HasTables())
                     dbCreator.CreateTables();
             }
+         */
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
